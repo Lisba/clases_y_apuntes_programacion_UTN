@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+//prototipo o firma
+int sumar(int a, int b);
+int main()
+{
+  //llamada a la funcion
+  int numero1 = 7;
+  int numero2 = 8;
+  int total;
+
+  total = sumar(numero1, numero2);
+
+  printf("La suma es: %d", total);
+
+    return 0;
+}
+//implementacion o desarrollo
+
+int sumar(int a, int b)
+{
+    int resultado;
+
+    resultado = a + b;
+
+    return resultado;
+}

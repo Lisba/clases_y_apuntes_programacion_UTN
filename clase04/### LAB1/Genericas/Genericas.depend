@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1567437484 source:c:\users\alumno\desktop\genericas\inputs.c
+	"INPUTS.h"
+
+1567437484 c:\users\alumno\desktop\genericas\inputs.h
+
+1567434914 source:c:\users\alumno\desktop\genericas\main.c
+	<stdio.h>
+	<stdlib.h>
+	"INPUTS.h"
+
