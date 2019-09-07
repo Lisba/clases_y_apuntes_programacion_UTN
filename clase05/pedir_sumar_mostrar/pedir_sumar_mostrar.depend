@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1567811035 source:d:\lisba\clases_y_apuntes_programacion_utn\clase05\pedir_sumar_mostrar\main.c
+	<stdio.h>
+	<stdlib.h>
+
