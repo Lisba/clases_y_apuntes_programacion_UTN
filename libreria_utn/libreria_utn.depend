@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1568518202 source:c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\libreria_utn\main.c
+	<stdio.h>
+	<stdlib.h>
+	"lisba_utn.h"
+
+1568518167 c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\libreria_utn\lisba_utn.h
+

@@ -17,7 +17,7 @@ int main()
     int nota2[T]= {7, 4, 6, 8, 9, 7};
     float promedio[T] = {8.5, 4.5, 7.5, 8, 8, 6.5};
 
-    mostrarAlumnos(legajo, edad, sexo, nota1, nota2, promedio, T);
+    mostrarAlumnos(legajo, edad, sexo, nota1, nota2, promedio, 6);
     ordenarAlumnos(legajo, edad, sexo, nota1, nota2, promedio, T);
     mostrarAlumnos(legajo, edad, sexo, nota1, nota2, promedio, T);
     pedirAlumno(legajo, edad, sexo, nota1, nota2, promedio, 2);

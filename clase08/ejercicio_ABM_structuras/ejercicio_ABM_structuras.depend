@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1568948357 source:c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\clase08\ejercicio_abm_structuras\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"library_struct.h"
+
+1568944760 c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\clase08\ejercicio_abm_structuras\library_struct.h
+
+1568945210 source:c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\clase08\ejercicio_abm_structuras\library_struct.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"library_struct.h"
+

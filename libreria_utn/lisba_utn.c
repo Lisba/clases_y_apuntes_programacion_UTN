@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define "lisba_utn.h"
+#include <string.h>
+#include "lisba_utn.h"
 
 /** \brief Solicita un número al usuario y devuelve dicho número.
  *
@@ -140,7 +141,7 @@ void pedirAlumno(int legajo[], int edad[], char sexo[], int nota1[], int nota2[]
         printf("Ingrese la nota2: ");
         scanf("%d", &nota2[i]);
 
-        promedio[i] = (float) (nota1[i] + nota2[i]) / NOTAS;
+        promedio[i] = (float) (nota1[i] + nota2[i]) / 2;
     }
 }
 
@@ -213,4 +214,49 @@ void ordenarAlumnos(int legajo[], int edad[], char sexo[], int nota1[], int nota
             }
         }
     }
+}
+
+/** \brief
+ *
+ * \param nombreApellido[] char Vector donde se guardará el nombre y apellido.
+ * \return void No retorna ya que recibe la variable por referencia (modifica la original).
+ *
+ */
+void getNombreApellido(char nombreApellido[])
+{
+    char nombre[23];
+    char apellido[11];
+    char aux[50];
+
+    do
+    {
+        printf("Ingrese nombre: ");
+        gets(aux);
+
+        if(strlen(aux) > 10)
+        {
+            printf("ERROR. Ingrese un nombre de 10 caracteres o menos: ");
+            gets(aux);
+        }
+    } while (strlen(aux) > 10);
+
+    strcpy(nombre, aux);
+
+    do
+    {
+        printf("Ingrese apellido: ");
+        gets(aux);
+
+        if(strlen(aux) > 10)
+        {
+            printf("ERROR! Ingrese un apellido de 10 caracteres o menos: ");
+            gets(aux);
+        }
+    } while (strlen(aux) > 10);
+
+    strcpy(apellido, aux);
+
+    strcpy(nombreApellido, nombre);
+    strcat(nombreApellido, ", ");
+    strcat(nombreApellido, apellido);
 }

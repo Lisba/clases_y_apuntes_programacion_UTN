@@ -1,10 +1,11 @@
-float getFloat(char message[]);
-float add(float number1, float number2);
-float subtract(float number1, float number2);
-float divide(float number1, float number2);
-float multiply(float number1, float number2);
-long int factorial(float number);
+float getFloat(char[]);
+float add(float, float);
+float subtract(float, float);
+float divide(float, float);
+float multiply(float, float);
+long int factorial(float);
 void pedirAlumno(int[], int[], char[], int[], int[], float[], int);
 void mostrarUnAlumno(int, int, char, int, int, float);
 void mostrarAlumnos(int[], int[], char[], int[], int[], float[], int);
 void ordenarAlumnos(int[], int[], char[], int[], int[], float[], int);
+void getNombreApellido(char[]);

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define "lisba_utn.h"
+#include "lisba_utn.h"
 
 int main()
 {

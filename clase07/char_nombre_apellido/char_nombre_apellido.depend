@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1568517874 source:c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\clase07\char_nombre_apellido\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
