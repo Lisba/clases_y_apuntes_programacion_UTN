@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1569017614 source:d:\lisba\clases_y_apuntes_programacion_utn\clase09\ejercicio_array_estructuras\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
