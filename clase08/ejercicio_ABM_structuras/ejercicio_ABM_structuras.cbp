@@ -35,6 +35,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="library_struct.h" />
+		<Unit filename="lisba_utn.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lisba_utn.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

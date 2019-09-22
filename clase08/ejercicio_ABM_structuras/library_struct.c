@@ -2,11 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include "library_struct.h"
+#include "lisba_utn.h"
 #define T 2
 
 void menu(void)
 {
-    ePerson listaDePersonas[T];
+    ePerson listaDeAlumnos[T];
     char option;
 
     do
@@ -28,19 +29,19 @@ void menu(void)
         switch(option)
         {
         case '1':
-            addPersonsList(listaDePersonas, T);
+            addPersonsList(listaDeAlumnos, T);
             break;
         case '2':
-            modifyPerson(listaDePersonas, T);
+            modifyPerson(listaDeAlumnos, T);
             break;
         case '3':
-            erasePerson(listaDePersonas, T);
+            erasePerson(listaDeAlumnos, T);
             break;
         case '4':
-            showPersonList(listaDePersonas, T);
+            showPersonList(listaDeAlumnos, T);
             break;
         case '5':
-            sortPeopleByLastName(listaDePersonas, T);
+            sortPeopleByLastName(listaDeAlumnos, T);
             system("cls");
             printf("\n\nSE ORDENO LA AGENDA POR APELLIDO\n\n");
             system("pause");
@@ -62,9 +63,7 @@ ePerson addPerson (void)
     printf("Ingrese el apellido: ");
     fflush(stdin);
     scanf("%s", onePerson.lastName);
-    printf("Ingrese el legajo: ");
-    scanf("%d", &onePerson.file);
-
+    getInt(&onePerson.file, "Ingrese el legajo", "Ingrese legajo entre 100-101", 100, 101);
     printf("\n");
 
     onePerson.state = 1;
