@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1569285221 source:d:\lisba\clases_y_apuntes_programacion_utn\clase10\ejercicio_generar_id_autonumerico\libreria_autonumerico.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"conio.h"
+	"libreria_autonumerico.h"
+
+1569285450 d:\lisba\clases_y_apuntes_programacion_utn\clase10\ejercicio_generar_id_autonumerico\libreria_autonumerico.h
+	<stdio.h>
+	<string.h>
+
+1569285283 source:d:\lisba\clases_y_apuntes_programacion_utn\clase10\ejercicio_generar_id_autonumerico\main.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"conio.h"
+	"libreria_autonumerico.h"
+
