@@ -3,32 +3,131 @@
 #include <string.h>
 #include "lisba_utn.h"
 
-/** \brief Solicita un número al usuario y devuelve dicho número.
- *
- * \param void No recibe parametros.
- * \return float El número ingresado por el usuario.
- *
- */
-float getFloat(char message[])
+int getInt(int* input, char message[], char eMessage[], int lowLimit, int highLimit)
 {
-    float number;
+    int able = 0;
+    int aux;
     int validation;
 
     do
     {
-        fflush(stdin); // Limpieza del buffer de entrada ya que en caso de ingresar un caracter no válido quedará enter en memoria e iterará infinitamente.
-        printf("\n======================\n");
         printf("%s", message);
-        validation = scanf("%f", &number); //Validación para números, en caso de ingresar un caracter distinto a un número la variable validation valdrá 0.
+        fflush(stdin);
+        validation = scanf("%d", &aux);
 
-        if(!validation) // Si la variable validation vale 0 se muestra el mensaje de error.
+        if(!validation || aux < lowLimit || aux > highLimit)
         {
-            printf("\n%cERROR! DEBE INGRESAR UN N%cMERO.\n", 173, 233);
+            printf("%s", eMessage);
         }
 
-    }while(!validation); // Si la variable validation es 0 se repite el ciclo hasta que validation sea distinta de 0, es decir, hasta ingresr un número.
+    } while (!validation || aux < lowLimit || aux > highLimit);
 
-    return number;
+    *input = aux;
+
+    return able;
+}
+
+int getFloat(float* input, char message[], char eMessage[], float lowLimit, float highLimit)
+{
+    int able = 0;
+    char auxChar[100];
+    float aux;
+    int isFloat;
+    int dotCounter;
+
+    do
+    {
+        dotCounter = 0;
+
+        printf("%s", message);
+        fflush(stdin);
+        scanf("%s", auxChar);
+
+        int i=0;
+        while(auxChar[i] != '\0')
+        {
+            if(auxChar[i] < '0' && auxChar[i] > '9' && auxChar[i] != '.')
+            {
+                isFloat = 0;
+            }
+
+            if(auxChar[i] == '.')
+            {
+                dotCounter++;
+            }
+
+            i++;
+        }
+
+        if(dotCounter == 1)
+        {
+            isFloat = 1;
+        }
+        else
+        {
+            isFloat = 0;
+        }
+
+        if(!isFloat)
+        {
+            printf("%s", eMessage);
+        }
+
+    } while (!isFloat);
+
+        aux = atof(auxChar);
+
+        *input = aux;
+
+    return able;
+}
+
+char getChar(char* input, char message[], char eMessage[], char lowLimit, char highLimit)
+{
+    int able = 0;
+    char aux;
+    int validation;
+
+    do
+    {
+        printf("%s", message);
+        fflush(stdin);
+        validation = scanf("%c", &aux);
+
+        if(!validation || aux < lowLimit || aux > highLimit)
+        {
+            printf("%s", eMessage);
+        }
+
+    } while (!validation || aux < lowLimit || aux > highLimit);
+
+    *input = aux;
+
+    return able;
+}
+
+char getString(char input[], char message[], char eMessage[], int lowLimit, int highLimit)
+{
+    int able = 0;
+    char aux[highLimit];
+
+    do
+    {
+        printf("%s", message);
+        fflush(stdin);
+        fgets(aux, highLimit, stdin);
+        aux[strlen(aux)-1] = '\0';
+
+        if(strlen(aux) < (lowLimit+1))
+        {
+            printf("%s", eMessage);
+        }
+
+    } while (strlen(aux) < (lowLimit+1));
+
+    strcpy(input, aux);
+
+    return able;
 }
 
 /** \brief Caclula la suma entre dos números.
