@@ -1,0 +1,1 @@
+    eComida comidas[TAMCOM]= {{5000,"Bife", 250},{5001,"Fideos", 180},{5002,"Pizza", 200}, {5003,"Arroz", 160},{5004,"Milanesa", 220}};

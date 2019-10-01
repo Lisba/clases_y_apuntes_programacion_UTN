@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1569891851 source:d:\lisba\clases_y_apuntes_programacion_utn\clase12\ejercicio_concomidas\comidas.c
+	"comidas.h"
+
+1569891223 d:\lisba\clases_y_apuntes_programacion_utn\clase12\ejercicio_concomidas\comidas.h
+	<stdio.h>
+	<string.h>
+	<conio.h>
+
+1569891281 source:d:\lisba\clases_y_apuntes_programacion_utn\clase12\ejercicio_concomidas\main.c
+	<stdio.h>
+	<stdlib.h>
+	"comidas.h"
+

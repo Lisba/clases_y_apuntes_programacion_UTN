@@ -1,0 +1,5 @@
+9-Mostrar Almuerzos de una fecha determinada
+10-Listar Alumnos que comieron una determinada comida
+11-Listar cantidad de almuerzos x carrera
+12-Carrera amante de las milanesas
+13-Informe deuda alumno seleccionado
