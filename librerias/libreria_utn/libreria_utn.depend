@@ -6,3 +6,16 @@
 
 1568518167 c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\libreria_utn\lisba_utn.h
 
+1570417937 source:c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\librerias\libreria_utn\main.c
+	<stdio.h>
+	<stdlib.h>
+	"lisba_utn.h"
+
+1570418274 c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\librerias\libreria_utn\lisba_utn.h
+
+1570418217 source:c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\librerias\libreria_utn\lisba_utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"lisba_utn.h"
+

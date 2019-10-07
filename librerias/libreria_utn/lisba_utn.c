@@ -3,35 +3,98 @@
 #include <string.h>
 #include "lisba_utn.h"
 
+ /** \brief  Pide un numero entero al usuario y valida y retorna el numero entero ingresado.
+ *
+ * \param input int* Variable puntero origen-destino.
+ * \param message[] char mensaje a mostrar al usuario.
+ * \param eMessage[] char mensaje a mostrar en caso de ingresar dato invalido.
+ * \param lowLimit int rango limite inferior.
+ * \param highLimit int rango limite superior.
+ * \return int retorna un estado en caso de poder o no ejecutar la operacion.
+ */
 int getInt(int* input, char message[], char eMessage[], int lowLimit, int highLimit)
 {
-    int able = 0;
-    int aux;
-    int validation;
+    int able=0;
+    char auxNumber[10];
+    int numberReturn;
+    int counterDash=0;
+    int isInt;
 
     do
     {
+        isInt = 1;
+        counterDash = 0;
+
         printf("%s", message);
         fflush(stdin);
-        validation = scanf("%d", &aux);
+        scanf("%s", auxNumber);
 
-        if(!validation || aux < lowLimit || aux > highLimit)
+        int i=0;
+        while(auxNumber[i] != '\0')
         {
-            printf("%s", eMessage);
+            if((auxNumber[i] < '0' || auxNumber[i] > '9') && (auxNumber[i] != '-'))
+            {
+               isInt = 0;
+            }
+
+            if(auxNumber[i] == '-')
+            {
+                if(i != 0)
+                {
+                    isInt = 0;
+                }
+            }
+
+            if(auxNumber[i] == '-')
+            {
+                counterDash++;
+            }
+
+            i++;
         }
 
-    } while (!validation || aux < lowLimit || aux > highLimit);
+        if(counterDash > 1)
+        {
+            isInt = 0;
+        }
 
-    *input = aux;
+
+        numberReturn = atoi(auxNumber);
+
+        if((numberReturn< lowLimit) || (numberReturn > highLimit))
+         {
+             isInt = 0;
+         }
+
+        if(!isInt)
+        {
+            printf(eMessage);
+        }
+
+    } while (!isInt);
+
+    *input = numberReturn;
+
+    able = 1;
 
     return able;
 }
 
+/** \brief  Pide un numero flotante al usuario y valida y retorna el numero flotante ingresado.
+ *
+ * \param input float* Variable puntero origen-destino.
+ * \param message[] char mensaje a mostrar al usuario.
+ * \param eMessage[] char mensaje a mostrar en caso de ingresar dato invalido.
+ * \param lowLimit float rango limite inferior.
+ * \param highLimit float rango limite superior.
+ * \return int retorna un estado en caso de poder o no ejecutar la operacion.
+ *
+ */
 int getFloat(float* input, char message[], char eMessage[], float lowLimit, float highLimit)
 {
     int able = 0;
     char auxChar[100];
-    float aux;
+    float floatReturn;
     int isFloat;
     int dotCounter;
 
@@ -46,7 +109,7 @@ int getFloat(float* input, char message[], char eMessage[], float lowLimit, floa
         int i=0;
         while(auxChar[i] != '\0')
         {
-            if(auxChar[i] < '0' && auxChar[i] > '9' && auxChar[i] != '.')
+            if((auxChar[i] < '0' || auxChar[i] > '9') && (auxChar[i] != '.'))
             {
                 isFloat = 0;
             }
@@ -68,6 +131,13 @@ int getFloat(float* input, char message[], char eMessage[], float lowLimit, floa
             isFloat = 0;
         }
 
+        floatReturn = atof(auxChar);
+
+        if((floatReturn < lowLimit) || (floatReturn > highLimit))
+        {
+            isFloat = 0;
+        }
+
         if(!isFloat)
         {
             printf("%s", eMessage);
@@ -75,14 +145,22 @@ int getFloat(float* input, char message[], char eMessage[], float lowLimit, floa
 
     } while (!isFloat);
 
-        aux = atof(auxChar);
-
-        *input = aux;
+    *input = floatReturn;
 
     return able;
 }
 
-char getChar(char* input, char message[], char eMessage[], char lowLimit, char highLimit)
+/** \brief Pide un caracter al usuario, valida y retorna el caracter ingresado.
+ *
+ * \param input char* Variable puntero origen-destino.
+ * \param message[] char mensaje a mostrar al usuario.
+ * \param eMessage[] char mensaje a mostrar en caso de ingresar dato invalido.
+ * \param lowLimit char rango limite inferior.
+ * \param highLimit char rango limite superior.
+ * \return int retorna un estado en caso de poder o no ejecutar la operacion.
+ *
+ */
+int getChar(char* input, char message[], char eMessage[], char lowLimit, char highLimit)
 {
     int able = 0;
     char aux;
@@ -106,7 +184,17 @@ char getChar(char* input, char message[], char eMessage[], char lowLimit, char h
     return able;
 }
 
-char getString(char input[], char message[], char eMessage[], int lowLimit, int highLimit)
+/** \brief Pide una cadena de caracteres al usuario, valida y retorna la cadena de caracteres ingresada.
+ *
+ * \param input char* Variable puntero origen-destino.
+ * \param message[] char mensaje a mostrar al usuario.
+ * \param eMessage[] char mensaje a mostrar en caso de ingresar dato invalido.
+ * \param lowLimit int rango limite inferior de caracteres.
+ * \param highLimit int rango limite superior de caracteres.
+ * \return int retorna un estado en caso de poder o no ejecutar la operacion.
+ *
+ */
+int getString(char* input, char message[], char eMessage[], int lowLimit, int highLimit)
 {
     int able = 0;
     char aux[highLimit];
@@ -115,17 +203,80 @@ char getString(char input[], char message[], char eMessage[], int lowLimit, int 
     {
         printf("%s", message);
         fflush(stdin);
-        fgets(aux, highLimit, stdin);
-        aux[strlen(aux)-1] = '\0';
+        gets(aux);
 
-        if(strlen(aux) < (lowLimit+1))
+        if( (strlen(aux) < (lowLimit)) || (strlen(aux) > (highLimit)) )
         {
             printf("%s", eMessage);
         }
 
-    } while (strlen(aux) < (lowLimit+1));
+    } while ( (strlen(aux) < (lowLimit)) || (strlen(aux) > (highLimit)) );
 
     strcpy(input, aux);
+
+    return able;
+}
+
+/** \brief Pide, valida y retorna un numero de telefono.
+ *
+ * \param input char* Variable puntero origen-destino.
+ * \param message[] char mensaje a mostrar al usuario.
+ * \param eMessage[] char mensaje a mostrar en caso de ingresar dato invalido.
+ * \return int retorna un estado en caso de poder o no ejecutar la operacion.
+ *
+ */
+int getPhone(char* input, char message[], char eMessage[])
+{
+    int able = -1;
+    char aux[13];
+
+    do
+    {
+        printf("%s", message);
+        fflush(stdin);
+        gets(aux);
+
+        if( (strlen(aux) < (9)) || (strlen(aux) > (12)) )
+        {
+            printf("%s", eMessage);
+        }
+
+    } while ( (strlen(aux) < (9)) || (strlen(aux) > (12)) );
+
+    strcpy(input, aux);
+    able = 1;
+
+    return able;
+}
+
+/** \brief  Pide, valida y retorna un numero de DNI.
+ *
+ * \param input char* Variable puntero origen-destino.
+ * \param message[] char mensaje a mostrar al usuario.
+ * \param eMessage[] char mensaje a mostrar en caso de ingresar dato invalido.
+ * \return int retorna un estado en caso de poder o no ejecutar la operacion.
+ *
+ */
+int getDni(char* input, char message[], char eMessage[])
+{
+    int able = -1;
+    char aux[11];
+
+    do
+    {
+        printf("%s", message);
+        fflush(stdin);
+        gets(aux);
+
+        if( (strlen(aux) < (6)) || (strlen(aux) > (10)) )
+        {
+            printf("%s", eMessage);
+        }
+
+    } while ( (strlen(aux) < (6)) || (strlen(aux) > (10)) );
+
+    strcpy(input, aux);
+    able = 1;
 
     return able;
 }
@@ -218,6 +369,55 @@ long int factorial(float number) //Recibe un flotante pero toma en cuenta solo l
 
     return result;
 }
+
+/** \brief
+ *
+ * \param nameLastName[] char Vector donde se guardará el nombre y apellido.
+ * \return void No retorna ya que recibe la variable por referencia (modifica la original).
+ *
+ */
+void getNameLastName(char nameLastName[])
+{
+    char nombre[23];
+    char apellido[11];
+    char aux[50];
+
+    do
+    {
+        printf("Ingrese nombre: ");
+        gets(aux);
+
+        if(strlen(aux) > 10)
+        {
+            printf("ERROR. Ingrese un nombre de 10 caracteres o menos: ");
+            gets(aux);
+        }
+    } while (strlen(aux) > 10);
+
+    strcpy(nombre, aux);
+
+    do
+    {
+        printf("Ingrese apellido: ");
+        gets(aux);
+
+        if(strlen(aux) > 10)
+        {
+            printf("ERROR! Ingrese un apellido de 10 caracteres o menos: ");
+            gets(aux);
+        }
+    } while (strlen(aux) > 10);
+
+    strcpy(apellido, aux);
+
+    strcpy(nameLastName, nombre);
+    strcat(nameLastName, ", ");
+    strcat(nameLastName, apellido);
+}
+
+//----------------------------------------------------------------------------------------------------------
+//*******************************Paralells Vectors***************************************
+//----------------------------------------------------------------------------------------------------------
 
 void pedirAlumno(int legajo[], int edad[], char sexo[], int nota1[], int nota2[], float promedio[], int tam)
 {
@@ -313,49 +513,4 @@ void ordenarAlumnos(int legajo[], int edad[], char sexo[], int nota1[], int nota
             }
         }
     }
-}
-
-/** \brief
- *
- * \param nombreApellido[] char Vector donde se guardará el nombre y apellido.
- * \return void No retorna ya que recibe la variable por referencia (modifica la original).
- *
- */
-void getNombreApellido(char nombreApellido[])
-{
-    char nombre[23];
-    char apellido[11];
-    char aux[50];
-
-    do
-    {
-        printf("Ingrese nombre: ");
-        gets(aux);
-
-        if(strlen(aux) > 10)
-        {
-            printf("ERROR. Ingrese un nombre de 10 caracteres o menos: ");
-            gets(aux);
-        }
-    } while (strlen(aux) > 10);
-
-    strcpy(nombre, aux);
-
-    do
-    {
-        printf("Ingrese apellido: ");
-        gets(aux);
-
-        if(strlen(aux) > 10)
-        {
-            printf("ERROR! Ingrese un apellido de 10 caracteres o menos: ");
-            gets(aux);
-        }
-    } while (strlen(aux) > 10);
-
-    strcpy(apellido, aux);
-
-    strcpy(nombreApellido, nombre);
-    strcat(nombreApellido, ", ");
-    strcat(nombreApellido, apellido);
 }
