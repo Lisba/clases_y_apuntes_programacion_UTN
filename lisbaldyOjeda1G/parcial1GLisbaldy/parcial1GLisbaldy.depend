@@ -1,0 +1,90 @@
+# depslib dependency file v1.0
+1570495288 source:d:\lisbaldyojeda1g\parcial1glisbaldy\alquileres.c
+	"alquileres.h"
+
+1570492773 source:d:\lisbaldyojeda1g\parcial1glisbaldy\clientes.c
+	"clientes.h"
+
+1570493486 source:d:\lisbaldyojeda1g\parcial1glisbaldy\juegos.c
+	"juegos.h"
+
+1570495288 source:d:\lisbaldyojeda1g\parcial1glisbaldy\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"alquileres.h"
+	"clientes.h"
+	"juegos.h"
+
+1570495288 d:\lisbaldyojeda1g\parcial1glisbaldy\alquileres.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"lisba_utn.h"
+
+1570492773 d:\lisbaldyojeda1g\parcial1glisbaldy\clientes.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"lisba_utn.h"
+
+1570495895 d:\lisbaldyojeda1g\parcial1glisbaldy\juegos.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"lisba_utn.h"
+
+1570488679 d:\lisbaldyojeda1g\parcial1glisbaldy\lisba_utn.h
+
+1570488897 source:d:\lisbaldyojeda1g\parcial1glisbaldy\lisba_utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"lisba_utn.h"
+
+1570495288 source:d:\lisba\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\alquileres.c
+	"alquileres.h"
+
+1570495288 d:\lisba\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\alquileres.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"lisba_utn.h"
+
+1570488679 d:\lisba\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\lisba_utn.h
+
+1570492773 source:d:\lisba\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\clientes.c
+	"clientes.h"
+
+1570492773 d:\lisba\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\clientes.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"lisba_utn.h"
+
+1570488897 source:d:\lisba\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\lisba_utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"lisba_utn.h"
+
+1570495288 source:d:\lisba\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"alquileres.h"
+	"clientes.h"
+	"juegos.h"
+
+1570495895 d:\lisba\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\juegos.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"lisba_utn.h"
+
