@@ -19,6 +19,8 @@ int main()
     int codigoParaEliminar;
     int option;
     int orden;
+    int codigoJuegoAlquiler;
+    int codigoClienteAlquiler;
     char salirSubmenuClientes = 'n';
     char salirSubmenuAlquileres = 'n';
     char salir = 'n';
@@ -68,7 +70,7 @@ int main()
                     imprimirClientes(arrayClientes, TAMCLIENTES);
                     break;
                 case 5:
-                    printf("Confirma salir?:");
+                    printf("Confirma salir? (s/n):");
                     fflush(stdin);
                     salirSubmenuClientes = getche();
                     break;
@@ -86,7 +88,12 @@ int main()
                 switch(subMenuAlquileres())
                 {
                 case 1:
-                    respuestaAltaAlquiler = cargarAlquiler(arrayAlquileres, TAMALQUILERES, codigoAlquiler, codigoJuego, codigoCliente);
+                    imprimirJuegos(arrayJuegos, TAMJUEGOS);
+                    getInt(&codigoJuegoAlquiler, "Ingrese el codigo del juego seleccionado: ", "Error. ", 100, 999);
+                    imprimirClientes(arrayClientes, TAMCLIENTES);
+                    getInt(&codigoClienteAlquiler, "Ingrese el codigo del cliente seleccionado: ", "Error. ", 100, 999);
+                    respuestaAltaAlquiler = cargarAlquiler(arrayAlquileres, TAMALQUILERES, codigoAlquiler, codigoJuegoAlquiler, codigoClienteAlquiler);
+
                     if(respuestaAltaAlquiler)
                     {
                         codigoAlquiler++;
@@ -109,7 +116,7 @@ int main()
             break;
 
         case 3:
-            printf("Confirma salir?:");
+            printf("Confirma salir? (s/n):");
             fflush(stdin);
             salir = getche();
             break;

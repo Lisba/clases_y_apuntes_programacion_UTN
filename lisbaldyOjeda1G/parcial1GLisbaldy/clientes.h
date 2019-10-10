@@ -47,12 +47,13 @@ int cargarCliente(eCliente listaClientes[], int tamClientes, int lastId);
  * \param codigo int codigo del cliente.
  * \param nombre[] char nombre del cliente.
  * \param apellido[] char apellido del cliente.
+ * \param sexo char sexo del cliente.
  * \param telefono long int telefono del cliente.
  * \param domicilio[] char domicilio del cliente.
  * \return eCliente returna la instancia de la estructura valida con los datos cargados.
  *
  */
-eCliente nuevoCliente(int codigo, char nombre[], char apellido[], long int telefono, char domicilio[]);
+eCliente nuevoCliente(int codigo, char nombre[], char apellido[], char sexo, long int telefono, char domicilio[]);
 
 /** \brief Carga la estructura del nuevo cliente en la primera posicion del array disponible.
  *

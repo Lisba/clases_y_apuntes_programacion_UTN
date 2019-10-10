@@ -4,7 +4,6 @@
 #include <string.h>
 #include "lisba_utn.h"
 
-
 typedef struct
 {
     int dia;

@@ -59,7 +59,7 @@ int altaCliente(eCliente listaClientes[], int tamClientes, int codigo, char nomb
     }
     else
     {
-        listaClientes[index] = nuevoCliente(codigo, nombre, apellido, telefono, domicilio); // Almaceno los datos del nuevo empleado en la primera posicion disponible del array de estructuras.
+        listaClientes[index] = nuevoCliente(codigo, nombre, apellido, sexo, telefono, domicilio); // Almaceno los datos del nuevo empleado en la primera posicion disponible del array de estructuras.
         printf("\nALTA EXITOSA\n\n");
         able = 1;
     }
@@ -67,13 +67,14 @@ int altaCliente(eCliente listaClientes[], int tamClientes, int codigo, char nomb
     return able;
 }
 
-eCliente nuevoCliente(int codigo, char nombre[], char apellido[], long int telefono, char domicilio[])
+eCliente nuevoCliente(int codigo, char nombre[], char apellido[], char sexo, long int telefono, char domicilio[])
 {
     eCliente nuevoCliente;
 
     nuevoCliente.codigo = codigo;
     strcpy(nuevoCliente.nombre, nombre);
     strcpy(nuevoCliente.apellido, apellido);
+    nuevoCliente.sexo = sexo;
     nuevoCliente.telefono = telefono;
     strcpy(nuevoCliente.domicilio, domicilio);
     nuevoCliente.isEmpty = 0;
@@ -96,7 +97,7 @@ int cargarCliente(eCliente listaClientes[], int tamClientes, int lastId)
 
     getString(nombre, "Ingrese el nombre: ", "Error, debe contener entre 2 y 50 caracteres. ", 2, 51);
     getString(apellido, "Ingrese el apellido: ", "Error, debe contener entre 2 y 50 caracteres. ", 2, 51);
-    getChar(&sexo, "Ingrese el sexo: ", "Error. ", 'a', 'z');
+    getChar(&sexo, "Ingrese el sexo: ", "Error. ", 'f', 'm');
     getTelefono(&telefono, "Ingrese el telefono: ", "Error, debe ingresar al menos 8 numeros. ", 0, 100000000);
     getString(domicilio, "Ingrese el domicilio: ", "Error. ", 1, 51);
 
@@ -159,7 +160,7 @@ void imprimirClientes(eCliente listaClientes[], int tamClientes)
 
 void imprimirCliente(eCliente cliente)
 {
-    printf("%4d %9s %9s %11c %8d %8s\n", cliente.codigo, cliente.nombre, cliente.apellido, cliente.sexo, cliente.telefono, cliente.domicilio);
+    printf("%5d %11s %9s %7c %13ld %14s\n", cliente.codigo, cliente.nombre, cliente.apellido, cliente.sexo, cliente.telefono, cliente.domicilio);
 
 }
 
@@ -296,7 +297,7 @@ int modificarCliente(eCliente listaClientes[], int tamClientes)
                     printf("\nApellido modificado!\n\n");
                     break;
                 case 3:
-                    getTelefono(&telefono, "Ingrese el nuevo telefono: ", "Error. ", 1, 100000000);
+                    getTelefono(&telefono, "Ingrese el nuevo telefono: ", "Error. ", 1000000, 900000000);
                     printf("\nTelefono modificado!\n\n");
                     listaClientes[index].telefono = telefono;
                     break;

@@ -88,3 +88,55 @@
 	<string.h>
 	"lisba_utn.h"
 
+1570750407 source:c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\clientes.c
+	"clientes.h"
+
+1570748743 c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\clientes.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"lisba_utn.h"
+
+1570674857 c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\lisba_utn.h
+
+1570674857 source:c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\lisba_utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"lisba_utn.h"
+
+1570750051 source:c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\alquileres.c
+	"alquileres.h"
+
+1570748032 c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\alquileres.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"lisba_utn.h"
+
+1570748891 source:c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"alquileres.h"
+	"clientes.h"
+	"juegos.h"
+
+1570675405 c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\juegos.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"lisba_utn.h"
+
+1570749929 source:c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\juegos.c
+	"juegos.h"
+
+1570675532 c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\juegos.c
+	"juegos.h"
+
+1570676490 c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\clientes.c
+	"clientes.h"
+

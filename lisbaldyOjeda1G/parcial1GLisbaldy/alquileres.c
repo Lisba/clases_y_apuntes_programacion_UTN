@@ -87,7 +87,7 @@ int cargarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, int codigoAlq
 
     printf("****** Alta de Alquiler *******\n\n");
 
-    getInt(&fecha.dia, "Ingrese el día: ", "Error. ", 1, 31);
+    getInt(&fecha.dia, "Ingrese el dia: ", "Error. ", 1, 31);
     getInt(&fecha.mes, "Ingrese el mes: ", "Error. ", 1, 12);
     getInt(&fecha.anio, "Ingrese el anio: ", "Error. ", 2000, 3000);
 
@@ -114,6 +114,6 @@ void imprimirAlquileres(eAlquiler listaAlquileres[], int tamAlquileres)
 
 void imprimirAlquiler(eAlquiler alquiler)
 {
-    printf("%4d %9d %9d %11d/%d/%d\n", alquiler.codigoAlquiler, alquiler.codigoJuego, alquiler.codigoCliente, alquiler.fecha.dia, alquiler.fecha.mes, alquiler.fecha.anio);
+    printf("%5d %13d %15d %9d/%d/%d\n", alquiler.codigoAlquiler, alquiler.codigoJuego, alquiler.codigoCliente, alquiler.fecha.dia, alquiler.fecha.mes, alquiler.fecha.anio);
 
 }

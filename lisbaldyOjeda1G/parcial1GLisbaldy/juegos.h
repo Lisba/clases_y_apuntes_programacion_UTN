@@ -13,3 +13,5 @@ typedef struct
 } eJuego;
 
 int hardCodearJuegos(eJuego listaJuegos[], int tamJuegos, int codigo);
+void imprimirJuegos(eJuego listaJuegos[], int tamJuegos);
+void imprimirJuego(eJuego juego);
