@@ -4,11 +4,11 @@ int hardCodearJuegos(eJuego listaJuegos[], int tamJuegos, int codigo)
 {
     int i;
 
-    char descripcion[][51]= {"Need For Speed", "Mortal Kombat", "Flight Simulator X", "Digital Combat Simulator", "Call Of Dutty"};
-    float importe[]= {10.66, 4.99, 7.66, 8.55, 9.99};
-    int idCategoria[]={1, 2, 3, 3, 2};
+    char descripcion[][51]= {"UNO", "MONOPOLIO", "BLACK JACK", "POKER", "AJEDREZ", "DAMAS", "BILLAR", "METEGOL", "WIZARDGAME", "MAGICGAME"};
+    float importe[]= {7.66, 10.99, 7.66, 12.55, 9.99, 7.99, 25.88, 19.40, 12.99, 10.80};
+    int idCategoria[]={1, 1, 2, 2, 3, 3, 4, 4, 5, 5};
 
-    for(i=0; i<5; i++)
+    for(i=0; i<tamJuegos; i++)
     {
         listaJuegos[i].codigo = codigo;
         strcpy(listaJuegos[i].descripcion, descripcion[i]);

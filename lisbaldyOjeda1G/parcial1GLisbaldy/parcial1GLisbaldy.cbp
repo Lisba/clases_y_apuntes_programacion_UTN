@@ -35,6 +35,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="alquileres.h" />
+		<Unit filename="categoria.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="categoria.h" />
 		<Unit filename="clientes.c">
 			<Option compilerVar="CC" />
 		</Unit>

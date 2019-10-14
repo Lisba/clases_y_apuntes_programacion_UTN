@@ -46,7 +46,7 @@ int findFreePositionClientes(eCliente listaClientes[], int tamClientes)
     return index;
 }
 
-int altaCliente(eCliente listaClientes[], int tamClientes, int codigo, char nombre[], char apellido[], char sexo, long int telefono, char domicilio[])
+int altaCliente(eCliente listaClientes[], int tamClientes, int codigo, char nombre[], char apellido[], char sexo, char telefono[], char domicilio[])
 {
     int able = 0;
     int index;
@@ -67,7 +67,7 @@ int altaCliente(eCliente listaClientes[], int tamClientes, int codigo, char nomb
     return able;
 }
 
-eCliente nuevoCliente(int codigo, char nombre[], char apellido[], char sexo, long int telefono, char domicilio[])
+eCliente nuevoCliente(int codigo, char nombre[], char apellido[], char sexo, char telefono[], char domicilio[])
 {
     eCliente nuevoCliente;
 
@@ -75,7 +75,7 @@ eCliente nuevoCliente(int codigo, char nombre[], char apellido[], char sexo, lon
     strcpy(nuevoCliente.nombre, nombre);
     strcpy(nuevoCliente.apellido, apellido);
     nuevoCliente.sexo = sexo;
-    nuevoCliente.telefono = telefono;
+    strcpy(nuevoCliente.telefono, telefono);
     strcpy(nuevoCliente.domicilio, domicilio);
     nuevoCliente.isEmpty = 0;
 
@@ -88,7 +88,7 @@ int cargarCliente(eCliente listaClientes[], int tamClientes, int lastId)
     char nombre[51];
     char apellido[51];
     char sexo;
-    long int telefono;
+    char telefono[21];
     char domicilio[51];
 
     system("cls");
@@ -98,7 +98,7 @@ int cargarCliente(eCliente listaClientes[], int tamClientes, int lastId)
     getString(nombre, "Ingrese el nombre: ", "Error, debe contener entre 2 y 50 caracteres. ", 2, 51);
     getString(apellido, "Ingrese el apellido: ", "Error, debe contener entre 2 y 50 caracteres. ", 2, 51);
     getChar(&sexo, "Ingrese el sexo: ", "Error. ", 'f', 'm');
-    getTelefono(&telefono, "Ingrese el telefono: ", "Error, debe ingresar al menos 8 numeros. ", 0, 100000000);
+    getPhone(telefono, "Ingrese el telefono: ", "Error, debe ingresar al menos 8 numeros. ", 7, 15);
     getString(domicilio, "Ingrese el domicilio: ", "Error. ", 1, 51);
 
     able = altaCliente(listaClientes, tamClientes, lastId, nombre, apellido, sexo, telefono, domicilio); // Carga los datos solicitados al array de estructuras y devuelve true si fue capaz de hacerlo.
@@ -116,7 +116,7 @@ int eliminarCliente(eCliente listaClientes[], int tamClientes, int codigo)
     {
         if(listaClientes[i].codigo == codigo && listaClientes[i].isEmpty == 0)
         {
-            printf(" CODIGO    NOMBRE    APELLIDO    SEXO    TELEFONO    DOMICILIO\n");
+            printf(" CODIGO    NOMBRE    APELLIDO      SEXO     TELEFONO      DOMICILIO\n");
             imprimirCliente(listaClientes[i]);
 
             printf("\nEsta seguro de eliminar a este empleado? (s/n)");
@@ -146,7 +146,7 @@ void imprimirClientes(eCliente listaClientes[], int tamClientes)
 {
     system("cls");
     printf("****** Lista de Empleados *******\n\n");
-    printf(" CODIGO    NOMBRE    APELLIDO    SEXO    TELEFONO    DOMICILIO\n");
+    printf(" CODIGO    NOMBRE    APELLIDO      SEXO     TELEFONO      DOMICILIO\n");
 
     for(int i=0; i<tamClientes; i++)
     {
@@ -160,7 +160,7 @@ void imprimirClientes(eCliente listaClientes[], int tamClientes)
 
 void imprimirCliente(eCliente cliente)
 {
-    printf("%5d %11s %9s %7c %13ld %14s\n", cliente.codigo, cliente.nombre, cliente.apellido, cliente.sexo, cliente.telefono, cliente.domicilio);
+    printf("%5d %11s %11s %7c %16s %14s\n", cliente.codigo, cliente.nombre, cliente.apellido, cliente.sexo, cliente.telefono, cliente.domicilio);
 
 }
 
@@ -251,7 +251,7 @@ int modificarCliente(eCliente listaClientes[], int tamClientes)
 {
     int codigo;
     int option;
-    long int telefono;
+    char telefono[21];
     int index;
     int able=0;
 
@@ -260,7 +260,7 @@ int modificarCliente(eCliente listaClientes[], int tamClientes)
         printf("****** Modificar Cliente *******\n\n");
 
         fflush(stdin);
-        getInt(&codigo, "Ingrese el Codigo del Cliente a modificar: ", "Error, debe ingresar un Codigo valido. ", 100, 999);
+        getInt(&codigo, "Ingrese el Codigo del Cliente a modificar: ", "Error, ingrese un Codigo entre 100 y 999. ", 100, 999);
 
         index = buscarClientePorCodigo(listaClientes, tamClientes, codigo);
 
@@ -273,7 +273,7 @@ int modificarCliente(eCliente listaClientes[], int tamClientes)
                 able = 1;
 
                 printf("\n");
-                printf(" CODIGO    NOMBRE    APELLIDO    SEXO    TELEFONO    DOMICILIO\n");
+                printf(" CODIGO    NOMBRE    APELLIDO      SEXO     TELEFONO      DOMICILIO\n");
                 imprimirCliente(listaClientes[index]);
 
                 printf("\nQue desea modificar de este cliente?\n");
@@ -297,9 +297,9 @@ int modificarCliente(eCliente listaClientes[], int tamClientes)
                     printf("\nApellido modificado!\n\n");
                     break;
                 case 3:
-                    getTelefono(&telefono, "Ingrese el nuevo telefono: ", "Error. ", 1000000, 900000000);
+                    getPhone(telefono, "Ingrese el nuevo telefono: ", "Error. ", 7, 15);
                     printf("\nTelefono modificado!\n\n");
-                    listaClientes[index].telefono = telefono;
+                    strcpy(listaClientes[index].telefono, telefono);
                     break;
                 case 4:
                     printf("\nSe ha cancelado la modificacion!\n\n");
@@ -311,4 +311,30 @@ int modificarCliente(eCliente listaClientes[], int tamClientes)
             }
 
     return able;
+}
+
+int hardCodearClientes(eCliente listaclientes[], int cantClientesHardcodear, int codigo)
+{
+    int i;
+
+    char nombre[][51] = {"Lisbaldy", "Jesus", "Keimarly", "Daniela"};
+    char apellido[][51] = {"Ojeda", "Leon", "Cisneros", "Sanchez"};
+    char sexo[] = {'m', 'm', 'f', 'f'};
+    char telefono[][21] = {"15-3030-7105", "15-4293-4856", "15-8473-9456", "15-7845-9036"};
+    char domicilio[][51] = {"Palermo CABA", "Avellaneda", "Tigre", "Olivos"};
+    int isEmpty[] = {0, 0, 0, 0};
+
+    for(i=0; i<cantClientesHardcodear; i++)
+    {
+        listaclientes[i].codigo = codigo;
+        strcpy(listaclientes[i].nombre, nombre[i]);
+        strcpy(listaclientes[i].apellido, apellido[i]);
+        listaclientes[i].sexo = sexo[i];
+        strcpy(listaclientes[i].telefono, telefono[i]);
+        strcpy(listaclientes[i].domicilio, domicilio[i]);
+        listaclientes[i].isEmpty = isEmpty[i];
+
+        codigo++;
+    }
+    return codigo;
 }

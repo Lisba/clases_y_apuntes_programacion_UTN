@@ -58,6 +58,52 @@ int getInt(int* input, char message[], char eMessage[], int lowLimit, int highLi
             isInt = 0;
         }
 
+        numberReturn = atoi(auxNumber);
+
+        if((numberReturn < lowLimit) || (numberReturn > highLimit))
+         {
+             isInt = 0;
+         }
+
+        if(!isInt)
+        {
+            printf(eMessage);
+        }
+
+    } while (!isInt);
+
+    *input = numberReturn;
+
+    able = 1;
+
+    return able;
+}
+
+int getTelefono(long int* input, char message[], char eMessage[], int lowLimit, int highLimit)
+{
+    int able=0;
+    char auxNumber[10];
+    long int numberReturn;
+    int isInt;
+
+    do
+    {
+        isInt = 1;
+
+        printf("%s", message);
+        fflush(stdin);
+        scanf("%s", auxNumber);
+
+        int i=0;
+        while(auxNumber[i] != '\0')
+        {
+            if((auxNumber[i] < '0' || auxNumber[i] > '9'))
+            {
+               isInt = 0;
+            }
+
+            i++;
+        }
 
         numberReturn = atoi(auxNumber);
 
@@ -74,6 +120,74 @@ int getInt(int* input, char message[], char eMessage[], int lowLimit, int highLi
     } while (!isInt);
 
     *input = numberReturn;
+
+    able = 1;
+
+    return able;
+}
+
+int getPhone(char* input, char message[], char eMessage[], int lowLimit, int highLimit)
+{
+    int able=0;
+    char auxNumber[16];
+    int counterDash;
+    int counterSpace;
+    int isPhone;
+
+    do
+    {
+        isPhone = 1;
+        counterDash = 0;
+        counterSpace = 0;
+
+        printf("%s", message);
+        fflush(stdin);
+        scanf("%[^\n]", auxNumber);
+
+        int i=0;
+        while(auxNumber[i] != '\0')
+        {
+            if((auxNumber[i] < '0' || auxNumber[i] > '9') && (auxNumber[i] != '-') && (auxNumber[i] != ' '))
+            {
+               isPhone = 0;
+            }
+
+            if(auxNumber[i] == ' ')
+            {
+                counterSpace++;
+            }
+
+            if(auxNumber[i] == '-')
+            {
+                counterDash++;
+            }
+
+            i++;
+        }
+
+        if(counterDash > 2)
+        {
+            isPhone = 0;
+        }
+
+        if(counterSpace > 2)
+        {
+            isPhone = 0;
+        }
+
+        if((strlen(auxNumber) < lowLimit) || (strlen(auxNumber) > highLimit))
+         {
+             isPhone = 0;
+         }
+
+        if(!isPhone)
+        {
+            printf(eMessage);
+        }
+
+    } while (!isPhone);
+
+    strcpy(input, auxNumber);
 
     able = 1;
 
@@ -213,38 +327,6 @@ int getString(char* input, char message[], char eMessage[], int lowLimit, int hi
     } while ( (strlen(aux) < (lowLimit)) || (strlen(aux) > (highLimit)) );
 
     strcpy(input, aux);
-
-    return able;
-}
-
-/** \brief Pide, valida y retorna un numero de telefono.
- *
- * \param input char* Variable puntero origen-destino.
- * \param message[] char mensaje a mostrar al usuario.
- * \param eMessage[] char mensaje a mostrar en caso de ingresar dato invalido.
- * \return int retorna un estado en caso de poder o no ejecutar la operacion.
- *
- */
-int getPhone(char* input, char message[], char eMessage[])
-{
-    int able = -1;
-    char aux[13];
-
-    do
-    {
-        printf("%s", message);
-        fflush(stdin);
-        gets(aux);
-
-        if( (strlen(aux) < (9)) || (strlen(aux) > (12)) )
-        {
-            printf("%s", eMessage);
-        }
-
-    } while ( (strlen(aux) < (9)) || (strlen(aux) > (12)) );
-
-    strcpy(input, aux);
-    able = 1;
 
     return able;
 }

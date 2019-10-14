@@ -10,7 +10,7 @@ typedef struct
     char nombre[51];
     char apellido[51];
     char sexo;
-    long int telefono;
+    char telefono[21];
     char domicilio[51];
     int isEmpty;
 } eCliente;
@@ -48,12 +48,12 @@ int cargarCliente(eCliente listaClientes[], int tamClientes, int lastId);
  * \param nombre[] char nombre del cliente.
  * \param apellido[] char apellido del cliente.
  * \param sexo char sexo del cliente.
- * \param telefono long int telefono del cliente.
+ * \param telefono char[] telefono del cliente.
  * \param domicilio[] char domicilio del cliente.
  * \return eCliente returna la instancia de la estructura valida con los datos cargados.
  *
  */
-eCliente nuevoCliente(int codigo, char nombre[], char apellido[], char sexo, long int telefono, char domicilio[]);
+eCliente nuevoCliente(int codigo, char nombre[], char apellido[], char sexo, char telefono[], char domicilio[]);
 
 /** \brief Carga la estructura del nuevo cliente en la primera posicion del array disponible.
  *
@@ -63,12 +63,12 @@ eCliente nuevoCliente(int codigo, char nombre[], char apellido[], char sexo, lon
  * \param nombre[] char nombre del cliente.
  * \param apellido[] char apellido del cliente.
  * \param sexo char sexo del cliente.
- * \param telefono long int telefono del cliente.
+ * \param telefono char[] telefono del cliente.
  * \param domicilio[] char domicilio del cliente.
  * \return int retorna un estado si pudo o no efectuar la operacion.
  *
  */
-int altaCliente(eCliente listaClientes[], int tamClientes, int codigo, char nombre[], char apellido[], char sexo, long int telefono, char domicilio[]);
+int altaCliente(eCliente listaClientes[], int tamClientes, int codigo, char nombre[], char apellido[], char sexo, char telefono[], char domicilio[]);
 
 /** \brief Realiza una baja logica del cliente.
  *
@@ -134,3 +134,13 @@ int buscarClientePorCodigo(eCliente listaClientes[], int tamClientes, int codigo
  *
  */
 int modificarCliente(eCliente listaClientes[], int tamClientes);
+
+/** \brief Agrega datos de clientes pre-definidos al array de clientes.
+ *
+ * \param listaclientes[] eCliente Array de clientes.
+ * \param cantClientesHardcodear int Cantidad de clientes a hardcodear.
+ * \param codigo int Codigo de cliente disponible.
+ * \return int retorna el ultimo codigo disponible para dar continuidad al codigo de cliente.
+ *
+ */
+int hardCodearClientes(eCliente listaclientes[], int cantClientesHardcodear, int codigo);

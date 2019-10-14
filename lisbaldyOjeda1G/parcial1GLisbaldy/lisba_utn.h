@@ -14,5 +14,5 @@ void pedirAlumno(int legajo[], int edad[], char sexo[], int nota1[], int nota2[]
 void mostrarUnAlumno(int legajo, int edad, char sexo, int nota1, int nota2, float promedio);
 void mostrarAlumnos(int legajo[], int edad[], char sexo[], int nota1[], int nota2[], float promedio[], int tam);
 void ordenarAlumnos(int legajo[], int edad[], char sexo[], int nota1[], int nota2[], float promedio[], int tam);
-int getPhone(char* input, char message[], char eMessage[]);
 int getDni(char* input, char message[], char eMessage[]);
+int getPhone(char* input, char message[], char eMessage[], int lowLimit, int highLimit);

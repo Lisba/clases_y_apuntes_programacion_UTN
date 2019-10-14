@@ -4,10 +4,12 @@
 #include "alquileres.h"
 #include "clientes.h"
 #include "juegos.h"
+#include "categoria.h"
 
 #define TAMCLIENTES 10
 #define TAMALQUILERES 10
-#define TAMJUEGOS 5
+#define TAMJUEGOS 10
+#define TAMCATEGORIAS 5
 
 int main()
 {
@@ -28,13 +30,18 @@ int main()
     eCliente arrayClientes[TAMCLIENTES];
     eAlquiler arrayAlquileres[TAMALQUILERES];
     eJuego arrayJuegos[TAMJUEGOS];
+    eCategoria arrayCategorias[TAMCATEGORIAS];
 
     iniciarClientes(arrayClientes, TAMCLIENTES);
     iniciarAlquileres(arrayAlquileres, TAMALQUILERES);
     hardCodearJuegos(arrayJuegos, TAMJUEGOS, codigoJuego);
+    hardCodearCategorias(arrayCategorias, TAMCATEGORIAS);
+    hardCodearClientes(arrayClientes, 4, codigoCliente);
 
     do
     {
+        system("cls");
+
         printf("************ABM************\n\n");
         printf("1) CLIENTES\n");
         printf("2) ALQUILERES\n");
@@ -60,7 +67,7 @@ int main()
                     modificarCliente(arrayClientes, TAMCLIENTES);
                     break;
                 case 3:
-                    getInt(&codigoParaEliminar, "Ingrese el Codigo del Cliente a Eliminar: ", "Error. ", 100, 999);
+                    getInt(&codigoParaEliminar, "Ingrese el Codigo del Cliente a Eliminar: ", "Error. Ingrese un codigo entre 100 y 999. ", 100, 999);
                     eliminarCliente(arrayClientes, TAMCLIENTES, codigoParaEliminar);
                     break;
                 case 4:
@@ -103,7 +110,7 @@ int main()
                     imprimirAlquileres(arrayAlquileres, TAMALQUILERES);
                     break;
                 case 3:
-                    printf("Confirma salir?:");
+                    printf("Confirma salir? (s/n): ");
                     fflush(stdin);
                     salirSubmenuAlquileres = getche();
                     break;
