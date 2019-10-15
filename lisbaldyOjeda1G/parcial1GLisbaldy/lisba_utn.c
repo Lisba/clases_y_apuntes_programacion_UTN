@@ -79,53 +79,6 @@ int getInt(int* input, char message[], char eMessage[], int lowLimit, int highLi
     return able;
 }
 
-//int getTelefono(long int* input, char message[], char eMessage[], int lowLimit, int highLimit)
-//{
-//    int able=0;
-//    char auxNumber[10];
-//    long int numberReturn;
-//    int isInt;
-//
-//    do
-//    {
-//        isInt = 1;
-//
-//        printf("%s", message);
-//        fflush(stdin);
-//        scanf("%s", auxNumber);
-//
-//        int i=0;
-//        while(auxNumber[i] != '\0')
-//        {
-//            if((auxNumber[i] < '0' || auxNumber[i] > '9'))
-//            {
-//               isInt = 0;
-//            }
-//
-//            i++;
-//        }
-//
-//        numberReturn = atoi(auxNumber);
-//
-//        if((numberReturn< lowLimit) || (numberReturn > highLimit))
-//         {
-//             isInt = 0;
-//         }
-//
-//        if(!isInt)
-//        {
-//            printf(eMessage);
-//        }
-//
-//    } while (!isInt);
-//
-//    *input = numberReturn;
-//
-//    able = 1;
-//
-//    return able;
-//}
-
 int getPhone(char* input, char message[], char eMessage[], int lowLimit, int highLimit)
 {
     int able=0;

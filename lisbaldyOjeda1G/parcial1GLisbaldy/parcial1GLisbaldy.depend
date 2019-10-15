@@ -98,9 +98,9 @@
 	<string.h>
 	"lisba_utn.h"
 
-1571071163 c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\lisba_utn.h
+1571086785 c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\lisba_utn.h
 
-1571073799 source:c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\lisba_utn.c
+1571086699 source:c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\lisba_utn.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -109,17 +109,18 @@
 1570750051 source:c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\alquileres.c
 	"alquileres.h"
 
-1570748032 c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\alquileres.h
+1571083105 c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\alquileres.h
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
 	<string.h>
 	"lisba_utn.h"
 
-1571069422 source:c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\main.c
+1571104773 source:c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\main.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
+	"lisba_utn.h"
 	"alquileres.h"
 	"clientes.h"
 	"juegos.h"
@@ -141,13 +142,24 @@
 1570676490 c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\clientes.c
 	"clientes.h"
 
-1571067093 c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\categoria.h
+1571087358 c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\categoria.h
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
 	<string.h>
 	"lisba_utn.h"
 
-1571067056 source:c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\categoria.c
+1571087347 source:c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\categoria.c
+	"categoria.h"
+
+1571104458 source:c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\informes.c
+	"informes.h"
+
+1571104747 c:\users\usuario\documents\sistemas-utn\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\informes.h
+	<stdio.h>
+	<stdlib.h>
+	"alquileres.h"
+	"clientes.h"
+	"juegos.h"
 	"categoria.h"
 

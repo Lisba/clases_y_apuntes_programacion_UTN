@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
+#include "lisba_utn.h"
 #include "alquileres.h"
 #include "clientes.h"
 #include "juegos.h"
@@ -10,6 +11,13 @@
 #define TAMALQUILERES 10
 #define TAMJUEGOS 10
 #define TAMCATEGORIAS 5
+
+int subMenuInformes();
+void mostrarJuegosCatMesa(eJuego listaJuegos[], int tamJuegos);
+void MostrarAlquilerClienteSelec(eCliente listaCliente[], int tamCliente, eAlquiler listaAlquiler[], int tamAlquiler);
+float ImportesPagadosPorCliente(eCliente listaClientes[], int tamCliente, eAlquiler listaAlquileres[], int tamAlquiler, eJuego listaJuegos[], int tamJuegos);
+void clientesNoAlquilaron(eCliente listaClientes[], int tamCliente, eAlquiler listaAlquileres[], int tamAlquileres);
+void juegosNoAlquilados(eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlquileres[], int tamAlquileres);
 
 int main()
 {
@@ -25,6 +33,7 @@ int main()
     int codigoClienteAlquiler;
     char salirSubmenuClientes = 'n';
     char salirSubmenuAlquileres = 'n';
+    char salirSubmenuInformes = 'n';
     char salir = 'n';
 
     eCliente arrayClientes[TAMCLIENTES];
@@ -45,7 +54,8 @@ int main()
         printf("************ABM************\n\n");
         printf("1) CLIENTES\n");
         printf("2) ALQUILERES\n");
-        printf("3) SALIR\n");
+        printf("3) INFORMES\n");
+        printf("4) SALIR\n\n");
         printf("INGRESE OPCION: ");
         scanf("%d", &option);
 
@@ -56,33 +66,33 @@ int main()
             {
                 switch(subMenuClientes())
                 {
-                case 1:
-                    respuestaAlta = cargarCliente(arrayClientes, TAMCLIENTES, codigoCliente);
-                    if(respuestaAlta)
-                    {
-                        codigoCliente++;
-                    }
-                    break;
-                case 2:
-                    modificarCliente(arrayClientes, TAMCLIENTES);
-                    break;
-                case 3:
-                    getInt(&codigoParaEliminar, "Ingrese el Codigo del Cliente a Eliminar: ", "Error. Ingrese un codigo entre 100 y 999. ", 100, 999);
-                    eliminarCliente(arrayClientes, TAMCLIENTES, codigoParaEliminar);
-                    break;
-                case 4:
-                    printf("Ascendente(0) o Descendente(1)?: ");
-                    scanf("%d", &orden);
-                    ordenarClientes(arrayClientes, TAMCLIENTES, orden);
-                    imprimirClientes(arrayClientes, TAMCLIENTES);
-                    break;
-                case 5:
-                    printf("Confirma salir? (s/n):");
-                    fflush(stdin);
-                    salirSubmenuClientes = getche();
-                    break;
-                default:
-                    printf("\nOpcion Invalida!\n\n");
+                    case 1:
+                        respuestaAlta = cargarCliente(arrayClientes, TAMCLIENTES, codigoCliente);
+                        if(respuestaAlta)
+                        {
+                            codigoCliente++;
+                        }
+                        break;
+                    case 2:
+                        modificarCliente(arrayClientes, TAMCLIENTES);
+                        break;
+                    case 3:
+                        getInt(&codigoParaEliminar, "Ingrese el Codigo del Cliente a Eliminar: ", "Error. Ingrese un codigo entre 100 y 999. ", 100, 999);
+                        eliminarCliente(arrayClientes, TAMCLIENTES, codigoParaEliminar);
+                        break;
+                    case 4:
+                        printf("Ascendente(0) o Descendente(1)?: ");
+                        scanf("%d", &orden);
+                        ordenarClientes(arrayClientes, TAMCLIENTES, orden);
+                        imprimirClientes(arrayClientes, TAMCLIENTES);
+                        break;
+                    case 5:
+                        printf("Confirma salir? (s/n):");
+                        fflush(stdin);
+                        salirSubmenuClientes = getche();
+                        break;
+                    default:
+                        printf("\nOpcion Invalida!\n\n");
                 }
                 system("pause");
 
@@ -94,35 +104,66 @@ int main()
             {
                 switch(subMenuAlquileres())
                 {
-                case 1:
-                    imprimirJuegos(arrayJuegos, TAMJUEGOS);
-                    getInt(&codigoJuegoAlquiler, "Ingrese el codigo del juego seleccionado: ", "Error. ", 100, 999);
-                    imprimirClientes(arrayClientes, TAMCLIENTES);
-                    getInt(&codigoClienteAlquiler, "Ingrese el codigo del cliente seleccionado: ", "Error. ", 100, 999);
-                    respuestaAltaAlquiler = cargarAlquiler(arrayAlquileres, TAMALQUILERES, codigoAlquiler, codigoJuegoAlquiler, codigoClienteAlquiler);
+                    case 1:
+                        imprimirJuegos(arrayJuegos, TAMJUEGOS);
+                        getInt(&codigoJuegoAlquiler, "Ingrese el codigo del juego seleccionado: ", "Error. ", 100, 999);
+                        imprimirClientes(arrayClientes, TAMCLIENTES);
+                        getInt(&codigoClienteAlquiler, "Ingrese el codigo del cliente seleccionado: ", "Error. ", 100, 999);
+                        respuestaAltaAlquiler = cargarAlquiler(arrayAlquileres, TAMALQUILERES, codigoAlquiler, codigoJuegoAlquiler, codigoClienteAlquiler);
 
-                    if(respuestaAltaAlquiler)
-                    {
-                        codigoAlquiler++;
-                    }
-                    break;
-                case 2:
-                    imprimirAlquileres(arrayAlquileres, TAMALQUILERES);
-                    break;
-                case 3:
-                    printf("Confirma salir? (s/n): ");
-                    fflush(stdin);
-                    salirSubmenuAlquileres = getche();
-                    break;
-                default:
-                    printf("\nOpcion Invalida!\n\n");
+                        if(respuestaAltaAlquiler)
+                        {
+                            codigoAlquiler++;
+                        }
+                        break;
+                    case 2:
+                        imprimirAlquileres(arrayAlquileres, TAMALQUILERES);
+                        break;
+                    case 3:
+                        printf("Confirma salir? (s/n): ");
+                        fflush(stdin);
+                        salirSubmenuAlquileres = getche();
+                        break;
+                    default:
+                        printf("\nOpcion Invalida!\n\n");
                 }
                 system("pause");
 
-            }while(salirSubmenuAlquileres == 'n');
+            }while(salirSubmenuAlquileres != 's');
             break;
 
         case 3:
+            do
+            {
+                switch(subMenuInformes())
+                {
+                    case 1:
+                        mostrarJuegosCatMesa(arrayJuegos, TAMJUEGOS);
+                        break;
+                    case 2:
+                        MostrarAlquilerClienteSelec(arrayClientes, TAMCLIENTES, arrayAlquileres, TAMALQUILERES);
+                        break;
+                    case 3:
+                        ImportesPagadosPorCliente(arrayClientes, TAMCLIENTES, arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS);
+                        break;
+                    case 4:
+                        clientesNoAlquilaron(arrayClientes, TAMCLIENTES, arrayAlquileres, TAMALQUILERES);
+                        break;
+                    case 5:
+                        juegosNoAlquilados(arrayJuegos, TAMJUEGOS, arrayAlquileres, TAMALQUILERES);
+                        break;
+                    case 6:
+                        printf("Confirma salir? (s/n):");
+                        fflush(stdin);
+                        salirSubmenuInformes = getche();
+                        break;
+                    default:
+                        printf("\nOpcion Invalida!\n\n");
+                }
+            } while (salirSubmenuInformes != 's');
+            break;
+
+        case 4:
             printf("Confirma salir? (s/n):");
             fflush(stdin);
             salir = getche();
@@ -133,7 +174,7 @@ int main()
         }
         system("pause");
     }
-    while(salir == 'n');
+    while(salir != 's');
 
     return 0;
 }
