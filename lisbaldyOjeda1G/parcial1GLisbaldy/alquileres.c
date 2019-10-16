@@ -78,14 +78,21 @@ eAlquiler nuevoAlquiler(int codigo, int codigoJuego, int codigoCliente, eFecha f
     return nuevAlquiler;
 }
 
-int cargarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, int codigoAlquiler, int codigoJuego, int codigoCliente)
+int cargarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, int codigoAlquiler)
 {
     int able = 0;
+    int codigoJuego;
+    int codigoCliente;
     eFecha fecha;
 
     system("cls");
 
     printf("****** Alta de Alquiler *******\n\n");
+
+    imprimirJuegos(listaJuegos, tamJuegos);
+    getInt(&codigoJuego, "Ingrese el codigo del juego seleccionado: ", "Error. ", 100, 999);
+    imprimirClientes(listaClientes, tamClientes);
+    getInt(&codigoCliente, "Ingrese el codigo del cliente seleccionado: ", "Error. ", 100, 999);
 
     getInt(&fecha.dia, "Ingrese el dia: ", "Error. ", 1, 31);
     getInt(&fecha.mes, "Ingrese el mes: ", "Error. ", 1, 12);

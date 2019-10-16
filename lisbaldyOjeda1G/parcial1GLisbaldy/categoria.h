@@ -1,3 +1,6 @@
+#ifndef CATEGORIA
+#define CATEGORIA
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
@@ -13,3 +16,5 @@ typedef struct
 void imprimirCategorias(eCategoria listaCategorias[], int tamCategorias);
 void imprimirCategoria(eCategoria categoria);
 int hardCodearCategorias(eCategoria listaCategorias[], int tamCategorias);
+
+#endif // CATEGORIA

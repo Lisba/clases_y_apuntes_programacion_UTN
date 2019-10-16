@@ -1,3 +1,6 @@
+#ifndef CLIENTES
+#define CLIENTES
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
@@ -144,3 +147,5 @@ int modificarCliente(eCliente listaClientes[], int tamClientes);
  *
  */
 int hardCodearClientes(eCliente listaclientes[], int cantClientesHardcodear, int codigo);
+
+#endif // CLIENTES

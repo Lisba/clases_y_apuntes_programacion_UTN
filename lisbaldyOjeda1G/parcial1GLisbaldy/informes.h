@@ -1,3 +1,6 @@
+#ifndef INFORMES
+#define INFORMES
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "alquileres.h"
@@ -12,3 +15,4 @@ float ImportesPagadosPorCliente(eCliente listaClientes[], int tamCliente, eAlqui
 void clientesNoAlquilaron(eCliente listaClientes[], int tamCliente, eAlquiler listaAlquileres[], int tamAlquileres);
 void juegosNoAlquilados(eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlquileres[], int tamAlquileres);
 
+#endif // INFORMES

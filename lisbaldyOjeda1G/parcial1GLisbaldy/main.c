@@ -6,18 +6,12 @@
 #include "clientes.h"
 #include "juegos.h"
 #include "categoria.h"
+#include "informes.h"
 
 #define TAMCLIENTES 10
 #define TAMALQUILERES 10
 #define TAMJUEGOS 10
 #define TAMCATEGORIAS 5
-
-int subMenuInformes();
-void mostrarJuegosCatMesa(eJuego listaJuegos[], int tamJuegos);
-void MostrarAlquilerClienteSelec(eCliente listaCliente[], int tamCliente, eAlquiler listaAlquiler[], int tamAlquiler);
-float ImportesPagadosPorCliente(eCliente listaClientes[], int tamCliente, eAlquiler listaAlquileres[], int tamAlquiler, eJuego listaJuegos[], int tamJuegos);
-void clientesNoAlquilaron(eCliente listaClientes[], int tamCliente, eAlquiler listaAlquileres[], int tamAlquileres);
-void juegosNoAlquilados(eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlquileres[], int tamAlquileres);
 
 int main()
 {
@@ -29,8 +23,6 @@ int main()
     int codigoParaEliminar;
     int option;
     int orden;
-    int codigoJuegoAlquiler;
-    int codigoClienteAlquiler;
     char salirSubmenuClientes = 'n';
     char salirSubmenuAlquileres = 'n';
     char salirSubmenuInformes = 'n';
@@ -50,7 +42,6 @@ int main()
     do
     {
         system("cls");
-
         printf("************ABM************\n\n");
         printf("1) CLIENTES\n");
         printf("2) ALQUILERES\n");
@@ -58,7 +49,6 @@ int main()
         printf("4) SALIR\n\n");
         printf("INGRESE OPCION: ");
         scanf("%d", &option);
-
         switch(option)
         {
         case 1:
@@ -95,22 +85,15 @@ int main()
                         printf("\nOpcion Invalida!\n\n");
                 }
                 system("pause");
-
             }while(salirSubmenuClientes == 'n');
             break;
-
         case 2:
             do
             {
                 switch(subMenuAlquileres())
                 {
                     case 1:
-                        imprimirJuegos(arrayJuegos, TAMJUEGOS);
-                        getInt(&codigoJuegoAlquiler, "Ingrese el codigo del juego seleccionado: ", "Error. ", 100, 999);
-                        imprimirClientes(arrayClientes, TAMCLIENTES);
-                        getInt(&codigoClienteAlquiler, "Ingrese el codigo del cliente seleccionado: ", "Error. ", 100, 999);
-                        respuestaAltaAlquiler = cargarAlquiler(arrayAlquileres, TAMALQUILERES, codigoAlquiler, codigoJuegoAlquiler, codigoClienteAlquiler);
-
+                        respuestaAltaAlquiler = cargarAlquiler(arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS, arrayClientes, TAMCLIENTES, codigoAlquiler);
                         if(respuestaAltaAlquiler)
                         {
                             codigoAlquiler++;
@@ -128,10 +111,8 @@ int main()
                         printf("\nOpcion Invalida!\n\n");
                 }
                 system("pause");
-
             }while(salirSubmenuAlquileres != 's');
             break;
-
         case 3:
             do
             {
@@ -162,13 +143,11 @@ int main()
                 }
             } while (salirSubmenuInformes != 's');
             break;
-
         case 4:
             printf("Confirma salir? (s/n):");
             fflush(stdin);
             salir = getche();
             break;
-
         default:
             printf("\nOpcion Invalida!\n\n");
         }
