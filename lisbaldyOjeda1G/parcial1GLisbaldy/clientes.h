@@ -1,5 +1,5 @@
-#ifndef CLIENTES
-#define CLIENTES
+#ifndef CLIENTES_H
+#define CLIENTES_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,11 +26,11 @@ typedef struct
  */
 int subMenuClientes(void);
 
-/** \brief Inicializa el array de clientes con estado vacio.
+/** \brief Inicializa el array de clientes con estado vacío.
  *
  * \param listaClientes[] eCliente array de clientes.
  * \param tamClientes int tamaño del array de clientes.
- * \return int devuelve un estado si pudo o no efectuar la operacion.
+ * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
  *
  */
 int iniciarClientes(eCliente listaClientes[], int tamClientes);
@@ -39,62 +39,61 @@ int iniciarClientes(eCliente listaClientes[], int tamClientes);
  *
  * \param listaClientes[] eCliente Array de clientes.
  * \param tamClientes int tamaño del array de clientes.
- * \param lastId int ultimo codigo cliente disponible.
- * \return int devuelve un estado si pudo o no efectuar la operacion.
+ * \param lastId int* ultimo codigo cliente disponible.
+ * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
  *
  */
-int cargarCliente(eCliente listaClientes[], int tamClientes, int lastId);
+int cargarCliente(eCliente listaClientes[], int tamClientes, int* lastId);
 
-/** \brief convierte datos de cliente en una estructura de cliente valida.
+/** \brief convierte datos de cliente en una estructura de cliente válida.
  *
- * \param codigo int codigo del cliente.
- * \param nombre[] char nombre del cliente.
- * \param apellido[] char apellido del cliente.
- * \param sexo char sexo del cliente.
- * \param telefono char[] telefono del cliente.
- * \param domicilio[] char domicilio del cliente.
- * \return eCliente returna la instancia de la estructura valida con los datos cargados.
+ * \param codigo int Código ID del cliente.
+ * \param nombre[] char Nombre del cliente.
+ * \param apellido[] char Apellido del cliente.
+ * \param sexo char Sexo del cliente.
+ * \param telefono char[] Telefono del cliente.
+ * \param domicilio[] char Domicilio del cliente.
+ * \return eCliente Retorna la instancia de la estructura válida con los datos cargados.
  *
  */
 eCliente nuevoCliente(int codigo, char nombre[], char apellido[], char sexo, char telefono[], char domicilio[]);
 
 /** \brief Carga la estructura del nuevo cliente en la primera posicion del array disponible.
  *
- * \param listaClientes[] eCliente array de clientes.
- * \param tamClientes int tamaño del array de clientes.
- * \param codigo int codigo disponible del cliente.
- * \param nombre[] char nombre del cliente.
- * \param apellido[] char apellido del cliente.
- * \param sexo char sexo del cliente.
- * \param telefono char[] telefono del cliente.
- * \param domicilio[] char domicilio del cliente.
- * \return int retorna un estado si pudo o no efectuar la operacion.
+ * \param listaClientes[] eCliente Array de clientes.
+ * \param tamClientes int Tamaño del array de clientes.
+ * \param codigo int Código ID disponible para el nuevo cliente.
+ * \param nombre[] char Nombre del cliente.
+ * \param apellido[] char Apellido del cliente.
+ * \param sexo char Sexo del cliente.
+ * \param telefono char[] Telefono del cliente.
+ * \param domicilio[] char Domicilio del cliente.
+ * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
  *
  */
 int altaCliente(eCliente listaClientes[], int tamClientes, int codigo, char nombre[], char apellido[], char sexo, char telefono[], char domicilio[]);
 
-/** \brief Realiza una baja logica del cliente.
+/** \brief Realiza una baja lógica del cliente.
  *
- * \param listaClientes[] eCliente array de clientes.
- * \param tamClientes int tamaño del array de clientes.
- * \param codigo int codigo del cliente a eliminar.
- * \return int retorna un valor si pudo o no eliminar al cliente.
+ * \param listaClientes[] eCliente Array de clientes.
+ * \param tamClientes int Tamaño del array de clientes.
+ * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
  *
  */
-int eliminarCliente(eCliente listaClientes[], int tamClientes, int codigo);
+int eliminarCliente(eCliente listaClientes[], int tamClientes);
 
-/** \brief Busca la primera posicion libre disponible.
+/** \brief Busca la primera posicion libre disponible en el array.
  *
- * \param listaClientes[] eCliente array de clientes.
- * \param tamClientes int tamaño del array de clientes.
- * \return int retorna la primera posicion disponibble.
+ * \param listaClientes[] eCliente Array de clientes.
+ * \param tamClientes int Tamaño del array de clientes.
+ * \return int Retorna el índice de la primera posicion disponibble.
  *
  */
 int findFreePositionClientes(eCliente listaClientes[], int tamClientes);
 
 /** \brief Imprime en pantalla a un cliente.
  *
- * \param cliente eCliente un cliente a imprimir en pantalla.
+ * \param cliente eCliente El cliente a imprimir en pantalla.
  * \return void
  *
  */
@@ -102,50 +101,49 @@ void imprimirCliente(eCliente cliente);
 
 /** \brief Imprime en pantalla los clientes del array de clientes.
  *
- * \param listaClientes[] eCliente array de clientes.
- * \param tamClientes int tamaño del array de clientes.
- * \return void
+ * \param listaClientes[] eCliente Array de clientes.
+ * \param tamClientes int Tamaño del array de clientes.
+ * \return int Retorna la cantidad de clientes que imprimió en pantalla.
  *
  */
-void imprimirClientes(eCliente listaClientes[], int tamClientes);
+int imprimirClientes(eCliente listaClientes[], int tamClientes);
 
-/** \brief Ordena los clientes de manera ascendente o descendente.
+/** \brief Ordena los clientes de manera ascendente (1) o descendente (0).
  *
- * \param listaClientes[] eCliente array de clientes.
- * \param tamClientes int tammaño del array de clientes.
- * \param orden int 1 o 0 para indicar el modo de ordenamiento.
- * \return int retorna un estado si pudo o no realizar la operacion.
+ * \param listaClientes[] eCliente Array de clientes.
+ * \param tamClientes int Tamaño del array de clientes.
+ * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
  *
  */
-int ordenarClientes(eCliente listaClientes[], int tamClientes, int orden);
+int ordenarClientes(eCliente listaClientes[], int tamClientes);
 
-/** \brief Busca a un cliente del array por su codigo.
+/** \brief Busca a un cliente del array por su codigo ID.
  *
- * \param listaClientes[] eCliente array de clientes.
- * \param tamClientes int tamaño del array de clientes.
- * \param codigo int codigo del cliente a buscar.
- * \return int devuelve el indice en el cual esta el cliente.
+ * \param listaClientes[] eCliente Array de clientes.
+ * \param tamClientes int Tamaño del array de clientes.
+ * \param codigo int Código ID del cliente a buscar.
+ * \return int Devuelve el índice en el cual está el cliente dentro del array.
  *
  */
 int buscarClientePorCodigo(eCliente listaClientes[], int tamClientes, int codigo);
 
 /** \brief Modifica los datos de un cliente.
  *
- * \param listaClientes[] eCliente array de clientes.
- * \param tamClientes int tamaño del array de clientes.
- * \return int retorna un estado si pudo o no realizar la operacion.
+ * \param listaClientes[] eCliente Array de clientes.
+ * \param tamClientes int Tamaño del array de clientes.
+ * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
  *
  */
 int modificarCliente(eCliente listaClientes[], int tamClientes);
 
-/** \brief Agrega datos de clientes pre-definidos al array de clientes.
+/** \brief Agrega estructuras de clientes pre-definidos al array de clientes.
  *
  * \param listaclientes[] eCliente Array de clientes.
- * \param cantClientesHardcodear int Cantidad de clientes a hardcodear.
- * \param codigo int Codigo de cliente disponible.
- * \return int retorna el ultimo codigo disponible para dar continuidad al codigo de cliente.
+ * \param cantClientesHardcodear int Cantidad de clientes hardcodeados a agregar al array de clientes.
+ * \param codigo int* Codigo ID disponible para asignar al cliente.
+ * \return int Retorna la cantidad de estructuras del array hardcodeadas.
  *
  */
-int hardCodearClientes(eCliente listaclientes[], int cantClientesHardcodear, int codigo);
+int hardCodearClientes(eCliente listaclientes[], int cantClientesHardcodear, int* codigo);
 
-#endif // CLIENTES
+#endif // CLIENTES_H

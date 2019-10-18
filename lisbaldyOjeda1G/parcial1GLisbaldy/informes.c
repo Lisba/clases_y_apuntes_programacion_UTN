@@ -13,8 +13,7 @@ int subMenuInformes()
     printf("4-Listar los Clientes que no Alquilaron Juegos.\n");
     printf("5-Listar los Juegos que no fueron Alquilados.\n");
     printf("6-Salir\n\n");
-    printf("Ingrese opcion: ");
-    scanf("%d", &option);
+    getInt(&option, "Ingrese opcion: ", "Opcion invalida. ", 1, 6);
 
     return option;
 }
@@ -31,6 +30,7 @@ void mostrarJuegosCatMesa(eJuego listaJuegos[], int tamJuegos)
         }
     }
 
+    printf("\n");
     system("pause");
 }
 
@@ -83,7 +83,7 @@ float ImportesPagadosPorCliente(eCliente listaClientes[], int tamCliente, eAlqui
         }
     }
 
-    printf("El Cliente ha pagado un importe total de: %.2f\n", importeTotal);
+    printf("\nEl Cliente ha pagado un importe total de: %.2f\n\n", importeTotal);
 
     system("pause");
 
@@ -112,6 +112,7 @@ void clientesNoAlquilaron(eCliente listaClientes[], int tamCliente, eAlquiler li
         }
     }
 
+    printf("\n");
     system("pause");
 }
 
@@ -137,5 +138,6 @@ void juegosNoAlquilados(eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlqu
         }
     }
 
+    printf("\n");
     system("pause");
 }

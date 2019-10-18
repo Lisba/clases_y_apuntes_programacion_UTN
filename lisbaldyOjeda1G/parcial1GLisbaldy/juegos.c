@@ -1,8 +1,9 @@
 #include "juegos.h"
 
-int hardCodearJuegos(eJuego listaJuegos[], int tamJuegos, int codigo)
+int hardCodearJuegos(eJuego listaJuegos[], int tamJuegos, int* codigo)
 {
     int i;
+    int cantidadHardcodeada=0;
 
     char descripcion[][51]= {"UNO", "MONOPOLIO", "BLACK JACK", "POKER", "AJEDREZ", "DAMAS", "BILLAR", "METEGOL", "WIZARDGAME", "MAGICGAME"};
     float importe[]= {7.66, 10.99, 7.66, 12.55, 9.99, 7.99, 25.88, 19.40, 12.99, 10.80};
@@ -10,18 +11,21 @@ int hardCodearJuegos(eJuego listaJuegos[], int tamJuegos, int codigo)
 
     for(i=0; i<tamJuegos; i++)
     {
-        listaJuegos[i].codigo = codigo;
+        listaJuegos[i].codigo = *codigo;
         strcpy(listaJuegos[i].descripcion, descripcion[i]);
         listaJuegos[i].importe = importe[i];
         listaJuegos[i].idCategoria=idCategoria[i];
 
-        codigo++;
+        *codigo += 1;
+        cantidadHardcodeada++;
     }
-    return codigo;
+    return cantidadHardcodeada;
 }
 
-void imprimirJuegos(eJuego listaJuegos[], int tamJuegos)
+int imprimirJuegos(eJuego listaJuegos[], int tamJuegos)
 {
+    int cantidadImpresa=0;
+
     system("cls");
     printf("****** Lista de Juegos *******\n\n");
     printf(" CODIGO             DESCRIPCION            IMPORTE         IDCATEGORIA\n");
@@ -29,8 +33,13 @@ void imprimirJuegos(eJuego listaJuegos[], int tamJuegos)
     for(int i=0; i<tamJuegos; i++)
     {
         imprimirJuego(listaJuegos[i]);
+        cantidadImpresa++;
     }
+
+    printf("\n");
     system("pause");
+
+    return cantidadImpresa;
 }
 
 void imprimirJuego(eJuego juego)

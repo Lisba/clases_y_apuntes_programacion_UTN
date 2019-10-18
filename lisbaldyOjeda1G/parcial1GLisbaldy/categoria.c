@@ -3,6 +3,7 @@
 int hardCodearCategorias(eCategoria listaCategorias[], int tamCategorias)
 {
     int i;
+    int cantidadHardcodeada=0;
 
     int idCategoria[]={1, 2, 3, 4, 5};
     char descripcion[][51]= {"MESA", "AZAR", "ESTRATEGIA", "SALON", "MAGIA"};
@@ -11,21 +12,29 @@ int hardCodearCategorias(eCategoria listaCategorias[], int tamCategorias)
     {
         listaCategorias[i].idCategoria = idCategoria[i];
         strcpy(listaCategorias[i].descripcion, descripcion[i]);
+        cantidadHardcodeada++;
     }
 
-    return tamCategorias;
+    return cantidadHardcodeada;
 }
 
-void imprimirCategorias(eCategoria listaCategorias[], int tamCategorias)
+int imprimirCategorias(eCategoria listaCategorias[], int tamCategorias)
 {
+    int cantidadImpresa=0;
+
     system("cls");
     printf("****** Lista de Categorias *******\n\n");
 
     for(int i=0; i<tamCategorias; i++)
     {
         imprimirCategoria(listaCategorias[i]);
+        cantidadImpresa++;
     }
+
+    printf("\n");
     system("pause");
+
+    return cantidadImpresa;
 }
 
 void imprimirCategoria(eCategoria categoria)

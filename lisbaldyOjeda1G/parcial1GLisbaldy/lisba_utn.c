@@ -294,8 +294,9 @@ int getString(char* input, char message[], char eMessage[], int lowLimit, int hi
  */
 int getDni(char* input, char message[], char eMessage[])
 {
-    int able = -1;
+    int able = 0;
     char aux[11];
+    int i=0;
 
     do
     {
@@ -303,9 +304,14 @@ int getDni(char* input, char message[], char eMessage[])
         fflush(stdin);
         gets(aux);
 
-        if( (strlen(aux) < (6)) || (strlen(aux) > (10)) )
+        while(aux[i] != '\0')
         {
-            printf("%s", eMessage);
+            if( (strlen(aux) < (6) || strlen(aux) > (10)) && (aux[i] < '0' || aux[i] > '9') )
+            {
+                printf("%s", eMessage);
+            }
+
+            i++;
         }
 
     } while ( (strlen(aux) < (6)) || (strlen(aux) > (10)) );

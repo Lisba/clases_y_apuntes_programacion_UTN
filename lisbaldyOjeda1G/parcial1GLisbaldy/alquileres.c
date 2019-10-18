@@ -9,20 +9,19 @@ int subMenuAlquileres()
     printf("1-Alta alquiler\n");
     printf("2-Listar Alquileres\n");
     printf("3-Salir\n\n");
-    printf("Ingrese opcion: ");
-    scanf("%d", &opcion);
+    getInt(&opcion, "Ingrese opcion: ", "Opcion invalida. ", 1, 3);
 
     return opcion;
 }
 
 int iniciarAlquileres(eAlquiler listaAlquileres[], int tamAlquileres)
 {
-    int able = -1;
+    int able = 0;
 
     for(int i=0; i<tamAlquileres; i++)
     {
         listaAlquileres[i].isEmpty = 1; // Asigna 1 al campo isEmpty de todas las posiciones del array para inicializarlo.
-        able = 0;
+        able = 1;
     }
 
     return able;
@@ -54,12 +53,14 @@ int altaAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, int codigo, int
     if( index == -1 )
     {
         printf("\nNo hay mas espacio para agregar.\n");
+        system("pause");
     }
     else
     {
         listaAlquileres[index] = nuevoAlquiler(codigo, codigoJuego, codigoCliente, fecha); // Almaceno los datos del nuevo empleado en la primera posicion disponible del array de estructuras.
         printf("\nALTA EXITOSA\n\n");
         able = 1;
+        system("pause");
     }
 
     return able;
@@ -78,27 +79,30 @@ eAlquiler nuevoAlquiler(int codigo, int codigoJuego, int codigoCliente, eFecha f
     return nuevAlquiler;
 }
 
-int cargarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, int codigoAlquiler)
+int cargarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, int* codigoAlquiler)
 {
     int able = 0;
     int codigoJuego;
     int codigoCliente;
+    int maximoJuegos=99;
+    int maximoClientes=99;
     eFecha fecha;
 
     system("cls");
 
     printf("****** Alta de Alquiler *******\n\n");
 
-    imprimirJuegos(listaJuegos, tamJuegos);
-    getInt(&codigoJuego, "Ingrese el codigo del juego seleccionado: ", "Error. ", 100, 999);
-    imprimirClientes(listaClientes, tamClientes);
-    getInt(&codigoCliente, "Ingrese el codigo del cliente seleccionado: ", "Error. ", 100, 999);
+    maximoJuegos += imprimirJuegos(listaJuegos, tamJuegos);
+    getInt(&codigoJuego, "Ingrese el codigo del juego seleccionado: ", "Error. ", 100, maximoJuegos);
+    maximoClientes += imprimirClientes(listaClientes, tamClientes);
+    getInt(&codigoCliente, "Ingrese el codigo del cliente seleccionado: ", "Error. ", 100, maximoClientes);
 
     getInt(&fecha.dia, "Ingrese el dia: ", "Error. ", 1, 31);
     getInt(&fecha.mes, "Ingrese el mes: ", "Error. ", 1, 12);
-    getInt(&fecha.anio, "Ingrese el anio: ", "Error. ", 2000, 3000);
+    getInt(&fecha.anio, "Ingrese el anio: ", "Error. ", 2000, 2019);
 
-    able = altaAlquiler(listaAlquileres, tamAlquileres, codigoAlquiler, codigoJuego, codigoCliente, fecha); // Carga los datos solicitados al array de estructuras y devuelve true si fue capaz de hacerlo.
+    able = altaAlquiler(listaAlquileres, tamAlquileres, *codigoAlquiler, codigoJuego, codigoCliente, fecha); // Carga los datos solicitados al array de estructuras y devuelve true si fue capaz de hacerlo.
+    *codigoAlquiler += 1;
 
     return able;
 }
@@ -116,6 +120,7 @@ void imprimirAlquileres(eAlquiler listaAlquileres[], int tamAlquileres)
             imprimirAlquiler(listaAlquileres[i]);
         }
     }
+    printf("\n");
     system("pause");
 }
 

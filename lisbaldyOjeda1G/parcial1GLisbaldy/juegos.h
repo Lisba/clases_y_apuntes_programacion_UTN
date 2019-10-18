@@ -1,5 +1,5 @@
-#ifndef JUEGOS
-#define JUEGOS
+#ifndef JUEGOS_H
+#define JUEGOS_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,8 +15,31 @@ typedef struct
     int idCategoria;
 } eJuego;
 
-int hardCodearJuegos(eJuego listaJuegos[], int tamJuegos, int codigo);
-void imprimirJuegos(eJuego listaJuegos[], int tamJuegos);
+/** \brief Agrega estructuras de juegos pre-definidos al array de juegos.
+ *
+ * \param listaJuegos[] eJuego Array de juegos.
+ * \param tamJuegos int Cantidad de juegos hardcodeados a agregar al array de juegos.
+ * \param codigo int* Codigo ID disponible para asignar al juego.
+ * \return int Retorna la cantidad de estructuras del array hardcodeadas.
+ *
+ */
+int hardCodearJuegos(eJuego listaJuegos[], int tamJuegos, int* codigo);
+
+/** \brief Imprime en pantalla los juegos del array de juegos.
+ *
+ * \param listaJuegos[] eJuego Array de juegos.
+ * \param tamJuegos int Tamaño del array de juegos.
+ * \return int Retorna la cantidad de juegos que imprimió en pantalla.
+ *
+ */
+int imprimirJuegos(eJuego listaJuegos[], int tamJuegos);
+
+/** \brief Imprime en pantalla un juego del array de juegos.
+ *
+ * \param juego eJuego El juego a imprimir en pantalla.
+ * \return void
+ *
+ */
 void imprimirJuego(eJuego juego);
 
-#endif // JUEGOS
+#endif // JUEGOS_H

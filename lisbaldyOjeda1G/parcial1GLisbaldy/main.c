@@ -18,11 +18,7 @@ int main()
     int codigoCliente = 100;
     int codigoJuego = 100;
     int codigoAlquiler = 100;
-    int respuestaAlta;
-    int respuestaAltaAlquiler;
-    int codigoParaEliminar;
     int option;
-    int orden;
     char salirSubmenuClientes = 'n';
     char salirSubmenuAlquileres = 'n';
     char salirSubmenuInformes = 'n';
@@ -35,9 +31,9 @@ int main()
 
     iniciarClientes(arrayClientes, TAMCLIENTES);
     iniciarAlquileres(arrayAlquileres, TAMALQUILERES);
-    hardCodearJuegos(arrayJuegos, TAMJUEGOS, codigoJuego);
+    hardCodearClientes(arrayClientes, 4, &codigoCliente);
+    hardCodearJuegos(arrayJuegos, 10, &codigoJuego);
     hardCodearCategorias(arrayCategorias, TAMCATEGORIAS);
-    hardCodearClientes(arrayClientes, 4, codigoCliente);
 
     do
     {
@@ -47,8 +43,7 @@ int main()
         printf("2) ALQUILERES\n");
         printf("3) INFORMES\n");
         printf("4) SALIR\n\n");
-        printf("INGRESE OPCION: ");
-        scanf("%d", &option);
+        getInt(&option, "Ingrese opcion: ", "Opcion invalida. ", 1, 4);
         switch(option)
         {
         case 1:
@@ -57,23 +52,16 @@ int main()
                 switch(subMenuClientes())
                 {
                     case 1:
-                        respuestaAlta = cargarCliente(arrayClientes, TAMCLIENTES, codigoCliente);
-                        if(respuestaAlta)
-                        {
-                            codigoCliente++;
-                        }
+                        cargarCliente(arrayClientes, TAMCLIENTES, &codigoCliente);
                         break;
                     case 2:
                         modificarCliente(arrayClientes, TAMCLIENTES);
                         break;
                     case 3:
-                        getInt(&codigoParaEliminar, "Ingrese el Codigo del Cliente a Eliminar: ", "Error. Ingrese un codigo entre 100 y 999. ", 100, 999);
-                        eliminarCliente(arrayClientes, TAMCLIENTES, codigoParaEliminar);
+                        eliminarCliente(arrayClientes, TAMCLIENTES);
                         break;
                     case 4:
-                        printf("Ascendente(0) o Descendente(1)?: ");
-                        scanf("%d", &orden);
-                        ordenarClientes(arrayClientes, TAMCLIENTES, orden);
+                        ordenarClientes(arrayClientes, TAMCLIENTES);
                         imprimirClientes(arrayClientes, TAMCLIENTES);
                         break;
                     case 5:
@@ -84,7 +72,6 @@ int main()
                     default:
                         printf("\nOpcion Invalida!\n\n");
                 }
-                system("pause");
             }while(salirSubmenuClientes == 'n');
             break;
         case 2:
@@ -93,11 +80,7 @@ int main()
                 switch(subMenuAlquileres())
                 {
                     case 1:
-                        respuestaAltaAlquiler = cargarAlquiler(arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS, arrayClientes, TAMCLIENTES, codigoAlquiler);
-                        if(respuestaAltaAlquiler)
-                        {
-                            codigoAlquiler++;
-                        }
+                        cargarAlquiler(arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS, arrayClientes, TAMCLIENTES, &codigoAlquiler);
                         break;
                     case 2:
                         imprimirAlquileres(arrayAlquileres, TAMALQUILERES);
@@ -110,7 +93,6 @@ int main()
                     default:
                         printf("\nOpcion Invalida!\n\n");
                 }
-                system("pause");
             }while(salirSubmenuAlquileres != 's');
             break;
         case 3:
@@ -151,9 +133,7 @@ int main()
         default:
             printf("\nOpcion Invalida!\n\n");
         }
-        system("pause");
-    }
-    while(salir != 's');
+    }while(salir != 's');
 
     return 0;
 }
