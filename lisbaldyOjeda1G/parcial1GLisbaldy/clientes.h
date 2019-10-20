@@ -35,7 +35,7 @@ int subMenuClientes(void);
  */
 int iniciarClientes(eCliente listaClientes[], int tamClientes);
 
-/** \brief Toma los datos de un nuevo cliente y lo carga al nuevo array.
+/** \brief Toma los datos de un nuevo cliente y lo carga al array.
  *
  * \param listaClientes[] eCliente Array de clientes.
  * \param tamClientes int tamaño del array de clientes.
@@ -86,7 +86,7 @@ int eliminarCliente(eCliente listaClientes[], int tamClientes);
  *
  * \param listaClientes[] eCliente Array de clientes.
  * \param tamClientes int Tamaño del array de clientes.
- * \return int Retorna el índice de la primera posicion disponibble.
+ * \return int Retorna el índice de la primera posicion disponibble o -1 en caso de no haber.
  *
  */
 int findFreePositionClientes(eCliente listaClientes[], int tamClientes);
@@ -117,12 +117,12 @@ int imprimirClientes(eCliente listaClientes[], int tamClientes);
  */
 int ordenarClientes(eCliente listaClientes[], int tamClientes);
 
-/** \brief Busca a un cliente del array por su codigo ID.
+/** \brief Busca un cliente en el array por su codigo ID.
  *
  * \param listaClientes[] eCliente Array de clientes.
  * \param tamClientes int Tamaño del array de clientes.
  * \param codigo int Código ID del cliente a buscar.
- * \return int Devuelve el índice en el cual está el cliente dentro del array.
+ * \return int Devuelve el índice en el cual está el cliente dentro del array o -1 en caso de no encontrarlo.
  *
  */
 int buscarClientePorCodigo(eCliente listaClientes[], int tamClientes, int codigo);

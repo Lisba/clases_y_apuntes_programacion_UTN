@@ -114,6 +114,22 @@ int cargarCliente(eCliente listaClientes[], int tamClientes, int* lastId)
     return able;
 }
 
+int buscarClientePorCodigo(eCliente listaClientes[], int tamClientes, int codigo)
+{
+    int index = -1;
+
+    for(int i=0; i<tamClientes; i++)
+    {
+        if(listaClientes[i].codigo == codigo)
+        {
+            index = i;
+            break; // Interrumpo la ejecucion del bucle para devolver el valor de la posicion del empleado encontrado.
+        }
+    }
+
+    return index;
+}
+
 int eliminarCliente(eCliente listaClientes[], int tamClientes)
 {
     int able = 0;
@@ -130,7 +146,7 @@ int eliminarCliente(eCliente listaClientes[], int tamClientes)
             printf(" CODIGO    NOMBRE    APELLIDO      SEXO     TELEFONO      DOMICILIO\n");
             imprimirCliente(listaClientes[i]);
 
-            printf("\nEsta seguro de eliminar a este empleado? (s/n)");
+            printf("\nEsta seguro de eliminar a este cliente? (s/n)");
             fflush(stdin);
             option = getche();
 
@@ -248,31 +264,13 @@ int ordenarClientes(eCliente listaClientes[], int tamClientes)
             able = 1;
             break;
     }
-
     return able;
-}
-
-int buscarClientePorCodigo(eCliente listaClientes[], int tamClientes, int codigo)
-{
-    int index = -1;
-
-    for(int i=0; i<tamClientes; i++)
-    {
-        if(listaClientes[i].codigo == codigo)
-        {
-            index = i;
-            break; // Interrumpo la ejecucion del bucle para devolver el valor de la posicion del empleado encontrado.
-        }
-    }
-
-    return index;
 }
 
 int modificarCliente(eCliente listaClientes[], int tamClientes)
 {
     int codigo;
     int option;
-    char telefono[21];
     int index;
     int able=0;
 
@@ -285,7 +283,7 @@ int modificarCliente(eCliente listaClientes[], int tamClientes)
 
         index = buscarClientePorCodigo(listaClientes, tamClientes, codigo);
 
-            if(index == -1)
+            if(index == -1 || listaClientes[index].isEmpty == 1)
             {
                 printf("\nNo se encontro ningun cliente con ese codigo.\n\n");
                 system("pause");
@@ -318,8 +316,7 @@ int modificarCliente(eCliente listaClientes[], int tamClientes)
                     system("pause");
                     break;
                 case 3:
-                    getPhone(telefono, "Ingrese el nuevo telefono: ", "Error. ", 7, 15);
-                    strcpy(listaClientes[index].telefono, telefono);
+                    getPhone(listaClientes[index].telefono, "Ingrese el nuevo telefono: ", "Error. ", 7, 15);
                     printf("\nTelefono modificado!\n\n");
                     system("pause");
                     break;

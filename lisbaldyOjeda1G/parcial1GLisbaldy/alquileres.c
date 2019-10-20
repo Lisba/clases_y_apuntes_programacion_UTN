@@ -107,8 +107,10 @@ int cargarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJ
     return able;
 }
 
-void imprimirAlquileres(eAlquiler listaAlquileres[], int tamAlquileres)
+int imprimirAlquileres(eAlquiler listaAlquileres[], int tamAlquileres)
 {
+    int cantImpresa = 0;
+
     system("cls");
     printf("****** Lista de aLQUILERES *******\n\n");
     printf(" CODIGO    CODIGO JUEGO    CODIGO CLIENTE    FECHA\n");
@@ -118,14 +120,167 @@ void imprimirAlquileres(eAlquiler listaAlquileres[], int tamAlquileres)
         if(listaAlquileres[i].isEmpty == 0)
         {
             imprimirAlquiler(listaAlquileres[i]);
+            cantImpresa++;
         }
     }
     printf("\n");
     system("pause");
+
+    return cantImpresa;
 }
 
 void imprimirAlquiler(eAlquiler alquiler)
 {
     printf("%5d %13d %15d %9d/%d/%d\n", alquiler.codigoAlquiler, alquiler.codigoJuego, alquiler.codigoCliente, alquiler.fecha.dia, alquiler.fecha.mes, alquiler.fecha.anio);
+}
 
+int buscarAlquilerPorCodigo(eAlquiler listaAlquileres[], int tamAlquileres, int codigo)
+{
+    int index = -1;
+
+    for(int i=0; i<tamAlquileres; i++)
+    {
+        if(listaAlquileres[i].codigoAlquiler == codigo)
+        {
+            index = i;
+            break; // Interrumpo la ejecucion del bucle para devolver el valor de la posicion del empleado encontrado.
+        }
+    }
+
+    return index;
+}
+
+int eliminarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres)
+{
+    int able = 0;
+    char option;
+    int idAlquilerAEliminar;
+    int indice;
+
+    getInt(&idAlquilerAEliminar, "Ingrese el Codigo del Alquiler a Eliminar (100 - 999): ", "Error. ", 100, 999);
+
+    indice = buscarAlquilerPorCodigo(listaAlquileres, tamAlquileres, idAlquilerAEliminar);
+
+    if(indice == -1 || listaAlquileres[indice].isEmpty == 1)
+    {
+        printf("\nNo se encontro alquiler con ese ID.\n\n");
+        system("pause");
+    }
+    else
+    {
+        printf(" CODIGO    CODIGO JUEGO    CODIGO CLIENTE    FECHA\n");
+        imprimirAlquiler(listaAlquileres[indice]);
+
+        printf("\nEsta seguro de eliminar este Alquiler? (s/n)");
+        fflush(stdin);
+        option = getche();
+
+        if(option == 's')
+        {
+            listaAlquileres[indice].isEmpty = 1;
+            printf("\n\nBAJA EXITOSA!\n\n");
+            able = 1;
+            system("pause");
+        }
+    }
+
+    return able;
+}
+
+int modificarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes)
+{
+    int codigo;
+    int option;
+    int cantImpresa;
+    int index;
+    eFecha fecha;
+    int able=0;
+
+        system("cls");
+
+        printf("****** Modificar Cliente *******\n\n");
+
+        fflush(stdin);
+        getInt(&codigo, "Ingrese el Codigo del Alquiler a Modificar (100 - 999): ", "Error. ", 100, 999);
+
+        index = buscarAlquilerPorCodigo(listaAlquileres, tamAlquileres, codigo);
+
+            if(index == -1 || listaAlquileres[index].isEmpty == 1)
+            {
+                printf("\nNo se encontro ningun Alquiler con ese codigo.\n\n");
+                system("pause");
+            }
+            else
+            {
+                able = 1;
+
+                printf("\n");
+                printf(" CODIGO    CODIGO JUEGO    CODIGO CLIENTE    FECHA\n");
+                imprimirAlquiler(listaAlquileres[index]);
+
+                printf("\nQue desea modificar de este Alquiler?\n");
+                printf("\n1) Codigo Juego\n");
+                printf("2) Codigo Cliente\n");
+                printf("3) Fecha\n");
+                printf("4) Salir\n\n");
+                getInt(&option, "Ingrese opcion: ", "Opcion invalida. ", 1, 4);
+
+                switch(option)
+                {
+                case 1:
+                    cantImpresa=99;
+                    cantImpresa += imprimirJuegos(listaJuegos, tamJuegos);
+                    getInt(&listaAlquileres[index].codigoJuego, "\nIngrese el nuevo codigo: ", "Error. ", 100, cantImpresa);
+                    printf("\nCodigo Juego modificado!\n\n");
+                    system("pause");
+                    break;
+                case 2:
+                    cantImpresa=99;
+                    cantImpresa += imprimirClientes(listaClientes, tamClientes);
+                    getInt(&listaAlquileres[index].codigoCliente, "\nIngrese el nuevo codigo de cliente: ", "Error. ", 100, cantImpresa);
+                    printf("\nCodigo Cliente modificado!\n\n");
+                    system("pause");
+                    break;
+                case 3:
+                    getInt(&fecha.dia, "Ingrese el dia: ", "Error. ", 1, 31);
+                    getInt(&fecha.mes, "Ingrese el mes: ", "Error. ", 1, 12);
+                    getInt(&fecha.anio, "Ingrese el anio: ", "Error. ", 2000, 2019);
+                    listaAlquileres[index].fecha = fecha;
+                    printf("\nFecha modificada!\n\n");
+                    system("pause");
+                    break;
+                case 4:
+                    printf("\nSe ha cancelado la modificacion!\n\n");
+                    system("pause");
+                    break;
+                default:
+                    printf("\nOpcion no valida!\n\n");
+                    break;
+                }
+            }
+
+    return able;
+}
+
+int hardCodearAlquileres(eAlquiler listaAlquileres[], int tamAlquileres, int* codigo)
+{
+    int i;
+    int cantidadHardcodeada=0;
+
+    int codigoJuego[]= {104, 105, 105, 108, 109};
+    int codigoCliente[]= {100, 103, 100, 102, 102};
+    eFecha fecha[]={{10,4,2010}, {12,9,2017}, {24,12,2016}, {31,4,2010}, {18,5,2016}};
+
+    for(i=0; i<tamAlquileres; i++)
+    {
+        listaAlquileres[i].codigoAlquiler = *codigo;
+        listaAlquileres[i].codigoJuego = codigoJuego[i];
+        listaAlquileres[i].codigoCliente = codigoCliente[i];
+        listaAlquileres[i].fecha = fecha[i];
+        listaAlquileres[i].isEmpty = 0;
+
+        *codigo += 1;
+        cantidadHardcodeada++;
+    }
+    return cantidadHardcodeada;
 }

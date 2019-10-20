@@ -45,7 +45,7 @@ int iniciarAlquileres(eAlquiler listaAlquileres[], int tamAlquileres);
  *
  * \param listaAlquileres[] eAlquiler Array de alquileres.
  * \param tamAlquileres int Tamaño del array.
- * \return int Retorna el índice de la primera posicion disponibble.
+ * \return int Retorna el índice de la primera posicion disponibble o -1 en caso de no haber.
  *
  */
 int findFreePositionAlquileres(eAlquiler listaAlquileres[], int tamAlquileres);
@@ -92,10 +92,10 @@ int cargarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJ
  *
  * \param listaAlquileres[] eAlquiler Array de alquileres.
  * \param tamAlquileres int Tamaño del array.
- * \return void
+ * \return int Retorna la cantidad de alquileres que imprimió en pantalla.
  *
  */
-void imprimirAlquileres(eAlquiler listaAlquileres[], int tamAlquileres);
+int imprimirAlquileres(eAlquiler listaAlquileres[], int tamAlquileres);
 
 /** \brief Imprime un elemento (estructura) del array de alquileres.
  *
@@ -104,5 +104,47 @@ void imprimirAlquileres(eAlquiler listaAlquileres[], int tamAlquileres);
  *
  */
 void imprimirAlquiler(eAlquiler alquiler);
+
+/** \brief Busca a un alquiler del array por su codigo ID.
+ *
+ * \param listaAlquileres[] eAlquiler Array de alquileres.
+ * \param tamAlquileres int Tamaño del array de alquileres.
+ * \param codigo int Codigo ID del alquiler a buscar.
+ * \return int Retorna el ID del alquiler o -1 en caso de no encontrarlo.
+ *
+ */
+int buscarAlquilerPorCodigo(eAlquiler listaAlquileres[], int tamAlquileres, int codigo);
+
+/** \brief Realiza una baja lógica de alquiler.
+ *
+ * \param listaAlquileres[] eAlquiler Array de alquileres.
+ * \param tamAlquileres int Tamaño del array de alquileres.
+ * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
+ *
+ */
+int eliminarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres);
+
+/** \brief Modifica los datos de un alquiler existente.
+ *
+ * \param listaAlquileres[] eAlquiler Array de alquileres.
+ * \param tamAlquileres int Tamaño del array de alquileres.
+ * \param listaJuegos[] eJuego Array de juegos.
+ * \param tamJuegos int Tamaño del array de juegos.
+ * \param listaClientes[] eCliente Array de clientes.
+ * \param tamClientes int Tamaño del array de clientes.
+ * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
+ *
+ */
+int modificarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes);
+
+/** \brief Agrega estructuras de alquileres pre-definidos al array de clientes.
+ *
+ * \param listaAlquileres[] eAlquiler Array de alquileres.
+ * \param tamAlquileres int Tamaño del array de alquileres.
+ * \param codigo int* Codigo ID disponible para asignar al cliente.
+ * \return int Retorna la cantidad de alquileres hardcodeados agregados al array de alquileres.
+ *
+ */
+int hardCodearAlquileres(eAlquiler listaAlquileres[], int tamAlquileres, int* codigo);
 
 #endif // ALQUILERES_H

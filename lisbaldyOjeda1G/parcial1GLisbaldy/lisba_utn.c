@@ -10,7 +10,7 @@
  * \param eMessage[] char mensaje a mostrar en caso de ingresar dato invalido.
  * \param lowLimit int rango limite inferior.
  * \param highLimit int rango limite superior.
- * \return int retorna un estado en caso de poder o no ejecutar la operacion.
+ * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
  */
 int getInt(int* input, char message[], char eMessage[], int lowLimit, int highLimit)
 {
@@ -79,6 +79,16 @@ int getInt(int* input, char message[], char eMessage[], int lowLimit, int highLi
     return able;
 }
 
+/** \brief Pide un telefono al usuario, valida y retorna el telefono ingresado.
+ *
+ * \param input char* Variable puntero origen-destino.
+ * \param message[] char Mensaje a mostrar al usuario.
+ * \param eMessage[] char Mensaje a mostrar en caso de ingresar dato invalido.
+ * \param lowLimit int Rango limite inferior.
+ * \param highLimit int Ranfo limite superior.
+ * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
+ *
+ */
 int getPhone(char* input, char message[], char eMessage[], int lowLimit, int highLimit)
 {
     int able=0;
@@ -411,10 +421,10 @@ long int factorial(float number) //Recibe un flotante pero toma en cuenta solo l
     return result;
 }
 
-/** \brief
+/** \brief Pide un nombre y un apellido al usuario y lo muestra concatenado separado por una coma un un espacio.
  *
  * \param nameLastName[] char Vector donde se guardará el nombre y apellido.
- * \return void No retorna ya que recibe la variable por referencia (modifica la original).
+ * \return void
  *
  */
 void getNameLastName(char nameLastName[])
@@ -497,7 +507,6 @@ void mostrarAlumnos(int legajo[], int edad[], char sexo[], int nota1[], int nota
     {
         mostrarUnAlumno(legajo[i], edad[i], sexo[i], nota1[i], nota2[i], promedio[i]);
     }
-
 }
 
 void ordenarAlumnos(int legajo[], int edad[], char sexo[], int nota1[], int nota2[], float promedio[], int tam)
@@ -525,7 +534,6 @@ void ordenarAlumnos(int legajo[], int edad[], char sexo[], int nota1[], int nota
 
             if (swap == 1)
             {
-
                 auxInt = legajo[i];
                 legajo[i] = legajo[j];
                 legajo[j] = auxInt;

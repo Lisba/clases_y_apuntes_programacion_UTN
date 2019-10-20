@@ -10,14 +10,15 @@
 
 #define TAMCLIENTES 10
 #define TAMALQUILERES 10
-#define TAMJUEGOS 10
-#define TAMCATEGORIAS 5
+#define TAMJUEGOS 11
+#define TAMCATEGORIAS 6
 
 int main()
 {
     int codigoCliente = 100;
     int codigoJuego = 100;
     int codigoAlquiler = 100;
+    int codigoCategoria = 1;
     int option;
     char salirSubmenuClientes = 'n';
     char salirSubmenuAlquileres = 'n';
@@ -31,9 +32,12 @@ int main()
 
     iniciarClientes(arrayClientes, TAMCLIENTES);
     iniciarAlquileres(arrayAlquileres, TAMALQUILERES);
+    iniciarJuegos(arrayJuegos, TAMJUEGOS);
+    iniciarCategorias(arrayCategorias, TAMCATEGORIAS);
     hardCodearClientes(arrayClientes, 4, &codigoCliente);
+    hardCodearCategorias(arrayCategorias, 5, &codigoCategoria);
     hardCodearJuegos(arrayJuegos, 10, &codigoJuego);
-    hardCodearCategorias(arrayCategorias, TAMCATEGORIAS);
+    hardCodearAlquileres(arrayAlquileres, 4, &codigoAlquiler);
 
     do
     {
@@ -72,7 +76,7 @@ int main()
                     default:
                         printf("\nOpcion Invalida!\n\n");
                 }
-            }while(salirSubmenuClientes == 'n');
+            }while(salirSubmenuClientes != 's');
             break;
         case 2:
             do
