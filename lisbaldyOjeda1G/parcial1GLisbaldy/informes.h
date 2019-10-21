@@ -33,7 +33,7 @@ void mostrarJuegosCatMesa(eJuego listaJuegos[], int tamJuegos);
  * \return void
  *
  */
-void MostrarAlquilerClienteSelec(eCliente listaCliente[], int tamCliente, eAlquiler listaAlquiler[], int tamAlquiler);
+void MostrarAlquilerClienteSelec(eCliente listaClientes[], int tamCliente, eAlquiler listaAlquileres[], int tamAlquiler, eLocalidad listaLocalidades[], int tamLocalidades);
 
 /** \brief Muestra el valor de los importes pagados por el cliente seleccionado.
  *
@@ -46,7 +46,7 @@ void MostrarAlquilerClienteSelec(eCliente listaCliente[], int tamCliente, eAlqui
  * \return float Retorna el importe pagado por el cliente.
  *
  */
-float ImportesPagadosPorCliente(eCliente listaClientes[], int tamCliente, eAlquiler listaAlquileres[], int tamAlquiler, eJuego listaJuegos[], int tamJuegos);
+float ImportesPagadosPorCliente(eCliente listaClientes[], int tamCliente, eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eLocalidad listaLocalidades[], int tamLocalidades);
 
 /** \brief Muestra la lista de clientes que no alquilaron nada.
  *
@@ -57,7 +57,7 @@ float ImportesPagadosPorCliente(eCliente listaClientes[], int tamCliente, eAlqui
  * \return void
  *
  */
-void clientesNoAlquilaron(eCliente listaClientes[], int tamCliente, eAlquiler listaAlquileres[], int tamAlquileres);
+void clientesNoAlquilaron(eCliente listaClientes[], int tamCliente, eAlquiler listaAlquileres[], int tamAlquileres, eLocalidad listaLocalidades[], int tamLocalidades);
 
 /** \brief Muestra una lista de los juegos que no fueron alquilados.
  *
@@ -69,5 +69,11 @@ void clientesNoAlquilaron(eCliente listaClientes[], int tamCliente, eAlquiler li
  *
  */
 void juegosNoAlquilados(eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlquileres[], int tamAlquileres);
+
+void listarLosClientesDeUnaDeterimnadaLocalidad(eLocalidad listaLocalidades[], int tamLocalidades, eCliente listaClientes[], int tamClientes);
+void listarElJuegoPreferidoEnUnaLocalidad(eLocalidad listaLocalidades[], int tamLocalidades, eCliente listaClientes[], int tamClientes, eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos);
+void listarJuegosAlquiladosPorMujeres(eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, eAlquiler listaAlquileres[], int tamAlquileres);
+void listarLosClientesQueAlquilaronUnDeterminadoJuego(eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlquileres[], int tamAlquileres, eCliente listaClientes[], int tamClientes, eLocalidad listaLocalidades[], int tamLocalidades);
+
 
 #endif // INFORMES_H

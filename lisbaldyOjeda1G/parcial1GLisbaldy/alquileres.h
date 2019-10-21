@@ -86,7 +86,7 @@ eAlquiler nuevoAlquiler(int codigo, int codigoJuego, int codigoCliente, eFecha f
  * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
  *
  */
-int cargarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, int* codigoAlquiler);
+int cargarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, int* codigoAlquiler, eLocalidad listaLocalidades[], int tamLocalidades);
 
 /** \brief Imprime el array de alquileres en pantalla.
  *
@@ -135,7 +135,7 @@ int eliminarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres);
  * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
  *
  */
-int modificarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes);
+int modificarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, eLocalidad listaLocalidades[], int tamLocalidades);
 
 /** \brief Agrega estructuras de alquileres pre-definidos al array de clientes.
  *

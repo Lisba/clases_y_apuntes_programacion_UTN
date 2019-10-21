@@ -79,7 +79,7 @@ eAlquiler nuevoAlquiler(int codigo, int codigoJuego, int codigoCliente, eFecha f
     return nuevAlquiler;
 }
 
-int cargarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, int* codigoAlquiler)
+int cargarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, int* codigoAlquiler, eLocalidad listaLocalidades[], int tamLocalidades)
 {
     int able = 0;
     int codigoJuego;
@@ -94,7 +94,7 @@ int cargarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJ
 
     maximoJuegos += imprimirJuegos(listaJuegos, tamJuegos);
     getInt(&codigoJuego, "Ingrese el codigo del juego seleccionado: ", "Error. ", 100, maximoJuegos);
-    maximoClientes += imprimirClientes(listaClientes, tamClientes);
+    maximoClientes += imprimirClientes(listaClientes, tamClientes, listaLocalidades, tamLocalidades);
     getInt(&codigoCliente, "Ingrese el codigo del cliente seleccionado: ", "Error. ", 100, maximoClientes);
 
     getInt(&fecha.dia, "Ingrese el dia: ", "Error. ", 1, 31);
@@ -187,7 +187,7 @@ int eliminarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres)
     return able;
 }
 
-int modificarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes)
+int modificarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, eLocalidad listaLocalidades[], int tamLocalidades)
 {
     int codigo;
     int option;
@@ -236,7 +236,7 @@ int modificarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego lis
                     break;
                 case 2:
                     cantImpresa=99;
-                    cantImpresa += imprimirClientes(listaClientes, tamClientes);
+                    cantImpresa += imprimirClientes(listaClientes, tamClientes, listaLocalidades, tamLocalidades);
                     getInt(&listaAlquileres[index].codigoCliente, "\nIngrese el nuevo codigo de cliente: ", "Error. ", 100, cantImpresa);
                     printf("\nCodigo Cliente modificado!\n\n");
                     system("pause");

@@ -12,6 +12,7 @@
 #define TAMALQUILERES 10
 #define TAMJUEGOS 11
 #define TAMCATEGORIAS 6
+#define TAMLOCALIDADES 4
 
 int main()
 {
@@ -29,6 +30,7 @@ int main()
     eAlquiler arrayAlquileres[TAMALQUILERES];
     eJuego arrayJuegos[TAMJUEGOS];
     eCategoria arrayCategorias[TAMCATEGORIAS];
+    eLocalidad arrayLocalidades[TAMLOCALIDADES];
 
     iniciarClientes(arrayClientes, TAMCLIENTES);
     iniciarAlquileres(arrayAlquileres, TAMALQUILERES);
@@ -38,6 +40,7 @@ int main()
     hardCodearCategorias(arrayCategorias, 5, &codigoCategoria);
     hardCodearJuegos(arrayJuegos, 10, &codigoJuego);
     hardCodearAlquileres(arrayAlquileres, 4, &codigoAlquiler);
+    hardCodearLocalidades(arrayLocalidades, TAMLOCALIDADES);
 
     do
     {
@@ -56,17 +59,17 @@ int main()
                 switch(subMenuClientes())
                 {
                     case 1:
-                        cargarCliente(arrayClientes, TAMCLIENTES, &codigoCliente);
+                        cargarCliente(arrayClientes, TAMCLIENTES, &codigoCliente, arrayLocalidades, TAMLOCALIDADES);
                         break;
                     case 2:
-                        modificarCliente(arrayClientes, TAMCLIENTES);
+                        modificarCliente(arrayClientes, TAMCLIENTES, arrayLocalidades, TAMLOCALIDADES);
                         break;
                     case 3:
-                        eliminarCliente(arrayClientes, TAMCLIENTES);
+                        eliminarCliente(arrayClientes, TAMCLIENTES, arrayLocalidades, TAMLOCALIDADES);
                         break;
                     case 4:
                         ordenarClientes(arrayClientes, TAMCLIENTES);
-                        imprimirClientes(arrayClientes, TAMCLIENTES);
+                        imprimirClientes(arrayClientes, TAMCLIENTES, arrayLocalidades, TAMLOCALIDADES);
                         break;
                     case 5:
                         printf("Confirma salir? (s/n):");
@@ -84,7 +87,7 @@ int main()
                 switch(subMenuAlquileres())
                 {
                     case 1:
-                        cargarAlquiler(arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS, arrayClientes, TAMCLIENTES, &codigoAlquiler);
+                        cargarAlquiler(arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS, arrayClientes, TAMCLIENTES, &codigoAlquiler, arrayLocalidades, TAMLOCALIDADES);
                         break;
                     case 2:
                         imprimirAlquileres(arrayAlquileres, TAMALQUILERES);
@@ -108,18 +111,30 @@ int main()
                         mostrarJuegosCatMesa(arrayJuegos, TAMJUEGOS);
                         break;
                     case 2:
-                        MostrarAlquilerClienteSelec(arrayClientes, TAMCLIENTES, arrayAlquileres, TAMALQUILERES);
+                        MostrarAlquilerClienteSelec(arrayClientes, TAMCLIENTES, arrayAlquileres, TAMALQUILERES, arrayLocalidades, TAMLOCALIDADES);
                         break;
                     case 3:
-                        ImportesPagadosPorCliente(arrayClientes, TAMCLIENTES, arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS);
+                        ImportesPagadosPorCliente(arrayClientes, TAMCLIENTES, arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS, arrayLocalidades, TAMLOCALIDADES);
                         break;
                     case 4:
-                        clientesNoAlquilaron(arrayClientes, TAMCLIENTES, arrayAlquileres, TAMALQUILERES);
+                        clientesNoAlquilaron(arrayClientes, TAMCLIENTES, arrayAlquileres, TAMALQUILERES, arrayLocalidades, TAMLOCALIDADES);
                         break;
                     case 5:
                         juegosNoAlquilados(arrayJuegos, TAMJUEGOS, arrayAlquileres, TAMALQUILERES);
                         break;
                     case 6:
+                        listarLosClientesDeUnaDeterimnadaLocalidad(arrayLocalidades, TAMLOCALIDADES, arrayClientes, TAMCLIENTES);
+                        break;
+                    case 7:
+                        listarElJuegoPreferidoEnUnaLocalidad(arrayLocalidades, TAMLOCALIDADES, arrayClientes, TAMCLIENTES, arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS);
+                        break;
+                    case 8:
+                        listarJuegosAlquiladosPorMujeres(arrayJuegos, TAMJUEGOS, arrayClientes, TAMCLIENTES, arrayAlquileres, TAMALQUILERES);
+                        break;
+                    case 9:
+                        listarLosClientesQueAlquilaronUnDeterminadoJuego(arrayJuegos, TAMJUEGOS, arrayAlquileres, TAMALQUILERES, arrayClientes, TAMCLIENTES, arrayLocalidades, TAMLOCALIDADES);
+                        break;
+                    case 10:
                         printf("Confirma salir? (s/n):");
                         fflush(stdin);
                         salirSubmenuInformes = getche();

@@ -15,8 +15,15 @@ typedef struct
     char sexo;
     char telefono[21];
     char domicilio[51];
+    int idLocalidad;
     int isEmpty;
 } eCliente;
+
+typedef struct
+{
+    int id;
+    char nombre[51];
+}eLocalidad;
 
 /** \brief Muestra un menu de opciones.
  *
@@ -43,7 +50,7 @@ int iniciarClientes(eCliente listaClientes[], int tamClientes);
  * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
  *
  */
-int cargarCliente(eCliente listaClientes[], int tamClientes, int* lastId);
+int cargarCliente(eCliente listaClientes[], int tamClientes, int* lastId, eLocalidad listaLocalidades[], int tamLocalidades);
 
 /** \brief convierte datos de cliente en una estructura de cliente válida.
  *
@@ -56,7 +63,7 @@ int cargarCliente(eCliente listaClientes[], int tamClientes, int* lastId);
  * \return eCliente Retorna la instancia de la estructura válida con los datos cargados.
  *
  */
-eCliente nuevoCliente(int codigo, char nombre[], char apellido[], char sexo, char telefono[], char domicilio[]);
+eCliente nuevoCliente(int codigo, char nombre[], char apellido[], char sexo, char telefono[], char domicilio[], int idLocalidad);
 
 /** \brief Carga la estructura del nuevo cliente en la primera posicion del array disponible.
  *
@@ -71,7 +78,7 @@ eCliente nuevoCliente(int codigo, char nombre[], char apellido[], char sexo, cha
  * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
  *
  */
-int altaCliente(eCliente listaClientes[], int tamClientes, int codigo, char nombre[], char apellido[], char sexo, char telefono[], char domicilio[]);
+int altaCliente(eCliente listaClientes[], int tamClientes, int codigo, char nombre[], char apellido[], char sexo, char telefono[], char domicilio[], int idLocalidad);
 
 /** \brief Realiza una baja lógica del cliente.
  *
@@ -80,7 +87,7 @@ int altaCliente(eCliente listaClientes[], int tamClientes, int codigo, char nomb
  * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
  *
  */
-int eliminarCliente(eCliente listaClientes[], int tamClientes);
+int eliminarCliente(eCliente listaClientes[], int tamClientes, eLocalidad listaLocalidades[], int tamLocalidades);
 
 /** \brief Busca la primera posicion libre disponible en el array.
  *
@@ -97,7 +104,7 @@ int findFreePositionClientes(eCliente listaClientes[], int tamClientes);
  * \return void
  *
  */
-void imprimirCliente(eCliente cliente);
+void imprimirCliente(eCliente cliente, eLocalidad listaLocalidades[], int tamLocalidades);
 
 /** \brief Imprime en pantalla los clientes del array de clientes.
  *
@@ -106,7 +113,7 @@ void imprimirCliente(eCliente cliente);
  * \return int Retorna la cantidad de clientes que imprimió en pantalla.
  *
  */
-int imprimirClientes(eCliente listaClientes[], int tamClientes);
+int imprimirClientes(eCliente listaClientes[], int tamClientes, eLocalidad listaLocalidades[], int tamLocalidades);
 
 /** \brief Ordena los clientes de manera ascendente (1) o descendente (0).
  *
@@ -134,7 +141,7 @@ int buscarClientePorCodigo(eCliente listaClientes[], int tamClientes, int codigo
  * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
  *
  */
-int modificarCliente(eCliente listaClientes[], int tamClientes);
+int modificarCliente(eCliente listaClientes[], int tamClientes, eLocalidad listaLocalidades[], int tamLocalidades);
 
 /** \brief Agrega estructuras de clientes pre-definidos al array de clientes.
  *
@@ -145,5 +152,8 @@ int modificarCliente(eCliente listaClientes[], int tamClientes);
  *
  */
 int hardCodearClientes(eCliente listaclientes[], int cantClientesHardcodear, int* codigo);
+int hardCodearLocalidades(eLocalidad listaLocalidades[], int cantHardcodear);
+void imprimirLocalidad(eLocalidad localidad);
+int imprimirLocalidades(eLocalidad listaLocalidades[], int tamLocalidades);
 
 #endif // CLIENTES_H
