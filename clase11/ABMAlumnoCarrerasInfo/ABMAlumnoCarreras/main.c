@@ -54,24 +54,13 @@ int cargarDescCarrera(int id, eCarrera carreras[], int tam, char desc[]);
 int menuInformes();
 int menu();
 void mostrarInformes(eAlumno alumnos[], int tam, eCarrera carreras[], int tamC);
-void mostrarAlumnosCarrera( eAlumno alumnos[],                      int tam,
-                            eCarrera carreras[],
-                            int tamC,
-                            int idCarrera);
-void mostrarAlumnosCarreraSeleccionada( eAlumno alumnos[],
-                                        int tam,
-                                        eCarrera carreras[],
-                                        int tamC
-                                      );
-void mostrarAlumnosDeTodasLasCarreras(eAlumno alumnos[],
-                                      int tam,
-                                      eCarrera carreras[],
-                                      int tamC);
-int contarAlumnosCarrera(eAlumno alumnos[],
-                         int tam,
-                         eCarrera carreras[],
-                         int tamC,
-                         int idCarrera);
+void mostrarAlumnosCarrera( eAlumno alumnos[], int tam, eCarrera carreras[], int tamC, int idCarrera);
+void mostrarAlumnosCarreraSeleccionada( eAlumno alumnos[], int tam, eCarrera carreras[], int tamC);
+void mostrarAlumnosDeTodasLasCarreras(eAlumno alumnos[], int tam, eCarrera carreras[], int tamC);
+int contarAlumnosCarrera(eAlumno alumnos[], int tam, eCarrera carreras[], int tamC, int idCarrera);
+void mostrarCantidadDeAlumnosPorCarrera(eAlumno alumnos[], int tam, eCarrera carreras[], int tamC);
+void carreraMasInscriptos(eAlumno alumnos[], int tam, eCarrera carreras[], int tamC);
+void mejorPromedioPorCarrera(eAlumno listaAlumno[], int tamAlumnos, eCarrera listaCarreras[], int tamCarreras);
 
 int main()
 {
@@ -545,8 +534,7 @@ void mostrarInformes(eAlumno alumnos[], int tam, eCarrera carreras[], int tamC)
             break;
 
         case 5:
-
-            printf("Informe 5\n");
+            mejorPromedioPorCarrera(alumnos, tam, carreras, tamC);
             break;
 
         case 6:
@@ -574,11 +562,7 @@ void mostrarInformes(eAlumno alumnos[], int tam, eCarrera carreras[], int tamC)
     while(salir == 'n');
 }
 
-void mostrarAlumnosCarrera( eAlumno alumnos[],
-                            int tam,
-                            eCarrera carreras[],
-                            int tamC,
-                            int idCarrera)
+void mostrarAlumnosCarrera( eAlumno alumnos[], int tam, eCarrera carreras[], int tamC, int idCarrera)
 {
     for(int i=0; i < tam; i++)
     {
@@ -591,11 +575,7 @@ void mostrarAlumnosCarrera( eAlumno alumnos[],
     printf("\n\n");
 }
 
-void mostrarAlumnosCarreraSeleccionada( eAlumno alumnos[],
-                                        int tam,
-                                        eCarrera carreras[],
-                                        int tamC
-                                      )
+void mostrarAlumnosCarreraSeleccionada( eAlumno alumnos[], int tam, eCarrera carreras[], int tamC)
 {
     int idCarrera;
     system("cls");
@@ -606,10 +586,7 @@ void mostrarAlumnosCarreraSeleccionada( eAlumno alumnos[],
     mostrarAlumnosCarrera(alumnos, tam, carreras, tamC, idCarrera);
 }
 
-void mostrarAlumnosDeTodasLasCarreras(eAlumno alumnos[],
-                                      int tam,
-                                      eCarrera carreras[],
-                                      int tamC)
+void mostrarAlumnosDeTodasLasCarreras(eAlumno alumnos[], int tam, eCarrera carreras[], int tamC)
 {
     int idCarrera;
     char desc[20];
@@ -624,16 +601,14 @@ void mostrarAlumnosDeTodasLasCarreras(eAlumno alumnos[],
     }
 }
 
-void mostrarCantidadDeAlumnosPorCarrera(eAlumno alumnos[],
-                                        int tam,
-                                        eCarrera carreras[],
-                                        int tamC)
+void mostrarCantidadDeAlumnosPorCarrera(eAlumno alumnos[], int tam, eCarrera carreras[], int tamC)
 {
     int idCarrera;
     char desc[20];
     int cantidad;
     system("cls");
     printf("*** Mostrar Cantidad de alumnos de todas las Carreras***\n\n");
+
     for(int i=0; i < tamC; i++)
     {
         cargarDescCarrera(carreras[i].id, carreras, tamC, desc);
@@ -643,11 +618,7 @@ void mostrarCantidadDeAlumnosPorCarrera(eAlumno alumnos[],
     }
 }
 
-int contarAlumnosCarrera(eAlumno alumnos[],
-                         int tam,
-                         eCarrera carreras[],
-                         int tamC,
-                         int idCarrera)
+int contarAlumnosCarrera(eAlumno alumnos[], int tam, eCarrera carreras[], int tamC, int idCarrera)
 {
     int cantidad = 0;
 
@@ -663,39 +634,77 @@ int contarAlumnosCarrera(eAlumno alumnos[],
     return cantidad;
 }
 
-void carreraMasInscriptos(eAlumno alumnos[],
-                         int tam,
-                         eCarrera carreras[],
-                         int tamC)
+void carreraMasInscriptos(eAlumno alumnos[], int tam, eCarrera carreras[], int tamC)
 {
     int inscriptos[tamC];
     int mayor;
     int flag = 0;
 
-    int idCarrera;
-    char desc[20];
-    int cantidad;
     system("cls");
     printf("*** Carrera mas cursada ***\n\n");
-    for(int i=0; i < tamC; i++)    {
+
+    for(int i=0; i < tamC; i++)
+    {
         inscriptos[i] = contarAlumnosCarrera(alumnos, tam, carreras, tamC, carreras[i].id);
     }
 
-     for(int i=0; i < tamC; i++) {
-        if( mayor < inscriptos[i]|| flag == 0){
+     for(int i=0; i < tamC; i++)
+    {
+        if(mayor < inscriptos[i] || flag == 0)
+        {
             mayor = inscriptos[i];
             flag = 1;
         }
      }
 
-      for(int i=0; i < tamC; i++) {
-        if( inscriptos[i] == mayor){
-         printf(" %s \n", carreras[i].descripcion );
+      for(int i=0; i < tamC; i++)
+      {
+        if( inscriptos[i] == mayor)
+        {
+         printf(" %s \n", carreras[i].descripcion);
         }
       }
 
       printf("cantidad incriptos %d\n\n", mayor);
-
-
 }
 
+void mejorPromedioPorCarrera(eAlumno listaAlumno[], int tamAlumnos, eCarrera listaCarreras[], int tamCarreras)
+{
+    float mejorPromedio[tamCarreras];
+    float promedioAlumnos[tamAlumnos];
+    float mayor;
+
+    for(int i=0; i<tamCarreras; i++)
+    {
+
+        for(int l=0; l<tamAlumnos; l++)
+        {
+            promedioAlumnos[l]=0;
+        }
+
+        for(int j=0; j<tamAlumnos; j++)
+        {
+            if(listaAlumno[j].idCarrera == listaCarreras[i].id)
+            {
+                promedioAlumnos[j] = listaAlumno[j].promedio;
+            }
+        }
+
+        mayor=0;
+        for(int k=0; k<tamAlumnos; k++)
+        {
+            if(mayor < promedioAlumnos[k])
+            {
+                mayor = promedioAlumnos[k];
+            }
+        }
+
+        mejorPromedio[i] = mayor;
+    }
+
+    for(int i=0; i<tamCarreras; i++)
+    {
+        printf("%s\n", listaCarreras[i].descripcion);
+        printf("%f\n", mejorPromedio[i]);
+    }
+}
