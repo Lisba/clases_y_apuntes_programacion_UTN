@@ -135,6 +135,9 @@ int main()
                         listarLosClientesQueAlquilaronUnDeterminadoJuego(arrayJuegos, TAMJUEGOS, arrayAlquileres, TAMALQUILERES, arrayClientes, TAMCLIENTES, arrayLocalidades, TAMLOCALIDADES);
                         break;
                     case 10:
+                        mostrarLaRecaudacionDeUnaFechaEnParticular(arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS);
+                        break;
+                    case 11:
                         printf("Confirma salir? (s/n):");
                         fflush(stdin);
                         salirSubmenuInformes = getche();

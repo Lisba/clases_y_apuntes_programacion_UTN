@@ -16,8 +16,9 @@ int subMenuInformes()
     printf("7-Listar el juego preferido en una localidad\n");
     printf("8-Listar los juegos alquilados por mujeres\n");
     printf("9-Listar los clientes que alquilaron un determinado juego.\n");
-    printf("10-Salir\n\n");
-    getInt(&option, "Ingrese opcion: ", "Opcion invalida. ", 1, 10);
+    printf("10-Mostrar la recaudacion de una fecha en particular.\n");
+    printf("11-Salir\n\n");
+    getInt(&option, "Ingrese opcion: ", "Opcion invalida. ", 1, 11);
 
     return option;
 }
@@ -171,7 +172,6 @@ void listarElJuegoPreferidoEnUnaLocalidad(eLocalidad listaLocalidades[], int tam
     int cantidadJuegoPreferido[tamJuegos];
     int mayor=0;
 
-
     cantImpresa = imprimirLocalidades(listaLocalidades, tamLocalidades);
     getInt(&localidad, "Seleccione el Id de la localidad: ", "Error. ", 1, cantImpresa);
 
@@ -233,9 +233,8 @@ void listarJuegosAlquiladosPorMujeres(eJuego listaJuegos[], int tamJuegos, eClie
 void listarLosClientesQueAlquilaronUnDeterminadoJuego(eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlquileres[], int tamAlquileres, eCliente listaClientes[], int tamClientes, eLocalidad listaLocalidades[], int tamLocalidades)
 {
     int juego;
-    int cantImpresa=99;
 
-    cantImpresa = imprimirJuegos(listaJuegos, tamJuegos);
+    imprimirJuegos(listaJuegos, tamJuegos);
     getInt(&juego ,"Seleccione el ID del Juego: ", "Error. ", 100, 110);
 
     for(int i=0; i<tamAlquileres; i++)
@@ -252,4 +251,49 @@ void listarLosClientesQueAlquilaronUnDeterminadoJuego(eJuego listaJuegos[], int 
         }
     }
     system("pause");
+}
+
+void mostrarLaRecaudacionDeUnaFechaEnParticular(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos)
+{
+    eFecha fecha;
+    float recaudacion=0;
+
+    getInt(&fecha.dia, "Seleccione dia: ", "Error. ", 1, 31);
+    getInt(&fecha.mes, "Seleccione mes: ", "Error. ", 1, 12);
+    getInt(&fecha.anio, "Seleccione anio: ", "Error. ", 2000, 2019);
+
+    for(int i=0; i<tamAlquileres; i++)
+    {
+        if(compararFechas(fecha, listaAlquileres[i].fecha) == 1)
+        {
+            for(int j=0; j<tamJuegos; j++)
+            {
+                if(listaAlquileres[i].codigoJuego == listaJuegos[j].codigo)
+                {
+                    recaudacion += listaJuegos[j].importe;
+                }
+            }
+        }
+    }
+
+    printf("El importe recaudado en dicha fecha es: %.2f\n", recaudacion);
+    system("pause");
+}
+
+int compararFechas(eFecha fecha1, eFecha fecha2)
+{
+    int able = 0;
+
+    if(fecha1.dia == fecha2.dia)
+    {
+        if(fecha1.mes == fecha2.mes)
+        {
+            if(fecha1.anio == fecha2.anio)
+            {
+                able = 1;
+            }
+        }
+    }
+
+    return able;
 }

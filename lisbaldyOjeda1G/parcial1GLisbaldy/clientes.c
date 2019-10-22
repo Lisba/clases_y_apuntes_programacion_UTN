@@ -199,7 +199,7 @@ int imprimirClientes(eCliente listaClientes[], int tamClientes, eLocalidad lista
 
 void imprimirCliente(eCliente cliente, eLocalidad listaLocalidades[], int tamLocalidades)
 {
-    char nombreLocalidad[4][51];
+    char nombreLocalidad[tamLocalidades][51];
 
     for(int i=0; i<tamLocalidades; i++)
     {
@@ -207,13 +207,12 @@ void imprimirCliente(eCliente cliente, eLocalidad listaLocalidades[], int tamLoc
         {
             strcpy(nombreLocalidad[i], listaLocalidades[i].nombre);
         }
-    if(listaLocalidades[i].id == cliente.idLocalidad)
-    {
-        printf("%5d %11s %11s %7c %16s %14s %13s\n", cliente.codigo, cliente.nombre, cliente.apellido, cliente.sexo, cliente.telefono, cliente.domicilio, nombreLocalidad[i]);
-    }
-    }
 
-
+        if(listaLocalidades[i].id == cliente.idLocalidad)
+        {
+            printf("%5d %11s %11s %7c %16s %14s %13s\n", cliente.codigo, cliente.nombre, cliente.apellido, cliente.sexo, cliente.telefono, cliente.domicilio, nombreLocalidad[i]);
+        }
+    }
 }
 
 int ordenarClientes(eCliente listaClientes[], int tamClientes)

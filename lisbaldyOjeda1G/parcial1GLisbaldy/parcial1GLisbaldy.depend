@@ -59,7 +59,7 @@
 
 1571693693 d:\lisba\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\lisba_utn.h
 
-1571698224 source:d:\lisba\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\clientes.c
+1571704877 source:d:\lisba\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\clientes.c
 	"clientes.h"
 
 1571697628 d:\lisba\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\clientes.h
@@ -75,7 +75,7 @@
 	<string.h>
 	"lisba_utn.h"
 
-1571701989 source:d:\lisba\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\main.c
+1571703700 source:d:\lisba\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\main.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -183,10 +183,10 @@
 1571693693 source:d:\lisba\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\categoria.c
 	"categoria.h"
 
-1571702094 source:d:\lisba\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\informes.c
+1571704442 source:d:\lisba\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\informes.c
 	"informes.h"
 
-1571701989 d:\lisba\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\informes.h
+1571704265 d:\lisba\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\informes.h
 	<stdio.h>
 	<stdlib.h>
 	"alquileres.h"
