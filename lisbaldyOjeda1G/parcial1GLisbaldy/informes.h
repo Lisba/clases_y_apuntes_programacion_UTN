@@ -18,11 +18,13 @@ int subMenuInformes();
 /** \brief Muestra los juegos con categoria mesa.
  *
  * \param listaJuegos[] eJuego Array de juegos.
- * \param tamJuegos int Tamaño del array de juegos.
+ * \param tamJuegos int tamaño del array de juegos.
+ * \param listaCategorias[] eCategoria Array de categorias.
+ * \param tamCategorias int Tamaño del array de categorias.
  * \return void
  *
  */
-void mostrarJuegosCatMesa(eJuego listaJuegos[], int tamJuegos);
+void mostrarJuegosCatMesa(eJuego listaJuegos[], int tamJuegos, eCategoria listaCategorias[], int tamCategorias);
 
 /** \brief Muestra los alquileres del cliente seleccionado.
  *
@@ -32,8 +34,8 @@ void mostrarJuegosCatMesa(eJuego listaJuegos[], int tamJuegos);
  * \param tamAlquiler int Tamaño del array de alquileres.
  * \return void
  *
- */
-void MostrarAlquilerClienteSelec(eCliente listaClientes[], int tamCliente, eAlquiler listaAlquileres[], int tamAlquiler, eLocalidad listaLocalidades[], int tamLocalidades);
+ *********************************************************************************************************/
+void MostrarAlquilerClienteSelec(eCliente listaClientes[], int tamClientes, eAlquiler listaAlquileres[], int tamAlquiler, eLocalidad listaLocalidades[], int tamLocalidades, eJuego listaJuegos[], int tamJuegos);
 
 /** \brief Muestra el valor de los importes pagados por el cliente seleccionado.
  *
@@ -67,13 +69,13 @@ void clientesNoAlquilaron(eCliente listaClientes[], int tamCliente, eAlquiler li
  * \param tamAlquileres int Tamaño del array de alquileres.
  * \return void
  *
- */
-void juegosNoAlquilados(eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlquileres[], int tamAlquileres);
+ ***********************************************************/
+void juegosNoAlquilados(eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlquileres[], int tamAlquileres, eCategoria listaCategorias[], int tamCategorias);
 
 void listarLosClientesDeUnaDeterimnadaLocalidad(eLocalidad listaLocalidades[], int tamLocalidades, eCliente listaClientes[], int tamClientes);
-void listarElJuegoPreferidoEnUnaLocalidad(eLocalidad listaLocalidades[], int tamLocalidades, eCliente listaClientes[], int tamClientes, eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos);
-void listarJuegosAlquiladosPorMujeres(eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, eAlquiler listaAlquileres[], int tamAlquileres);
-void listarLosClientesQueAlquilaronUnDeterminadoJuego(eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlquileres[], int tamAlquileres, eCliente listaClientes[], int tamClientes, eLocalidad listaLocalidades[], int tamLocalidades);
+void listarElJuegoPreferidoEnUnaLocalidad(eLocalidad listaLocalidades[], int tamLocalidades, eCliente listaClientes[], int tamClientes, eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCategoria listaCategorias[], int tamCategorias);
+void listarJuegosAlquiladosPorMujeres(eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, eAlquiler listaAlquileres[], int tamAlquileres, eCategoria listaCategorias[], int tamCategorias);
+void listarLosClientesQueAlquilaronUnDeterminadoJuego(eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlquileres[], int tamAlquileres, eCliente listaClientes[], int tamClientes, eLocalidad listaLocalidades[], int tamLocalidades, eCategoria listaCategorias[], int tamCategorias);
 void mostrarLaRecaudacionDeUnaFechaEnParticular(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos);
 int compararFechas(eFecha fecha1, eFecha fecha2);
 

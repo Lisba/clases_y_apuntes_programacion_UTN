@@ -23,6 +23,7 @@ typedef struct
 {
     int id;
     char nombre[51];
+    int isEmpty;
 }eLocalidad;
 
 /** \brief Muestra un menu de opciones.
@@ -101,10 +102,10 @@ int findFreePositionClientes(eCliente listaClientes[], int tamClientes);
 /** \brief Imprime en pantalla a un cliente.
  *
  * \param cliente eCliente El cliente a imprimir en pantalla.
- * \return void
+ * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
  *
  */
-void imprimirCliente(eCliente cliente, eLocalidad listaLocalidades[], int tamLocalidades);
+int imprimirCliente(eCliente cliente, eLocalidad listaLocalidades[], int tamLocalidades);
 
 /** \brief Imprime en pantalla los clientes del array de clientes.
  *
@@ -155,5 +156,9 @@ int hardCodearClientes(eCliente listaclientes[], int cantClientesHardcodear, int
 int hardCodearLocalidades(eLocalidad listaLocalidades[], int cantHardcodear);
 void imprimirLocalidad(eLocalidad localidad);
 int imprimirLocalidades(eLocalidad listaLocalidades[], int tamLocalidades);
+int cargarNombreLocalidad(eLocalidad listaLocalidades[], int tamLocalidades, int idLocalidad, char nombreLocalidad[]);
+int cargarNombreApellidoCliente(eCliente listaClientes[], int tamClientes, int idCliente, char nombreCliente[], char apellidoCliente[]);
+int iniciarLocalidades(eLocalidad listaLocalidades[], int tamLocalidades);
+int catNameLastName(char name[], char lastName[], char nameLastName[]);
 
 #endif // CLIENTES_H

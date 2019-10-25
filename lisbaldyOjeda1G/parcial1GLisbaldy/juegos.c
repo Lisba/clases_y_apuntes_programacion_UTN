@@ -14,7 +14,7 @@ int hardCodearJuegos(eJuego listaJuegos[], int tamJuegos, int* codigo)
         listaJuegos[i].codigo = *codigo;
         strcpy(listaJuegos[i].descripcion, descripcion[i]);
         listaJuegos[i].importe = importe[i];
-        listaJuegos[i].idCategoria=idCategoria[i];
+        listaJuegos[i].idCategoria = idCategoria[i];
         listaJuegos[i].isEmpty = 0;
 
         *codigo += 1;
@@ -23,7 +23,7 @@ int hardCodearJuegos(eJuego listaJuegos[], int tamJuegos, int* codigo)
     return cantidadHardcodeada;
 }
 
-int imprimirJuegos(eJuego listaJuegos[], int tamJuegos)
+int imprimirJuegos(eJuego listaJuegos[], int tamJuegos, eCategoria listaCategorias[], int tamCategorias)
 {
     int cantidadImpresa=0;
 
@@ -35,7 +35,7 @@ int imprimirJuegos(eJuego listaJuegos[], int tamJuegos)
     {
         if(listaJuegos[i].isEmpty==0)
         {
-            imprimirJuego(listaJuegos[i]);
+            imprimirJuego(listaJuegos[i], listaCategorias, tamCategorias);
             cantidadImpresa++;
         }
     }
@@ -46,9 +46,17 @@ int imprimirJuegos(eJuego listaJuegos[], int tamJuegos)
     return cantidadImpresa;
 }
 
-void imprimirJuego(eJuego juego)
+int imprimirJuego(eJuego juego, eCategoria listaCategorias[], int tamCategorias)
 {
-    printf("%5d %27s %15.2f %14d\n", juego.codigo, juego.descripcion, juego.importe, juego.idCategoria);
+    int able = 0;
+    char descripcionCategoria[51];
+
+    cargarDescCategoria(listaCategorias, tamCategorias, juego.idCategoria, descripcionCategoria);
+
+    printf("%5d %27s %15.2f %19s\n", juego.codigo, juego.descripcion, juego.importe, descripcionCategoria);
+    able = 1;
+
+    return able;
 }
 
 int iniciarJuegos(eJuego listaJuegos[], int tamJuegos)
@@ -139,7 +147,7 @@ int cargarJuego(eJuego listaJuegos[], int tamJuegos, eCategoria listaCategorias[
     return able;
 }
 
-int eliminarJuego(eJuego listaJuegos[], int tamJuegos)
+int eliminarJuego(eJuego listaJuegos[], int tamJuegos, eCategoria listaCategorias[], int tamCategorias)
 {
     int able = 0;
     char option;
@@ -153,7 +161,7 @@ int eliminarJuego(eJuego listaJuegos[], int tamJuegos)
         if(listaJuegos[i].codigo == idJuegoAEliminar && listaJuegos[i].isEmpty == 0)
         {
             printf(" CODIGO             DESCRIPCION            IMPORTE         IDCATEGORIA\n");
-            imprimirJuego(listaJuegos[i]);
+            imprimirJuego(listaJuegos[i], listaCategorias, tamCategorias);
 
             printf("\nEsta seguro de eliminar este juego? (s/n)");
             fflush(stdin);
@@ -224,7 +232,7 @@ int modificarJuego(eJuego listaJuegos[], int tamJuegos, eCategoria listaCategori
 
                 printf("\n");
                 printf(" CODIGO             DESCRIPCION            IMPORTE         IDCATEGORIA\n");
-                imprimirJuego(listaJuegos[index]);
+                imprimirJuego(listaJuegos[index], listaCategorias, tamCategorias);
 
                 printf("\nQue desea modificar de este juego?\n");
                 printf("\n1) Descripcion\n");
@@ -260,6 +268,22 @@ int modificarJuego(eJuego listaJuegos[], int tamJuegos, eCategoria listaCategori
                     break;
                 }
             }
+
+    return able;
+}
+
+int cargarDescJuego(eJuego listaJuegos[], int tamJuegos, int idJuego, char descripcionJuego[])
+{
+    int able = 0;
+
+    for(int i=0; i<tamJuegos; i++)
+    {
+        if(idJuego == listaJuegos[i].codigo && listaJuegos[i].isEmpty == 0)
+        {
+            strcpy(descripcionJuego, listaJuegos[i].descripcion);
+            able = 1;
+        }
+    }
 
     return able;
 }

@@ -33,16 +33,18 @@ int hardCodearJuegos(eJuego listaJuegos[], int tamJuegos, int* codigo);
  * \param tamJuegos int Tamaño del array de juegos.
  * \return int Retorna la cantidad de juegos que imprimió en pantalla.
  *
- */
-int imprimirJuegos(eJuego listaJuegos[], int tamJuegos);
+ **************************************************************/
+int imprimirJuegos(eJuego listaJuegos[], int tamJuegos, eCategoria listaCategorias[], int tamCategorias);
 
 /** \brief Imprime en pantalla un juego del array de juegos.
  *
  * \param juego eJuego El juego a imprimir en pantalla.
- * \return void
+ * \param listaCategorias[] eCategoria Array de categorias.
+ * \param tamCategorias int tamaño del array de categorias.
+ * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
  *
  */
-void imprimirJuego(eJuego juego);
+int imprimirJuego(eJuego juego, eCategoria listaCategorias[], int tamCategorias);
 
 /** \brief Inicializa el array de Juegos agregando 1 al campo isEmpty de cada elemento del array.
  *
@@ -105,7 +107,7 @@ int cargarJuego(eJuego listaJuegos[], int tamJuegos, eCategoria listaCategorias[
  * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
  *
  */
-int eliminarJuego(eJuego listaJuegos[], int tamJuegos);
+int eliminarJuego(eJuego listaJuegos[], int tamJuegos, eCategoria listaCategorias[], int tamCategorias);
 
 /** \brief Busca un juego en el array por su codigo ID.
  *
@@ -127,5 +129,7 @@ int buscarJuegoPorCodigo(eJuego listaJuegos[], int tamJuegos, int codigo);
  *
  */
 int modificarJuego(eJuego listaJuegos[], int tamJuegos, eCategoria listaCategorias[], int tamCategorias);
+
+int cargarDescJuego(eJuego listaJuegos[], int tamJuegos, int idJuego, char descripcionJuego[]);
 
 #endif // JUEGOS_H

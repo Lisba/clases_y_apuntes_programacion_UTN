@@ -85,8 +85,8 @@ eAlquiler nuevoAlquiler(int codigo, int codigoJuego, int codigoCliente, eFecha f
  * \param codigoAlquiler int* Codigo ID disponible para el nuevo alquiler.
  * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
  *
- */
-int cargarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, int* codigoAlquiler, eLocalidad listaLocalidades[], int tamLocalidades);
+ ***************************************************************************************************************/
+int cargarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, int* codigoAlquiler, eLocalidad listaLocalidades[], int tamLocalidades, eCategoria listaCategorias[], int tamCategorias);
 
 /** \brief Imprime el array de alquileres en pantalla.
  *
@@ -94,16 +94,16 @@ int cargarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJ
  * \param tamAlquileres int Tamaño del array.
  * \return int Retorna la cantidad de alquileres que imprimió en pantalla.
  *
- */
-int imprimirAlquileres(eAlquiler listaAlquileres[], int tamAlquileres);
+ *****************************************************************************************************/
+int imprimirAlquileres(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes);
 
 /** \brief Imprime un elemento (estructura) del array de alquileres.
  *
  * \param alquiler eAlquiler Alquiler a imprimir.
  * \return void
  *
- */
-void imprimirAlquiler(eAlquiler alquiler);
+ **********************************************************************************/
+int imprimirAlquiler(eAlquiler alquiler, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes);
 
 /** \brief Busca a un alquiler del array por su codigo ID.
  *
@@ -121,8 +121,8 @@ int buscarAlquilerPorCodigo(eAlquiler listaAlquileres[], int tamAlquileres, int 
  * \param tamAlquileres int Tamaño del array de alquileres.
  * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
  *
- */
-int eliminarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres);
+ *****************************************************************************************************/
+int eliminarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes);
 
 /** \brief Modifica los datos de un alquiler existente.
  *
@@ -135,7 +135,7 @@ int eliminarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres);
  * \return int Devuelve un estado (1 o 0) indicando si pudo o no efectuar la operacion respectivamente.
  *
  */
-int modificarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, eLocalidad listaLocalidades[], int tamLocalidades);
+int modificarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, eLocalidad listaLocalidades[], int tamLocalidades, eCategoria listaCategorias[], int tamCategorias);
 
 /** \brief Agrega estructuras de alquileres pre-definidos al array de clientes.
  *

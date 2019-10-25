@@ -117,4 +117,6 @@ int buscarCategoriaPorCodigo(eCategoria listaCategorias[], int tamCategorias, in
  */
 int modificarCategoria(eCategoria listaCategorias[], int tamCategorias);
 
+int cargarDescCategoria(eCategoria listaCategorias[], int tamCategorias, int idCategoria, char descripcionCategoria[]);
+
 #endif // CATEGORIA_H

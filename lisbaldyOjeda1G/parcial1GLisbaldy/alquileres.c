@@ -79,7 +79,7 @@ eAlquiler nuevoAlquiler(int codigo, int codigoJuego, int codigoCliente, eFecha f
     return nuevAlquiler;
 }
 
-int cargarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, int* codigoAlquiler, eLocalidad listaLocalidades[], int tamLocalidades)
+int cargarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, int* codigoAlquiler, eLocalidad listaLocalidades[], int tamLocalidades, eCategoria listaCategorias[], int tamCategorias)
 {
     int able = 0;
     int codigoJuego;
@@ -92,7 +92,7 @@ int cargarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJ
 
     printf("****** Alta de Alquiler *******\n\n");
 
-    maximoJuegos += imprimirJuegos(listaJuegos, tamJuegos);
+    maximoJuegos += imprimirJuegos(listaJuegos, tamJuegos, listaCategorias, tamCategorias);
     getInt(&codigoJuego, "Ingrese el codigo del juego seleccionado: ", "Error. ", 100, maximoJuegos);
     maximoClientes += imprimirClientes(listaClientes, tamClientes, listaLocalidades, tamLocalidades);
     getInt(&codigoCliente, "Ingrese el codigo del cliente seleccionado: ", "Error. ", 100, maximoClientes);
@@ -107,19 +107,19 @@ int cargarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJ
     return able;
 }
 
-int imprimirAlquileres(eAlquiler listaAlquileres[], int tamAlquileres)
+int imprimirAlquileres(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes)
 {
     int cantImpresa = 0;
 
     system("cls");
     printf("****** Lista de aLQUILERES *******\n\n");
-    printf(" CODIGO    CODIGO JUEGO    CODIGO CLIENTE    FECHA\n");
+    printf(" CODIGO      JUEGO             CLIENTE          FECHA\n");
 
     for(int i=0; i<tamAlquileres; i++)
     {
         if(listaAlquileres[i].isEmpty == 0)
         {
-            imprimirAlquiler(listaAlquileres[i]);
+            imprimirAlquiler(listaAlquileres[i], listaJuegos, tamJuegos, listaClientes, tamClientes);
             cantImpresa++;
         }
     }
@@ -129,9 +129,21 @@ int imprimirAlquileres(eAlquiler listaAlquileres[], int tamAlquileres)
     return cantImpresa;
 }
 
-void imprimirAlquiler(eAlquiler alquiler)
+int imprimirAlquiler(eAlquiler alquiler, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes)
 {
-    printf("%5d %13d %15d %9d/%d/%d\n", alquiler.codigoAlquiler, alquiler.codigoJuego, alquiler.codigoCliente, alquiler.fecha.dia, alquiler.fecha.mes, alquiler.fecha.anio);
+    int able = 0;
+    char nombreJuego[51];
+    char nombreCliente[51];
+    char apellidoCliente[51];
+    char nombreYApellido[102];
+
+    cargarDescJuego(listaJuegos, tamJuegos, alquiler.codigoJuego, nombreJuego);
+    cargarNombreApellidoCliente(listaClientes, tamClientes, alquiler.codigoCliente, nombreCliente, apellidoCliente);
+    catNameLastName(nombreCliente, apellidoCliente, nombreYApellido);
+
+    printf("%5d %13s %22s %6d/%d/%d\n", alquiler.codigoAlquiler, nombreJuego, nombreYApellido, alquiler.fecha.dia, alquiler.fecha.mes, alquiler.fecha.anio);
+
+    return able;
 }
 
 int buscarAlquilerPorCodigo(eAlquiler listaAlquileres[], int tamAlquileres, int codigo)
@@ -150,7 +162,7 @@ int buscarAlquilerPorCodigo(eAlquiler listaAlquileres[], int tamAlquileres, int 
     return index;
 }
 
-int eliminarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres)
+int eliminarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes)
 {
     int able = 0;
     char option;
@@ -169,7 +181,7 @@ int eliminarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres)
     else
     {
         printf(" CODIGO    CODIGO JUEGO    CODIGO CLIENTE    FECHA\n");
-        imprimirAlquiler(listaAlquileres[indice]);
+        imprimirAlquiler(listaAlquileres[indice], listaJuegos, tamJuegos, listaClientes, tamClientes);
 
         printf("\nEsta seguro de eliminar este Alquiler? (s/n)");
         fflush(stdin);
@@ -187,7 +199,7 @@ int eliminarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres)
     return able;
 }
 
-int modificarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, eLocalidad listaLocalidades[], int tamLocalidades)
+int modificarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, eLocalidad listaLocalidades[], int tamLocalidades, eCategoria listaCategorias[], int tamCategorias)
 {
     int codigo;
     int option;
@@ -216,7 +228,7 @@ int modificarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego lis
 
                 printf("\n");
                 printf(" CODIGO    CODIGO JUEGO    CODIGO CLIENTE    FECHA\n");
-                imprimirAlquiler(listaAlquileres[index]);
+                imprimirAlquiler(listaAlquileres[index], listaJuegos, tamJuegos, listaClientes, tamClientes);
 
                 printf("\nQue desea modificar de este Alquiler?\n");
                 printf("\n1) Codigo Juego\n");
@@ -229,7 +241,7 @@ int modificarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego lis
                 {
                 case 1:
                     cantImpresa=99;
-                    cantImpresa += imprimirJuegos(listaJuegos, tamJuegos);
+                    cantImpresa += imprimirJuegos(listaJuegos, tamJuegos, listaCategorias, tamCategorias);
                     getInt(&listaAlquileres[index].codigoJuego, "\nIngrese el nuevo codigo: ", "Error. ", 100, cantImpresa);
                     printf("\nCodigo Juego modificado!\n\n");
                     system("pause");

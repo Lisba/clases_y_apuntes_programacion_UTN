@@ -5,11 +5,12 @@ int hardCodearCategorias(eCategoria listaCategorias[], int tamCategorias, int* c
     int i;
     int cantidadHardcodeada=0;
 
+    int idCategoria[]={1,2,3,4,5};
     char descripcion[][51]= {"MESA", "AZAR", "ESTRATEGIA", "SALON", "MAGIA"};
 
     for(i=0; i<tamCategorias; i++)
     {
-        listaCategorias[i].idCategoria = *codigo;
+        listaCategorias[i].idCategoria = idCategoria[i];
         strcpy(listaCategorias[i].descripcion, descripcion[i]);
         listaCategorias[i].isEmpty = 0;
 
@@ -232,6 +233,22 @@ int modificarCategoria(eCategoria listaCategorias[], int tamCategorias)
                     break;
                 }
             }
+
+    return able;
+}
+
+int cargarDescCategoria(eCategoria listaCategorias[], int tamCategorias, int idCategoria, char descripcionCategoria[])
+{
+    int able = 0;
+
+    for(int i=0; i<tamCategorias; i++)
+    {
+        if(listaCategorias[i].idCategoria == idCategoria && listaCategorias[i].isEmpty == 0)
+        {
+            strcpy(descripcionCategoria, listaCategorias[i].descripcion);
+            able = 1;
+        }
+    }
 
     return able;
 }

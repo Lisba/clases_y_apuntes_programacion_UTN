@@ -12,7 +12,7 @@
 #define TAMALQUILERES 10
 #define TAMJUEGOS 11
 #define TAMCATEGORIAS 6
-#define TAMLOCALIDADES 4
+#define TAMLOCALIDADES 5
 
 int main()
 {
@@ -36,11 +36,14 @@ int main()
     iniciarAlquileres(arrayAlquileres, TAMALQUILERES);
     iniciarJuegos(arrayJuegos, TAMJUEGOS);
     iniciarCategorias(arrayCategorias, TAMCATEGORIAS);
+    iniciarLocalidades(arrayLocalidades, TAMLOCALIDADES);
     hardCodearClientes(arrayClientes, 4, &codigoCliente);
     hardCodearCategorias(arrayCategorias, 5, &codigoCategoria);
     hardCodearJuegos(arrayJuegos, 10, &codigoJuego);
     hardCodearAlquileres(arrayAlquileres, 4, &codigoAlquiler);
-    hardCodearLocalidades(arrayLocalidades, TAMLOCALIDADES);
+    hardCodearLocalidades(arrayLocalidades, 5);
+
+imprimirAlquileres(arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS, arrayClientes, TAMCLIENTES);
 
     do
     {
@@ -87,10 +90,10 @@ int main()
                 switch(subMenuAlquileres())
                 {
                     case 1:
-                        cargarAlquiler(arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS, arrayClientes, TAMCLIENTES, &codigoAlquiler, arrayLocalidades, TAMLOCALIDADES);
+                        cargarAlquiler(arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS, arrayClientes, TAMCLIENTES, &codigoAlquiler, arrayLocalidades, TAMLOCALIDADES, arrayCategorias, TAMCATEGORIAS);
                         break;
                     case 2:
-                        imprimirAlquileres(arrayAlquileres, TAMALQUILERES);
+                        imprimirAlquileres(arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS, arrayClientes, TAMCLIENTES);
                         break;
                     case 3:
                         printf("Confirma salir? (s/n): ");
@@ -108,10 +111,10 @@ int main()
                 switch(subMenuInformes())
                 {
                     case 1:
-                        mostrarJuegosCatMesa(arrayJuegos, TAMJUEGOS);
+                        mostrarJuegosCatMesa(arrayJuegos, TAMJUEGOS, arrayCategorias, TAMCATEGORIAS);
                         break;
                     case 2:
-                        MostrarAlquilerClienteSelec(arrayClientes, TAMCLIENTES, arrayAlquileres, TAMALQUILERES, arrayLocalidades, TAMLOCALIDADES);
+                        MostrarAlquilerClienteSelec(arrayClientes, TAMCLIENTES, arrayAlquileres, TAMALQUILERES, arrayLocalidades, TAMLOCALIDADES, arrayJuegos, TAMJUEGOS);
                         break;
                     case 3:
                         ImportesPagadosPorCliente(arrayClientes, TAMCLIENTES, arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS, arrayLocalidades, TAMLOCALIDADES);
@@ -120,19 +123,19 @@ int main()
                         clientesNoAlquilaron(arrayClientes, TAMCLIENTES, arrayAlquileres, TAMALQUILERES, arrayLocalidades, TAMLOCALIDADES);
                         break;
                     case 5:
-                        juegosNoAlquilados(arrayJuegos, TAMJUEGOS, arrayAlquileres, TAMALQUILERES);
+                        juegosNoAlquilados(arrayJuegos, TAMJUEGOS, arrayAlquileres, TAMALQUILERES, arrayCategorias, TAMCATEGORIAS);
                         break;
                     case 6:
                         listarLosClientesDeUnaDeterimnadaLocalidad(arrayLocalidades, TAMLOCALIDADES, arrayClientes, TAMCLIENTES);
                         break;
                     case 7:
-                        listarElJuegoPreferidoEnUnaLocalidad(arrayLocalidades, TAMLOCALIDADES, arrayClientes, TAMCLIENTES, arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS);
+                        listarElJuegoPreferidoEnUnaLocalidad(arrayLocalidades, TAMLOCALIDADES, arrayClientes, TAMCLIENTES, arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS, arrayCategorias, TAMCATEGORIAS);
                         break;
                     case 8:
-                        listarJuegosAlquiladosPorMujeres(arrayJuegos, TAMJUEGOS, arrayClientes, TAMCLIENTES, arrayAlquileres, TAMALQUILERES);
+                        listarJuegosAlquiladosPorMujeres(arrayJuegos, TAMJUEGOS, arrayClientes, TAMCLIENTES, arrayAlquileres, TAMALQUILERES, arrayCategorias, TAMCATEGORIAS);
                         break;
                     case 9:
-                        listarLosClientesQueAlquilaronUnDeterminadoJuego(arrayJuegos, TAMJUEGOS, arrayAlquileres, TAMALQUILERES, arrayClientes, TAMCLIENTES, arrayLocalidades, TAMLOCALIDADES);
+                        listarLosClientesQueAlquilaronUnDeterminadoJuego(arrayJuegos, TAMJUEGOS, arrayAlquileres, TAMALQUILERES, arrayClientes, TAMCLIENTES, arrayLocalidades, TAMLOCALIDADES, arrayCategorias, TAMCATEGORIAS);
                         break;
                     case 10:
                         mostrarLaRecaudacionDeUnaFechaEnParticular(arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS);

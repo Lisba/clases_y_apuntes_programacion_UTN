@@ -23,7 +23,7 @@ int subMenuInformes()
     return option;
 }
 
-void mostrarJuegosCatMesa(eJuego listaJuegos[], int tamJuegos)
+void mostrarJuegosCatMesa(eJuego listaJuegos[], int tamJuegos, eCategoria listaCategorias[], int tamCategorias)
 {
     int categoria=1;
 
@@ -31,7 +31,7 @@ void mostrarJuegosCatMesa(eJuego listaJuegos[], int tamJuegos)
     {
         if(listaJuegos[i].idCategoria == categoria)
         {
-            imprimirJuego(listaJuegos[i]);
+            imprimirJuego(listaJuegos[i], listaCategorias, tamCategorias);
         }
     }
 
@@ -39,12 +39,12 @@ void mostrarJuegosCatMesa(eJuego listaJuegos[], int tamJuegos)
     system("pause");
 }
 
-void MostrarAlquilerClienteSelec(eCliente listaClientes[], int tamCliente, eAlquiler listaAlquileres[], int tamAlquiler, eLocalidad listaLocalidades[], int tamLocalidades)
+void MostrarAlquilerClienteSelec(eCliente listaClientes[], int tamClientes, eAlquiler listaAlquileres[], int tamAlquiler, eLocalidad listaLocalidades[], int tamLocalidades, eJuego listaJuegos[], int tamJuegos)
 {
     int idCliente;
     int flag=0;
 
-    imprimirClientes(listaClientes, tamCliente, listaLocalidades, tamLocalidades);
+    imprimirClientes(listaClientes, tamClientes, listaLocalidades, tamLocalidades);
 
     getInt(&idCliente, "Seleccione el ID del cliente: ", "Error. Seleccione entre 100 y 999. ", 100, 999);
 
@@ -52,7 +52,7 @@ void MostrarAlquilerClienteSelec(eCliente listaClientes[], int tamCliente, eAlqu
     {
         if(idCliente == listaAlquileres[i].codigoCliente)
         {
-            imprimirAlquiler(listaAlquileres[i]);
+            imprimirAlquiler(listaAlquileres[i], listaJuegos, tamJuegos, listaClientes, tamClientes);
             flag=1;
         }
     }
@@ -121,7 +121,7 @@ void clientesNoAlquilaron(eCliente listaClientes[], int tamCliente, eAlquiler li
     system("pause");
 }
 
-void juegosNoAlquilados(eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlquileres[], int tamAlquileres)
+void juegosNoAlquilados(eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlquileres[], int tamAlquileres, eCategoria listaCategorias[], int tamCategorias)
 {
     int contador=0;
 
@@ -139,7 +139,7 @@ void juegosNoAlquilados(eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlqu
 
         if(contador == 0)
         {
-            imprimirJuego(listaJuegos[i]);
+            imprimirJuego(listaJuegos[i], listaCategorias, tamCategorias);
         }
     }
 
@@ -165,7 +165,7 @@ void listarLosClientesDeUnaDeterimnadaLocalidad(eLocalidad listaLocalidades[], i
     }
 }
 
-void listarElJuegoPreferidoEnUnaLocalidad(eLocalidad listaLocalidades[], int tamLocalidades, eCliente listaClientes[], int tamClientes, eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos)
+void listarElJuegoPreferidoEnUnaLocalidad(eLocalidad listaLocalidades[], int tamLocalidades, eCliente listaClientes[], int tamClientes, eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos, eCategoria listaCategorias[], int tamCategorias)
 {
     int localidad;
     int cantImpresa=0;
@@ -200,13 +200,13 @@ void listarElJuegoPreferidoEnUnaLocalidad(eLocalidad listaLocalidades[], int tam
         if(mayor < cantidadJuegoPreferido[i])
         {
             mayor = cantidadJuegoPreferido[i];
-            imprimirJuego(listaJuegos[i]);
+            imprimirJuego(listaJuegos[i], listaCategorias, tamCategorias);
             system("pause");
         }
     }
 }
 
-void listarJuegosAlquiladosPorMujeres(eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, eAlquiler listaAlquileres[], int tamAlquileres)
+void listarJuegosAlquiladosPorMujeres(eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, eAlquiler listaAlquileres[], int tamAlquileres, eCategoria listaCategorias[], int tamCategorias)
 {
     for(int i=0; i<tamClientes; i++)
     {
@@ -220,7 +220,7 @@ void listarJuegosAlquiladosPorMujeres(eJuego listaJuegos[], int tamJuegos, eClie
                     {
                         if(listaAlquileres[j].codigoJuego == listaJuegos[k].codigo)
                         {
-                            imprimirJuego(listaJuegos[k]);
+                            imprimirJuego(listaJuegos[k], listaCategorias, tamCategorias);
                         }
                     }
                 }
@@ -230,11 +230,11 @@ void listarJuegosAlquiladosPorMujeres(eJuego listaJuegos[], int tamJuegos, eClie
     system("pause");
 }
 
-void listarLosClientesQueAlquilaronUnDeterminadoJuego(eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlquileres[], int tamAlquileres, eCliente listaClientes[], int tamClientes, eLocalidad listaLocalidades[], int tamLocalidades)
+void listarLosClientesQueAlquilaronUnDeterminadoJuego(eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlquileres[], int tamAlquileres, eCliente listaClientes[], int tamClientes, eLocalidad listaLocalidades[], int tamLocalidades, eCategoria listaCategorias[], int tamCategorias)
 {
     int juego;
 
-    imprimirJuegos(listaJuegos, tamJuegos);
+    imprimirJuegos(listaJuegos, tamJuegos, listaCategorias, tamCategorias);
     getInt(&juego ,"Seleccione el ID del Juego: ", "Error. ", 100, 110);
 
     for(int i=0; i<tamAlquileres; i++)
