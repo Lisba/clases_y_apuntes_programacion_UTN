@@ -38,7 +38,6 @@ int imprimirCategorias(eCategoria listaCategorias[], int tamCategorias)
     }
 
     printf("\n");
-    system("pause");
 
     return cantidadImpresa;
 }

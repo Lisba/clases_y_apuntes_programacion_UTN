@@ -1,6 +1,3 @@
-#ifndef INFORMES_H
-#define INFORMES_H
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "alquileres.h"
@@ -78,6 +75,3 @@ void listarJuegosAlquiladosPorMujeres(eJuego listaJuegos[], int tamJuegos, eClie
 void listarLosClientesQueAlquilaronUnDeterminadoJuego(eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlquileres[], int tamAlquileres, eCliente listaClientes[], int tamClientes, eLocalidad listaLocalidades[], int tamLocalidades, eCategoria listaCategorias[], int tamCategorias);
 void mostrarLaRecaudacionDeUnaFechaEnParticular(eAlquiler listaAlquileres[], int tamAlquileres, eJuego listaJuegos[], int tamJuegos);
 int compararFechas(eFecha fecha1, eFecha fecha2);
-
-
-#endif // INFORMES_H

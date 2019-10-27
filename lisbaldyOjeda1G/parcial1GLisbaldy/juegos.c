@@ -41,7 +41,6 @@ int imprimirJuegos(eJuego listaJuegos[], int tamJuegos, eCategoria listaCategori
     }
 
     printf("\n");
-    system("pause");
 
     return cantidadImpresa;
 }

@@ -142,10 +142,9 @@ int eliminarCliente(eCliente listaClientes[], int tamClientes, eLocalidad listaL
     char option;
     int idClienteAEliminar;
     int flag=0;
-    int cantClientesImpresa=99;
 
-    cantClientesImpresa += imprimirClientes(listaClientes, tamClientes, listaLocalidades, tamLocalidades);
-    getInt(&idClienteAEliminar, "Ingrese el Codigo del Cliente a Eliminar (100 - 999): ", "Error. ", 100, cantClientesImpresa);
+    imprimirClientes(listaClientes, tamClientes, listaLocalidades, tamLocalidades);
+    getInt(&idClienteAEliminar, "Ingrese el Codigo del Cliente a Eliminar (100 - 999): ", "Error. ", 100, 999);
 
     for(int i=0; i<tamClientes; i++)
     {
@@ -195,7 +194,6 @@ int imprimirClientes(eCliente listaClientes[], int tamClientes, eLocalidad lista
         }
     }
     printf("\n");
-    system("pause");
 
     return cantidadImpresa;
 }
@@ -287,16 +285,15 @@ int modificarCliente(eCliente listaClientes[], int tamClientes, eLocalidad lista
     int codigo;
     int option;
     int index;
-    int cantImpresa=99;
     int able=0;
 
         system("cls");
 
         printf("****** Modificar Cliente *******\n\n");
 
-        cantImpresa += imprimirClientes(listaClientes, tamClientes, listaLocalidades, tamLocalidades);
+        imprimirClientes(listaClientes, tamClientes, listaLocalidades, tamLocalidades);
         fflush(stdin);
-        getInt(&codigo, "Ingrese el Codigo del Cliente a Modificar (100 - 999): ", "Error. ", 100, cantImpresa);
+        getInt(&codigo, "Ingrese el Codigo del Cliente a Modificar (100 - 999): ", "Error. ", 100, 999);
 
         index = buscarClientePorCodigo(listaClientes, tamClientes, codigo);
 
@@ -329,11 +326,11 @@ int modificarCliente(eCliente listaClientes[], int tamClientes, eLocalidad lista
                     break;
                 case 2:
                     getString(listaClientes[index].domicilio, "\nIngrese el nuevo domicilio: ", "Error, debe contener entre 2 y 50 caracteres. ", 2, 51);
-                    printf("\nApellido modificado!\n\n");
+                    printf("\nDomicilio modificado!\n\n");
                     system("pause");
                     break;
                 case 3:
-                    getPhone(listaClientes[index].telefono, "Ingrese el nuevo telefono: ", "Error. ", 7, 15);
+                    getPhone(listaClientes[index].telefono, "\nIngrese el nuevo telefono: ", "Error. ", 7, 15);
                     printf("\nTelefono modificado!\n\n");
                     system("pause");
                     break;
@@ -415,7 +412,6 @@ int imprimirLocalidades(eLocalidad listaLocalidades[], int tamLocalidades)
         cantidadImpresa++;
     }
     printf("\n");
-    system("pause");
 
     return cantidadImpresa;
 }

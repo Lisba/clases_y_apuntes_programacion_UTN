@@ -25,6 +25,8 @@ typedef struct
     int isEmpty;
 } eAlquiler;
 
+#endif // ALQUILERES_H
+
 /** \brief Muestra un menu de opciones.
  *
  * \return int Devuelve la opción seleccionada.
@@ -147,4 +149,3 @@ int modificarAlquiler(eAlquiler listaAlquileres[], int tamAlquileres, eJuego lis
  */
 int hardCodearAlquileres(eAlquiler listaAlquileres[], int tamAlquileres, int* codigo);
 
-#endif // ALQUILERES_H

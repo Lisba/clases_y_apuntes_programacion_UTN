@@ -26,6 +26,8 @@ typedef struct
     int isEmpty;
 }eLocalidad;
 
+#endif // CLIENTES_H
+
 /** \brief Muestra un menu de opciones.
  *
  * \param void
@@ -161,4 +163,3 @@ int cargarNombreApellidoCliente(eCliente listaClientes[], int tamClientes, int i
 int iniciarLocalidades(eLocalidad listaLocalidades[], int tamLocalidades);
 int catNameLastName(char name[], char lastName[], char nameLastName[]);
 
-#endif // CLIENTES_H

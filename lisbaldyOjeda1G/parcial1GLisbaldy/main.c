@@ -40,10 +40,11 @@ int main()
     hardCodearClientes(arrayClientes, 4, &codigoCliente);
     hardCodearCategorias(arrayCategorias, 5, &codigoCategoria);
     hardCodearJuegos(arrayJuegos, 10, &codigoJuego);
-    hardCodearAlquileres(arrayAlquileres, 4, &codigoAlquiler);
+    hardCodearAlquileres(arrayAlquileres, 5, &codigoAlquiler);
     hardCodearLocalidades(arrayLocalidades, 5);
 
 imprimirAlquileres(arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS, arrayClientes, TAMCLIENTES);
+system("pause");
 
     do
     {
@@ -73,6 +74,7 @@ imprimirAlquileres(arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS, array
                     case 4:
                         ordenarClientes(arrayClientes, TAMCLIENTES);
                         imprimirClientes(arrayClientes, TAMCLIENTES, arrayLocalidades, TAMLOCALIDADES);
+                        system("pause");
                         break;
                     case 5:
                         printf("Confirma salir? (s/n):");
@@ -94,6 +96,7 @@ imprimirAlquileres(arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS, array
                         break;
                     case 2:
                         imprimirAlquileres(arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS, arrayClientes, TAMCLIENTES);
+                        system("pause");
                         break;
                     case 3:
                         printf("Confirma salir? (s/n): ");

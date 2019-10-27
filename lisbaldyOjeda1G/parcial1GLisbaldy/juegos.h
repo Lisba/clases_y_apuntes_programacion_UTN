@@ -17,6 +17,8 @@ typedef struct
     int isEmpty;
 } eJuego;
 
+#endif // JUEGOS_H
+
 /** \brief Agrega estructuras de juegos pre-definidos al array de juegos.
  *
  * \param listaJuegos[] eJuego Array de juegos.
@@ -132,4 +134,3 @@ int modificarJuego(eJuego listaJuegos[], int tamJuegos, eCategoria listaCategori
 
 int cargarDescJuego(eJuego listaJuegos[], int tamJuegos, int idJuego, char descripcionJuego[]);
 
-#endif // JUEGOS_H

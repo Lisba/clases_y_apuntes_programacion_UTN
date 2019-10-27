@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "lisba_utn.h"
 
  /** \brief  Pide un numero entero al usuario y valida y retorna el numero entero ingresado.

@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 int getInt(int* input, char message[], char eMessage[], int lowLimit, int highLimit);
 int getFloat(float* input, char message[], char eMessage[], float lowLimit, float highLimit);
 int getChar(char* input, char message[], char eMessage[], char lowLimit, char highLimit);

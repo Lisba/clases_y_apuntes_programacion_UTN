@@ -112,19 +112,18 @@ int imprimirAlquileres(eAlquiler listaAlquileres[], int tamAlquileres, eJuego li
     int cantImpresa = 0;
 
     system("cls");
-    printf("****** Lista de aLQUILERES *******\n\n");
+    printf("****** Lista de alquileres *******\n\n");
     printf(" CODIGO      JUEGO             CLIENTE          FECHA\n");
 
     for(int i=0; i<tamAlquileres; i++)
     {
         if(listaAlquileres[i].isEmpty == 0)
-        {
-            imprimirAlquiler(listaAlquileres[i], listaJuegos, tamJuegos, listaClientes, tamClientes);
-            cantImpresa++;
-        }
+            {
+                imprimirAlquiler(listaAlquileres[i], listaJuegos, tamJuegos, listaClientes, tamClientes);
+                cantImpresa++;
+            }
     }
     printf("\n");
-    system("pause");
 
     return cantImpresa;
 }
@@ -136,12 +135,16 @@ int imprimirAlquiler(eAlquiler alquiler, eJuego listaJuegos[], int tamJuegos, eC
     char nombreCliente[51];
     char apellidoCliente[51];
     char nombreYApellido[102];
+    int existeCliente = 0;
 
     cargarDescJuego(listaJuegos, tamJuegos, alquiler.codigoJuego, nombreJuego);
-    cargarNombreApellidoCliente(listaClientes, tamClientes, alquiler.codigoCliente, nombreCliente, apellidoCliente);
+    existeCliente = cargarNombreApellidoCliente(listaClientes, tamClientes, alquiler.codigoCliente, nombreCliente, apellidoCliente);
     catNameLastName(nombreCliente, apellidoCliente, nombreYApellido);
 
-    printf("%5d %13s %22s %6d/%d/%d\n", alquiler.codigoAlquiler, nombreJuego, nombreYApellido, alquiler.fecha.dia, alquiler.fecha.mes, alquiler.fecha.anio);
+    if(existeCliente)
+    {
+        printf("%5d %13s %22s %6d/%d/%d\n", alquiler.codigoAlquiler, nombreJuego, nombreYApellido, alquiler.fecha.dia, alquiler.fecha.mes, alquiler.fecha.anio);
+    }
 
     return able;
 }

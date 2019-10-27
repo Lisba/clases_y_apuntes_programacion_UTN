@@ -14,6 +14,8 @@ typedef struct
     int isEmpty;
 } eCategoria;
 
+#endif // CATEGORIA_H
+
 /** \brief Imprime en pantalla las categorías del array de categorías.
  *
  * \param listaCategorias[] eCategoria Array de categorías.
@@ -116,7 +118,4 @@ int buscarCategoriaPorCodigo(eCategoria listaCategorias[], int tamCategorias, in
  *
  */
 int modificarCategoria(eCategoria listaCategorias[], int tamCategorias);
-
 int cargarDescCategoria(eCategoria listaCategorias[], int tamCategorias, int idCategoria, char descripcionCategoria[]);
-
-#endif // CATEGORIA_H
