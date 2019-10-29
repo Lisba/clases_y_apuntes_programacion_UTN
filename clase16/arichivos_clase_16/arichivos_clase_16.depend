@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1572304568 source:d:\lisba\clases_y_apuntes_programacion_utn\clase16\arichivos_clase_16\main.c
+	<stdio.h>
+	<stdlib.h>
+
