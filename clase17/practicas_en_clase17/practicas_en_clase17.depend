@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1572657359 source:d:\lisba\clases_y_apuntes_programacion_utn\clase17\practicas_en_clase17\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
