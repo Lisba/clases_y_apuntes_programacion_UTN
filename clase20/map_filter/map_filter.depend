@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1574461931 source:d:\lisba\clases_y_apuntes_programacion_utn\clase20\map_filter\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1574461931 d:\lisba\clases_y_apuntes_programacion_utn\clase20\map_filter\linkedlist.h
+
+1574463746 source:d:\lisba\clases_y_apuntes_programacion_utn\clase20\map_filter\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+
