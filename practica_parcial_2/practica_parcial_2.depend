@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1574391290 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\practicas\practica_parcial_2\main.c
+	<stdio.h>
+	<stdlib.h>
+

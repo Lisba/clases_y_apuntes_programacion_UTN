@@ -19,6 +19,12 @@ LinkedList* ll_newLinkedList(void)
 
     this = (LinkedList*) malloc(sizeof(LinkedList));
 
+    if( this != NULL )
+    {
+        this->size = 0;
+        this->pFirstNode = NULL;
+    }
+
     return this;
 }
 
@@ -94,19 +100,47 @@ static int addNode(LinkedList* this, int nodeIndex, void* pElement)
 {
     int returnAux = -1;
 
-    if(this != NULL && nodeIndex >= 0 && nodeIndex < ll_len(this))
+    Node* nuevoNodo = NULL;
+    Node* nodoAnterior = NULL;
+    Node* nodoAux = NULL;
+
+    if(this != NULL && nodeIndex >= 0 && nodeIndex <= ll_len(this))
     {
-        Node* nodoAnterior = getNode( this, ( nodeIndex - 1 ) );
-        Node* nuevoNodo = (Node*) malloc(sizeof(Node));
+        nuevoNodo = (Node*) malloc(sizeof(Node));
+        nodoAnterior = getNode( this, ( nodeIndex-1 ) );
+        nodoAux = getNode(this, nodeIndex);
 
-        nuevoNodo->pNextNode = nodoAnterior->pNextNode;
-        nuevoNodo->pElement = pElement;
+        if(nuevoNodo != NULL)
+        {
+            if(nodeIndex == 0)
+            {
+                nuevoNodo->pNextNode = this->pFirstNode;
+                nuevoNodo->pElement = pElement;
 
-        nodoAnterior->pNextNode = nuevoNodo;
+                this->pFirstNode = nuevoNodo;
+                this->size += 1;
+                returnAux = 0;
+            }
+            else if(nodeIndex > 0 && nodeIndex < ll_len(this))
+            {
+                nuevoNodo->pNextNode = nodoAnterior->pNextNode;
+                nuevoNodo->pElement = pElement;
 
-        returnAux = 0;
+                nodoAnterior->pNextNode = nuevoNodo;
+                this->size += 1;
+                returnAux = 0;
+            }
+            else if ( nodeIndex == ll_len(this) )
+            {
+                nuevoNodo->pNextNode = nodoAnterior->pNextNode;
+                nuevoNodo->pElement = pElement;
+
+                nodoAnterior->pNextNode = nuevoNodo;
+                this->size += 1;
+                returnAux = 0;
+            }
+        }
     }
-
     return returnAux;
 }
 

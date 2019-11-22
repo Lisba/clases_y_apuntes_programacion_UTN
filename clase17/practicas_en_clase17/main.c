@@ -10,6 +10,10 @@ typedef struct
     float precio;
 }eAuto;
 
+//Mostradores
+int mostrarUnAuto(eAuto* myAuto);
+int mostrarTodos(eAuto** autos, int tam);
+//Setters y Getters
 int setIdAuto(eAuto* unAuto, int id);
 int getIdAuto(eAuto* unAuto);
 int getMarcaAuto(eAuto* unAuto, char* marca);
@@ -18,10 +22,12 @@ int setModeloAuto(eAuto* unAuto, int modelo);
 int getModeloAuto(eAuto* unAuto);
 int setPrecioAuto(eAuto* unAuto, float precio);
 float getPrecioAuto(eAuto* unAuto);
+//Constructores
 eAuto* newAuto(void);
 eAuto* newAutoParam(int id, char* marca, int modelo, float precio);
-int mostrarTodos(eAuto** autos, int tam);
+//Escritura / Lectura de Arichivos
 int guardarAutosBinario(eAuto** lista, int tam, char* path);
+int guardarAutosTextoCSV(eAuto** lista, int tam, char* path);
 
 int main()
 {
@@ -42,7 +48,6 @@ int main()
     }
 
     f = fopen("autos.csv", "r");
-
     if(f == NULL)
     {
         printf("No se pudo abrir el archivo.\n");
@@ -52,7 +57,7 @@ int main()
 
     fscanf(f, "%[^,],%[^,],%[^,],%[^\n]\n", buffer[0], buffer[1], buffer[2], buffer[3]);
 
-    while(!feof(f))
+    while( !feof(f) )
     {
         cant = fscanf(f, "%[^,],%[^,],%[^,],%[^\n]\n", buffer[0], buffer[1], buffer[2], buffer[3]);
         if(cant < 4)
@@ -61,7 +66,7 @@ int main()
         }
         else
         {
-            autoAux = newAutoParam(atoi(buffer[0]), buffer[1], atoi(buffer[2]), atof(buffer[3]));
+            autoAux = newAutoParam( atoi(buffer[0]), buffer[1], atoi(buffer[2]), atof(buffer[3]) );
             if(autoAux != NULL)
             {
                 *(lista + tam) = autoAux;
@@ -82,13 +87,11 @@ int main()
 
     if( guardarAutosBinario(lista, tam, "autos.bin"))
     {
-        printf("Autos guardados en archivo binario.\n");
-        system("pause");
+        printf("\nAutos guardados en archivo binario.\n\n");
     }
     else
     {
         printf("No se pudieron guardar los autos.\n");
-        system("pause");
     }
 
     int tam2 = 0;
@@ -139,6 +142,15 @@ int main()
 
     mostrarTodos(lista2, tam2);
 
+    if( guardarAutosTextoCSV(lista2, tam2, "listaAutos.csv") )
+    {
+        printf("Autos guardados en archivo de texto csv.\n");
+    }
+    else
+    {
+        printf("No se pudieron guardar los autos.\n");
+    }
+
     return 0;
 }
 
@@ -171,7 +183,7 @@ int setMarcaAuto(eAuto* unAuto, char* marca)
 {
     int able=0;
 
-    if(unAuto != NULL && marca != NULL && strlen(marca)>= 30)
+    if(unAuto != NULL && marca != NULL && strlen(marca) >= 3)
     {
         strcpy(unAuto->marca, marca);
         able = 1;
@@ -197,7 +209,7 @@ int setModeloAuto(eAuto* unAuto, int modelo)
 {
     int able=0;
 
-    if(unAuto != NULL && modelo >= 1950 && modelo <= 2020)
+    if(unAuto != NULL && modelo >= 1980 && modelo <= 2020)
     {
         unAuto->modelo = modelo;
         able = 1;
@@ -210,7 +222,7 @@ int getModeloAuto(eAuto* unAuto)
 {
     int modelo=0;
 
-    if(unAuto != NULL && modelo >= 1950 && modelo <= 2020)
+    if(unAuto != NULL)
     {
         modelo = unAuto->modelo;
         modelo = 1;
@@ -223,7 +235,7 @@ int setPrecioAuto(eAuto* unAuto, float precio)
 {
     int able=0;
 
-    if(unAuto != NULL && precio >= 60000 && precio <= 1000000)
+    if(unAuto != NULL && precio >= 500 && precio <= 1500)
     {
         unAuto->precio = precio;
         able = 1;
@@ -253,29 +265,28 @@ eAuto* newAuto(void)
     if(unAuto == NULL)
     {
         printf("No se pudo reservar memoria\n");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     unAuto->id = 0;
     strcpy(unAuto->marca, " ");
     unAuto->modelo = 0;
-    (*unAuto).precio = 0;
+    unAuto->precio = 0;
 
     return unAuto;
 }
 
 eAuto* newAutoParam(int id, char* marca, int modelo, float precio)
 {
-    eAuto* myCar;
-
-    myCar = newAuto();
+    eAuto* myCar = newAuto();
 
     if(myCar != NULL)
     {
-        if((setIdAuto(myCar, id)
-            && getMarcaAuto(myCar, marca)
+        if(
+            setIdAuto(myCar, id)
+            && setMarcaAuto(myCar, marca)
             && setModeloAuto(myCar, modelo)
-            && setPrecioAuto(myCar, precio)) == 0)
+            && setPrecioAuto(myCar, precio) == 0)
         {
             free(myCar);
             myCar = NULL;
@@ -291,7 +302,7 @@ int mostrarUnAuto(eAuto* myAuto)
 
     if(myAuto != NULL)
     {
-        printf("%d %s %d %.2f", myAuto->id, myAuto->marca, (*myAuto).modelo, myAuto->precio);
+        printf("%d %15s %6d %9.2f\n", myAuto->id, myAuto->marca, myAuto->modelo, myAuto->precio);
         able = 1;
     }
 
@@ -331,7 +342,37 @@ int guardarAutosBinario(eAuto** lista, int tam, char* path)
 
         for(int i=0; i<tam; i++)
         {
-            fwrite( *(lista+i), sizeof(eAuto), 1, path);
+            fwrite( *(lista+i), sizeof(eAuto), 1, f);
+        }
+
+        fclose(f);
+
+        able = 1;
+    }
+
+    return able;
+}
+
+int guardarAutosTextoCSV(eAuto** lista, int tam, char* path)
+{
+    int able = 0;
+    FILE* f = NULL;
+
+    if(lista != NULL && tam > 0 && path != NULL)
+    {
+        f = fopen(path, "w");
+        if(f == NULL)
+        {
+            printf("No se pudo abrir el archivo.\n");
+            system("pause");
+            return able;
+        }
+
+        fprintf(f, "id,marca,modelo,precio\n");
+
+        for(int i=0; i<tam; i++)
+        {
+            fprintf(f, "%d,%s,%d,%.2f\n", (*(lista+i))->id, (*(lista+i))->marca, (*(lista+i))->modelo, (*(lista+i))->precio);
         }
 
         fclose(f);
