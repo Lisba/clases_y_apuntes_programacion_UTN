@@ -1,0 +1,56 @@
+# depslib dependency file v1.0
+1574618269 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\clase20\mapfilterfunctions\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Dominio.h"
+	"Controller.h"
+	"lisba_utn.h"
+
+1574618105 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\clase20\mapfilterfunctions\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1574616416 c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\clase20\mapfilterfunctions\linkedlist.h
+
+1574477396 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\clase20\mapfilterfunctions\lisba_utn.c
+	"lisba_utn.h"
+
+1574477396 c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\clase20\mapfilterfunctions\lisba_utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1574570160 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\clase20\mapfilterfunctions\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Dominio.h"
+
+1574616416 c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\clase20\mapfilterfunctions\dominio.h
+	"LinkedList.h"
+
+1574570840 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\clase20\mapfilterfunctions\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Dominio.h"
+	"parser.h"
+	"lisba_utn.h"
+
+1574556220 c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\clase20\mapfilterfunctions\parser.h
+
+1574617227 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\clase20\mapfilterfunctions\dominio.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"Dominio.h"
+	"LinkedList.h"
+	"lisba_utn.h"
+
+1574556220 c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\clase20\mapfilterfunctions\controller.h
+

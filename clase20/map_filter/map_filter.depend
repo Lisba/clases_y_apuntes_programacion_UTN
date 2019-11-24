@@ -12,3 +12,24 @@
 	<stdlib.h>
 	"LinkedList.h"
 
+1574477395 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\clase20\map_filter\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1574477395 c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\clase20\map_filter\linkedlist.h
+
+1574477396 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\clase20\map_filter\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+
+1574477396 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\clase20\map_filter\lisba_utn.c
+	"lisba_utn.h"
+
+1574477396 c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\clase20\map_filter\lisba_utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

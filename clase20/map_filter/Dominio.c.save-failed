@@ -1,5 +1,50 @@
-#include "Employee.h"
+#include "Dominio.h"
 #include "LinkedList.h"
+#include <string.h>
+
+eDominio* dominio_new(void)
+{
+    eDominio* this = (eDominio*) malloc(sizeof(eDominio));
+
+    if(this != NULL)
+    {
+        this->id = 0;
+        strcpy(this->dominio, " ");
+        this->anio = 0;
+        this->tipo = ' ';
+    }
+
+    return this;
+}
+
+eDominio* dominio_newParametros(char* idStr, char* dominioStr, char* anioStr, char tipo)
+{
+    eDominio* this;
+
+        if(idStr != NULL && dominioStr != NULL && anioStr != NULL && tipo != NULL)
+        {
+            this = dominio_new();
+
+            if(this != NULL)
+            {
+                if( !dominio_setId(this, atoi(idStr)) || !dominio_setDominio(this, dominioStr) || !dominio_setAnio(this, atoi(anioStr)) || !dominio_setTipo(this, tipo) )
+                {
+                        dominio_delete(this);
+                        this = NULL;
+                }
+            }
+        }
+
+    return this;
+}
+
+void dominio_delete(eDominio* this)
+{
+    if(this != NULL)
+    {
+        free(this);
+    }
+}
 
 int dominio_setId(eDominio* this, int id)
 {
@@ -126,20 +171,20 @@ int printDominio(eDominio* this)
     return able;
 }
 
-int printDominios(LinkedList* pArrayListDominio)
+int printDominios(LinkedList* this)
 {
     int able = 0;
     int tam;
 
-    if( pArrayListDominio != NULL )
+    if( this != NULL )
     {
-        tam = ll_len(pArrayListDominio);
+        tam = ll_len(this);
         system("cls");
         printf("ID             DOMINIO      ANIO    TIPO\n");
 
         for(int i=0; i<tam; i++)
         {
-            printDominio(((eDominio*) ll_get(pArrayListDominio, i)));
+            printDominio(((eDominio*) ll_get(this, i)));
             able = 1;
         }
     }
@@ -151,18 +196,18 @@ int validateDominio(eDominio* this)
 {
     int isUsed = 0;
     int id;
-    char dominio[128];
+    char dominio[7];
     int anio;
     char tipo;
 
     if(this != NULL)
     {
         dominio_getId(this, &id);
+        dominio_getdominio(this, dominio);
         dominio_getAnio(this, &anio;
         dominio_gettipo(this, &tipo);
-        dominio_getdominio(this, dominio);
 
-        if(id > 0 && anio > 0 &&  dominio != NULL && tipo > 0)
+        if(id > 0 && anio > 0 &&  strlen(dominio) > 0 && tipo > 0)
         {
             isUsed = 1;
         }
@@ -170,3 +215,4 @@ int validateDominio(eDominio* this)
 
     return isUsed;
 }
+

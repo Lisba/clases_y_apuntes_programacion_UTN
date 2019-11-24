@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "LinkedList.h"
-#include "Employee.h"
+#include "Dominio.h"
 #include "parser.h"
 #include "conio.h"
 
@@ -82,7 +82,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     char nombre[128];
     int horasTrabajadas;
     int sueldo;
-    sEmployee* employee;
+    eDominio* employee;
 
     employee = employee_new();
 
@@ -155,12 +155,12 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 
     for(int i=0; i<( ll_len(pArrayListEmployee) ); i++)
     {
-        if( idToModify == ( (sEmployee*) ll_get(pArrayListEmployee, i) )->id )
+        if( idToModify == ( (eDominio*) ll_get(pArrayListEmployee, i) )->id )
         {
             flag = 1;
             printf("\n");
             printf("ID             NOMBRE      HORAS T.    SUELDO\n");
-            printEmployee((sEmployee*) ll_get(pArrayListEmployee, i));
+            printEmployee((eDominio*) ll_get(pArrayListEmployee, i));
             printf("\n");
 
             printf("1) MODIFICAR NOMBRE\n");
@@ -174,7 +174,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
             {
             case 1:
                 getName(nombreNuevo, "\nINGRESE EL NOMBRE: ", "ERROR. ", 1, 127);
-                if( employee_setNombre( (sEmployee*) ll_get(pArrayListEmployee, i), nombreNuevo) )
+                if( employee_setNombre( (eDominio*) ll_get(pArrayListEmployee, i), nombreNuevo) )
                 {
                     able = 1;
                     printf("\nMODIFICACION REALIZADA CON EXITO!\n");
@@ -182,7 +182,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
                 break;
             case 2:
                 getInt(&enteroAuxiliar, "\nINGRESE LAS HORAS TRBAJADAS: ", "ERROR. ", 1, 1000);
-                if( employee_setHorasTrabajadas( (sEmployee*) ll_get(pArrayListEmployee, i), enteroAuxiliar) )
+                if( employee_setHorasTrabajadas( (eDominio*) ll_get(pArrayListEmployee, i), enteroAuxiliar) )
                 {
                     able = 1;
                     printf("\nMODIFICACION REALIZADA CON EXITO!\n");
@@ -190,7 +190,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
                 break;
             case 3:
                 getInt(&enteroAuxiliar, "\nINGRESE EL SUELDO: ", "ERROR. ", 1, 60000);
-                if( employee_setSueldo( (sEmployee*) ll_get(pArrayListEmployee, i), enteroAuxiliar) )
+                if( employee_setSueldo( (eDominio*) ll_get(pArrayListEmployee, i), enteroAuxiliar) )
                 {
                     able = 1;
                     printf("\nMODIFICACION REALIZADA CON EXITO!\n");
@@ -236,9 +236,9 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 
         for(int i=0; i<ll_len(pArrayListEmployee); i++)
         {
-            if( idToSearch == ( (sEmployee*) ll_get(pArrayListEmployee, i) )->id )
+            if( idToSearch == ( (eDominio*) ll_get(pArrayListEmployee, i) )->id )
             {
-                printEmployee( (sEmployee*) ll_get(pArrayListEmployee, i) );
+                printEmployee( (eDominio*) ll_get(pArrayListEmployee, i) );
 
                 printf("\nDESEA ELIMINAR ESTE EMPLEADO? (s/n): ");
                 fflush(stdin);
@@ -500,7 +500,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
     int horasTrabajadas;
     int sueldo;
     FILE* f = NULL;
-    sEmployee* employee;
+    eDominio* employee;
 
     if( path != NULL && pArrayListEmployee != NULL )
     {
@@ -511,7 +511,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
         {
             for(int i=0; i<tam; i++)
             {
-                employee = (sEmployee*) ll_get(pArrayListEmployee, i);
+                employee = (eDominio*) ll_get(pArrayListEmployee, i);
 
                 employee_getId(employee, &id);
                 employee_getNombre(employee, nombre);
@@ -552,7 +552,7 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
     int contador = 0;
     int tam = 0;
     FILE* f = NULL;
-    sEmployee* employee;
+    eDominio* employee;
 
     if( path != NULL && pArrayListEmployee != NULL )
     {
@@ -564,11 +564,11 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
         {
             for(int i=0; i<tam; i++)
             {
-                employee = (sEmployee*) ll_get(pArrayListEmployee, i);
+                employee = (eDominio*) ll_get(pArrayListEmployee, i);
 
                 if( employee != NULL )
                 {
-                    fwrite(employee, sizeof(sEmployee), 1, f);
+                    fwrite(employee, sizeof(eDominio), 1, f);
                     contador++;
                 }
 
