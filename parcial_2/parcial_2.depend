@@ -1,0 +1,51 @@
+# depslib dependency file v1.0
+1574725130 source:d:\lisba\clases_y_apuntes_programacion_utn\parcial_2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Cachorros.h"
+	"Controller.h"
+	"lisba_utn.h"
+	"LinkedList.h"
+
+1574724603 source:d:\lisba\clases_y_apuntes_programacion_utn\parcial_2\cachorros.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"Cachorros.h"
+	"LinkedList.h"
+	"lisba_utn.h"
+
+1574724242 d:\lisba\clases_y_apuntes_programacion_utn\parcial_2\cachorros.h
+	"LinkedList.h"
+
+1574723509 d:\lisba\clases_y_apuntes_programacion_utn\parcial_2\linkedlist.h
+
+1574728263 d:\lisba\clases_y_apuntes_programacion_utn\parcial_2\lisba_utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1574723811 source:d:\lisba\clases_y_apuntes_programacion_utn\parcial_2\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Cachorros.h"
+	"parser.h"
+	"conio.h"
+
+1574720997 d:\lisba\clases_y_apuntes_programacion_utn\parcial_2\parser.h
+
+1574723011 source:d:\lisba\clases_y_apuntes_programacion_utn\parcial_2\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Cachorros.h"
+
+1574720710 d:\lisba\clases_y_apuntes_programacion_utn\parcial_2\controller.h
+
+1574723509 source:d:\lisba\clases_y_apuntes_programacion_utn\parcial_2\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
