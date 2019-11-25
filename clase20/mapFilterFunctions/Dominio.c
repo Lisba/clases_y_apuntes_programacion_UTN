@@ -262,36 +262,40 @@ int ordenarPorId(void* dom1, void* dom2)
 
 void* clasificarCampoTipo(void* pElement)
 {
-    eDominio* pElement1 = (eDominio*) pElement;
-
     if(pElement != NULL)
     {
-        if(pElement1->dominio[0] >= '0' && pElement1->dominio[0] <= '9')
+        char dominio[10];
+        dominio_getDominio(pElement, dominio);
+
+        if(dominio[0] >= '0' && dominio[0] <= '9')
         {
-            dominio_setTipo(pElement1, 'M');
+            dominio_setTipo(pElement, 'M');
         }
         else
         {
-            dominio_setTipo(pElement1, 'A');
+            dominio_setTipo(pElement, 'A');
         }
     }
 
-    return pElement1;
+    return pElement;
 }
 
 int filtrarCampoTipo(void* pElement, char character)
 {
     int value = -1;
 
-    eDominio* pElement1 = (eDominio*) pElement;
+    if(pElement != NULL)
+    {
+        eDominio* pElementCasted = (eDominio*) pElement;
 
-    if(pElement1->tipo == character)
-    {
-        value = 1;
-    }
-    else
-    {
-        value = 0;
+        if(pElementCasted->tipo == character)
+        {
+            value = 1;
+        }
+        else
+        {
+            value = 0;
+        }
     }
 
     return value;

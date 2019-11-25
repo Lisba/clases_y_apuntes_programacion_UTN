@@ -601,13 +601,12 @@ int ll_sort(LinkedList* this, int (*pFunc)(void*, void*), int order)
 
 LinkedList* ll_map(LinkedList* this, void* (*pFunc)(void*))
 {
-    int tam;
     LinkedList* newLinkedList = ll_newLinkedList();
-    void* element;
 
     if(this != NULL && newLinkedList != NULL)
     {
-        tam = ll_len(this);
+        int tam = ll_len(this);
+        void* element = NULL;
         newLinkedList = ll_clone(this);
 
         if( ll_containsAll(this, newLinkedList) )
@@ -626,20 +625,17 @@ LinkedList* ll_map(LinkedList* this, void* (*pFunc)(void*))
 LinkedList* ll_filter(LinkedList* this, int (*pFunc)(void*, char), char tipo)
 {
     LinkedList* newLinkedList = ll_newLinkedList();
-    void* element = NULL;
-    int param;
-    int tam;
 
     if(this != NULL && newLinkedList != NULL)
     {
-        tam = ll_len(this);
+        void* element = NULL;
+        int tam = ll_len(this);
 
         for(int i=0; i<tam; i++)
         {
             element = ll_get(this, i);
-            param = pFunc(element, tipo);
 
-            if( param )
+            if( pFunc(element, tipo) )
             {
                 ll_add(newLinkedList, element);
             }
