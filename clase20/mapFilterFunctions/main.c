@@ -12,6 +12,7 @@ int main()
     LinkedList* listaDominiosMoto = NULL;
     char respuesta = 'n';
     int datosCargadosConTipo = 0;
+    char NombreArchivo[30];
 
     do
     {
@@ -20,7 +21,8 @@ int main()
         case 1:
             if( listaDominios != NULL )
             {
-                if( controller_loadFromText("datos.csv", listaDominios) )
+                getString(NombreArchivo, "\nINGRESE EL NOMBRE DEL ARCHIVO A ABRIR: ", "ERROR! MAXIMO 29 CARACTERES! ", 1, 29);
+                if( controller_loadFromText(NombreArchivo, listaDominios) )
                 {
                     printf("\nDATOS CARGADOS CORRECTAMENTE!\n\n");
                 }
