@@ -169,7 +169,7 @@ void listarElJuegoPreferidoEnUnaLocalidad(eLocalidad listaLocalidades[], int tam
 {
     int localidad;
     int cantImpresa=0;
-    int cantidadJuegoPreferido[tamJuegos];
+    int cantidadJuegoPreferido[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     int mayor=0;
 
     cantImpresa = imprimirLocalidades(listaLocalidades, tamLocalidades);
@@ -200,10 +200,18 @@ void listarElJuegoPreferidoEnUnaLocalidad(eLocalidad listaLocalidades[], int tam
         if(mayor < cantidadJuegoPreferido[i])
         {
             mayor = cantidadJuegoPreferido[i];
-            imprimirJuego(listaJuegos[i], listaCategorias, tamCategorias);
-            system("pause");
         }
     }
+
+    for(int i=0; i<tamJuegos; i++)
+    {
+        if(cantidadJuegoPreferido[i] == mayor)
+        {
+            imprimirJuego(listaJuegos[i], listaCategorias, tamCategorias);
+        }
+    }
+
+    system("pause");
 }
 
 void listarJuegosAlquiladosPorMujeres(eJuego listaJuegos[], int tamJuegos, eCliente listaClientes[], int tamClientes, eAlquiler listaAlquileres[], int tamAlquileres, eCategoria listaCategorias[], int tamCategorias)
