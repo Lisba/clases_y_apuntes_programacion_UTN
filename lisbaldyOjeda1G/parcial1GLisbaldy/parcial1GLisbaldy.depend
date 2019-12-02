@@ -242,10 +242,10 @@
 1572197162 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\clientes.c
 	"clientes.h"
 
-1575217568 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\informes.c
+1575259286 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\informes.c
 	"informes.h"
 
-1572132509 c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\informes.h
+1575259271 c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\informes.h
 	<stdio.h>
 	<stdlib.h>
 	"alquileres.h"
@@ -259,7 +259,7 @@
 1572132509 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\lisba_utn.c
 	"lisba_utn.h"
 
-1572198892 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\main.c
+1575259271 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\lisbaldyojeda1g\parcial1glisbaldy\main.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>

@@ -17,8 +17,13 @@ int subMenuInformes()
     printf("8-Listar los juegos alquilados por mujeres\n");
     printf("9-Listar los clientes que alquilaron un determinado juego.\n");
     printf("10-Mostrar la recaudacion de una fecha en particular.\n");
-    printf("11-Salir\n\n");
-    getInt(&option, "Ingrese opcion: ", "Opcion invalida. ", 1, 11);
+    printf("11-Ingresar una localidad e informar el monto recaudado en alquileres a clientes de la misma.\n");
+    printf("12-Elegir un juego e informar las fechas y nombres de los clientes que lo alquilaron.\n");
+    printf("13-Informar la categoria de los juegos menos alquilada.\n");
+    printf("14-Listar los telefonos de los clientes que alquilaron juegos en una determinada fecha.\n");
+    printf("15-Mostrar el o los juegos mas alquilados por hombres.\n");
+    printf("16-Salir\n\n");
+    getInt(&option, "Ingrese opcion: ", "Opcion invalida. ", 1, 16);
 
     return option;
 }
@@ -290,7 +295,7 @@ void mostrarLaRecaudacionDeUnaFechaEnParticular(eAlquiler listaAlquileres[], int
 
 int compararFechas(eFecha fecha1, eFecha fecha2)
 {
-    int able = 0;
+    int coinciden = 0;
 
     if(fecha1.dia == fecha2.dia)
     {
@@ -298,10 +303,186 @@ int compararFechas(eFecha fecha1, eFecha fecha2)
         {
             if(fecha1.anio == fecha2.anio)
             {
-                able = 1;
+                coinciden = 1;
             }
         }
     }
 
-    return able;
+    return coinciden;
+}
+
+void montoRecaudadoPorLocalidad(eLocalidad listaLocalidades[], int tamLocalidades, eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlquileres[], int tamAlquileres, eCliente listaClientes[], int tamClientes)
+{
+    int localidad;
+    float importeRecaudado = 0;
+
+    imprimirLocalidades(listaLocalidades, tamLocalidades);
+    getInt(&localidad, "Seleccione el ID de la localidad: ", "ERROR! ", 1, 5);
+
+    for(int i=0; i<tamLocalidades; i++)
+    {
+        if(localidad == listaLocalidades[i].id)
+        {
+            for(int k=0; k<tamClientes; k++)
+            {
+                if(listaLocalidades[i].id == listaClientes[k].idLocalidad)
+                {
+                    for(int j=0; j<tamAlquileres; j++)
+                    {
+                        if(listaClientes[k].codigo == listaAlquileres[j].codigoCliente)
+                        {
+                            for(int h=0; h<tamJuegos; h++)
+                            {
+                                if(listaAlquileres[j].codigoJuego == listaJuegos[h].codigo)
+                                {
+                                    importeRecaudado += listaJuegos[h].importe;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    printf("\nEl importe recaudado por esa localidad es: %.2f\n\n", importeRecaudado);
+    system("pause");
+}
+
+void fechaYNombreClientesAlquilaronJuego(eLocalidad listaLocalidades[], int tamLocalidades, eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlquileres[], int tamAlquileres, eCliente listaClientes[], int tamClientes, eCategoria listaCategorias[], int tamCategorias)
+{
+    int juego;
+
+    imprimirJuegos(listaJuegos, tamJuegos, listaCategorias, tamCategorias);
+    getInt(&juego, "Selecciona el ID de un juego: ", "ERROR! ", 100, 110);
+
+    for(int i=0; i<tamJuegos; i++)
+    {
+        if(juego == listaJuegos[i].codigo)
+        {
+            for(int j=0; j<tamAlquileres; j++)
+            {
+                if(listaJuegos[i].codigo == listaAlquileres[j].codigoJuego)
+                {
+                    for(int k=0; k<tamClientes; k++)
+                    {
+                        if(listaAlquileres[j].codigoCliente == listaClientes[k].codigo)
+                        {
+                            printf("\nLa fecha es: %d/%d/%d, y el nombre del cliente es: %s\n\n", listaAlquileres[j].fecha.dia,listaAlquileres[j].fecha.mes, listaAlquileres[j].fecha.anio, listaClientes[k].nombre);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    system("pause");
+}
+
+void categoriaMenosAlquilada(eLocalidad listaLocalidades[], int tamLocalidades, eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlquileres[], int tamAlquileres, eCliente listaClientes[], int tamClientes, eCategoria listaCategorias[], int tamCategorias)
+{
+    int alquilerCategorias[5] = {0, 0, 0, 0, 0};
+    int menor = 0;
+
+    for(int i=0; i<tamCategorias; i++)
+    {
+        for(int j=0; j<tamJuegos; j++)
+        {
+            if(listaCategorias[i].idCategoria == listaJuegos[j].idCategoria)
+            {
+                for(int k=0; k<tamAlquileres; k++)
+                {
+                    if(listaJuegos[j].codigo == listaAlquileres[k].codigoJuego)
+                    {
+                        alquilerCategorias[i]++;
+                    }
+                }
+            }
+        }
+    }
+
+    for(int i=0; i<tamCategorias-1; i++)
+    {
+        if(menor > alquilerCategorias[i])
+        {
+            menor = alquilerCategorias[i];
+        }
+    }
+
+    for(int i=0; i<tamCategorias-1; i++)
+    {
+        if(alquilerCategorias[i] == menor)
+        {
+            imprimirCategoria(listaCategorias[i]);
+        }
+    }
+    system("pause");
+}
+
+void telefClientesAlquilaronJuegosFechaDeterm(eLocalidad listaLocalidades[], int tamLocalidades, eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlquileres[], int tamAlquileres, eCliente listaClientes[], int tamClientes, eCategoria listaCategorias[], int tamCategorias)
+{
+    eFecha fecha;
+
+    getInt(&fecha.dia, "Seleccione dia: ", "Error. ", 1, 31);
+    getInt(&fecha.mes, "Seleccione mes: ", "Error. ", 1, 12);
+    getInt(&fecha.anio, "Seleccione anio: ", "Error. ", 2000, 2019);
+
+    for(int i=0; i<tamAlquileres; i++)
+    {
+        if( compararFechas(fecha, listaAlquileres[i].fecha) )
+        {
+            for(int j=0; j<tamClientes; j++)
+            {
+                if(listaAlquileres[i].codigoCliente == listaClientes[j].codigo)
+                {
+                    imprimirCliente(listaClientes[j], listaLocalidades, tamLocalidades);
+                }
+            }
+        }
+    }
+
+    system("pause");
+}
+
+void juegosMasAlquiladosHombres(eLocalidad listaLocalidades[], int tamLocalidades, eJuego listaJuegos[], int tamJuegos, eAlquiler listaAlquileres[], int tamAlquileres, eCliente listaClientes[], int tamClientes, eCategoria listaCategorias[], int tamCategorias)
+{
+    int juegoMasAlquilado[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    int mayor = 0;
+
+    for(int i=0; i<tamClientes; i++)
+    {
+        if(listaClientes[i].sexo == 'm')
+        {
+            for(int j=0; j<tamAlquileres; j++)
+            {
+                if(listaClientes[i].codigo == listaAlquileres[j].codigoCliente)
+                {
+                    for(int k=0; k<tamJuegos; k++)
+                    {
+                        if(listaAlquileres[j].codigoJuego == listaJuegos[k].codigo)
+                        {
+                            juegoMasAlquilado[k]++;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    for(int i=0; i<tamJuegos; i++)
+    {
+        if(mayor < juegoMasAlquilado[i])
+        {
+            mayor = juegoMasAlquilado[i];
+        }
+    }
+
+    for(int i=0; i<tamJuegos; i++)
+    {
+        if(juegoMasAlquilado[i] == mayor)
+        {
+            imprimirJuego(listaJuegos[i], listaCategorias, tamCategorias);
+        }
+    }
+
+    system("pause");
 }

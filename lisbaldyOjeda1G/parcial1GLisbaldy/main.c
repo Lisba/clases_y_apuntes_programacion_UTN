@@ -43,9 +43,6 @@ int main()
     hardCodearAlquileres(arrayAlquileres, 5, &codigoAlquiler);
     hardCodearLocalidades(arrayLocalidades, 5);
 
-imprimirAlquileres(arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS, arrayClientes, TAMCLIENTES);
-system("pause");
-
     do
     {
         system("cls");
@@ -144,6 +141,21 @@ system("pause");
                         mostrarLaRecaudacionDeUnaFechaEnParticular(arrayAlquileres, TAMALQUILERES, arrayJuegos, TAMJUEGOS);
                         break;
                     case 11:
+                        montoRecaudadoPorLocalidad(arrayLocalidades, TAMLOCALIDADES, arrayJuegos, TAMJUEGOS, arrayAlquileres, TAMALQUILERES, arrayClientes, TAMCLIENTES);
+                        break;
+                    case 12:
+                        fechaYNombreClientesAlquilaronJuego(arrayLocalidades, TAMLOCALIDADES, arrayJuegos, TAMJUEGOS, arrayAlquileres, TAMALQUILERES, arrayClientes, TAMCLIENTES, arrayCategorias, TAMCATEGORIAS);
+                        break;
+                    case 13:
+                        categoriaMenosAlquilada(arrayLocalidades, TAMLOCALIDADES, arrayJuegos, TAMJUEGOS, arrayAlquileres, TAMALQUILERES, arrayClientes, TAMCLIENTES, arrayCategorias, TAMCATEGORIAS);
+                        break;
+                    case 14:
+                        telefClientesAlquilaronJuegosFechaDeterm(arrayLocalidades, TAMLOCALIDADES, arrayJuegos, TAMJUEGOS, arrayAlquileres, TAMALQUILERES, arrayClientes, TAMCLIENTES, arrayCategorias, TAMCATEGORIAS);
+                        break;
+                    case 15:
+                        juegosMasAlquiladosHombres(arrayLocalidades, TAMLOCALIDADES, arrayJuegos, TAMJUEGOS, arrayAlquileres, TAMALQUILERES, arrayClientes, TAMCLIENTES, arrayCategorias, TAMCATEGORIAS);
+                        break;
+                    case 16:
                         printf("Confirma salir? (s/n):");
                         fflush(stdin);
                         salirSubmenuInformes = getche();
