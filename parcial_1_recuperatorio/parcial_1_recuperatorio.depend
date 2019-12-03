@@ -1,0 +1,65 @@
+# depslib dependency file v1.0
+1574728263 source:d:\lisba\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\lisba_utn.c
+	"lisba_utn.h"
+
+1574728263 d:\lisba\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\lisba_utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1575328236 source:d:\lisba\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\destino.c
+	"Destino.h"
+
+1575333092 source:d:\lisba\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"lisba_utn.h"
+	"Piloto.h"
+	"Vuelo.h"
+	"Destino.h"
+	"Consultas.h"
+
+1575327515 d:\lisba\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\piloto.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"lisba_utn.h"
+
+1575329823 d:\lisba\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\vuelo.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"lisba_utn.h"
+	"Piloto.h"
+	"Destino.h"
+
+1575327515 d:\lisba\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\destino.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"lisba_utn.h"
+
+1575329462 source:d:\lisba\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\piloto.c
+	"Piloto.h"
+
+1575332733 source:d:\lisba\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\vuelo.c
+	"Vuelo.h"
+
+1575333847 source:d:\lisba\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\consultas.c
+	"Consultas.h"
+
+1575333077 d:\lisba\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\consultas.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"lisba_utn.h"
+	"Piloto.h"
+	"Vuelo.h"
+	"Destino.h"
+
