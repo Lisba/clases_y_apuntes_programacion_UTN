@@ -63,3 +63,67 @@
 	"Vuelo.h"
 	"Destino.h"
 
+1576350909 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\destino.c
+	"Destino.h"
+
+1576350909 c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\destino.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"lisba_utn.h"
+
+1576350909 c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\lisba_utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1576350909 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\lisba_utn.c
+	"lisba_utn.h"
+
+1576350909 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"lisba_utn.h"
+	"Piloto.h"
+	"Vuelo.h"
+	"Destino.h"
+	"Consultas.h"
+
+1576350909 c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\piloto.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"lisba_utn.h"
+
+1576350909 c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\vuelo.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"lisba_utn.h"
+	"Piloto.h"
+	"Destino.h"
+
+1576350909 c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\consultas.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"lisba_utn.h"
+	"Piloto.h"
+	"Vuelo.h"
+	"Destino.h"
+
+1576350909 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\piloto.c
+	"Piloto.h"
+
+1576350909 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\vuelo.c
+	"Vuelo.h"
+
+1576356540 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\parcial_1_recuperatorio\consultas.c
+	"Consultas.h"
+

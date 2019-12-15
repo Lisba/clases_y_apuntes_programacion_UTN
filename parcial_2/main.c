@@ -7,7 +7,7 @@
 
 int main()
 {
-    LinkedList* listaCachorros = ll_newLinkedList();
+    LinkedList* listaCachorros = NULL;
     LinkedList* listaCachorrosMenores45Dias = NULL;
     LinkedList* listaMachos = NULL;
     LinkedList* ListaCallejeros = NULL;
@@ -19,6 +19,7 @@ int main()
         switch( menu() )
         {
         case 1:
+            listaCachorros = ll_newLinkedList();
             if( listaCachorros != NULL )
             {
                 getString(NombreArchivo, "\nINGRESE EL NOMBRE DEL ARCHIVO A ABRIR: ", "ERROR! MAXIMO 29 CARACTERES! ", 1, 29);
@@ -28,7 +29,7 @@ int main()
                 }
                 else
                 {
-                    printf("\n\nNO SE PUDO CARGAR EL ARCHIVO!\n\n");
+                    printf("\nNO SE PUDO CARGAR EL ARCHIVO!\n\n");
                 }
             }
             else

@@ -34,6 +34,7 @@ void vuelosPilotoSeleccionado(eVuelo listaVuelos[], int tamVuelos, ePiloto lista
                 }
             }
 
+            break;
         }
     }
 }
@@ -62,6 +63,8 @@ void pilotosVolaronDestinoEspecifico(eVuelo listaVuelos[], int tamVuelos, ePilot
                     }
                 }
             }
+
+            break;
         }
     }
 }
@@ -103,7 +106,7 @@ void recaudacionPorPiloto(eVuelo listaVuelos[], int tamVuelos, ePiloto listaPilo
 void destinoMasElegido(eVuelo listaVuelos[], int tamVuelos, ePiloto listaPilotos[], int tamPilotos, eDestino listaDestinos[], int tamDestinos)
 {
     int destino[tamDestinos];
-    int mayor = 0;
+    int mayor;
 
     for(int i=0; i<tamDestinos; i++)
     {
@@ -120,6 +123,8 @@ void destinoMasElegido(eVuelo listaVuelos[], int tamVuelos, ePiloto listaPilotos
             }
         }
     }
+
+    mayor = destino[0];
 
     for(int i=0; i<tamDestinos; i++)
     {

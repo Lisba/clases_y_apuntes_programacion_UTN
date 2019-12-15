@@ -24,8 +24,7 @@ int controller_loadFromText(char* path , LinkedList* pArrayListCachorro)
         }
         else
         {
-            printf("NO SE PUDO ABRIR EL ARCHIVO DE TEXTO.\n\n");
-            system("pause");
+            printf("\nEL ARCHIVO NO EXISTE!\n");
         }
     }
 
@@ -54,7 +53,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListCachorro)
     int dias;
     char raza[20];
     char reservado[20];
-    char* genero[2];
+    char genero[2];
     FILE* f = NULL;
    eCachorro* cachorro;
 
@@ -75,7 +74,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListCachorro)
                 cachorro_getDias(cachorro, &dias);
                 cachorro_getRaza(cachorro, raza);
                 cachorro_getReservado(cachorro, reservado);
-                cachorro_getGenero(cachorro, &genero);
+                cachorro_getGenero(cachorro, genero);
 
                 fprintf(f, "%d,%s,%d,%s,%s,%s\n", id, nombre, dias, raza, reservado, genero);
                 contador++;
@@ -91,7 +90,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListCachorro)
         }
         else
         {
-            printf("No se pudo abrir el archivo de texto.\n");
+            printf("NO SE PUDO CREAR/ABRIR EL ARCHIVO DE TEXTO EN MODO ESCRITURA.\n");
         }
     }
 

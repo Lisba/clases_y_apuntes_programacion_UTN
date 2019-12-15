@@ -188,21 +188,41 @@ void mostrarAlumnos(eAlumno vec[], int tam,  eCarrera carreras[], int tamC)
 
 void ordenarAlumnos(eAlumno vec[], int tam)
 {
-    eAlumno auxAlumno;
+    eAlumno temp;                                                                 //El valor auxiliar, debe ser del tipo de dato a intercambiar.
+    int j;                                                                                 //Servira para el segundo indice.
 
-    for(int i= 0; i < tam-1 ; i++)
+    for(int i=1; i<tam; i++)
     {
-        for(int j= i+1; j <tam; j++)
+        temp = vec[i];                                                               //Es el segundo elemento del array
+        j = i-1;                                                                          //Es para acceder al elemento anterior a temp.
+
+        if(j >= 0 && vec[j].sexo > temp.sexo)                          //Condicion para ordenar ascendente por sexo (es igual a la del while de abajo).
         {
-            if( vec[i].sexo > vec[j].sexo)
+            while(j >= 0 && vec[j].sexo > temp.sexo)                //j debe ser mayor a 0 y aqui coloco la condicion para odenar(asc o desc y por que parametro).
             {
-                auxAlumno = vec[i];
-                vec[i] = vec[j];
-                vec[j] = auxAlumno;
+                vec[j+1] = vec[j];                                                 //Asigno al correspondiente de temp el valor anterior.
+                j--;                                                                        // Resto j para ir bajando hasta -1 y culminar el ordenamiento.
+            }
+            vec[j+1] = temp;                                                      //Inserto el valor de temp en la posicion donde no tenga mayores que el a su izquierda.
+        }
+        else
+        {
+            if(j >=0 && vec[j].sexo == temp.sexo)                     //Condicion si sexo es igual en ambos elementos.
+            {
+                if(vec[j].nota1 < temp.nota1)                               //Condicion para ordenar descendente por nota1.
+                {
+                    while(j >= 0 && vec[j].nota1 < temp.nota1)
+                    {
+                        vec[j+1] = vec[j];
+                        j--;
+                    }
+                    vec[j+1] = temp;
+                }
             }
         }
     }
-    printf("Alumnos Ordenados\n\n");
+
+    printf("\nAlumnos Ordenados por sexo!\n\n");
 }
 
 void inicializarAlumnos(eAlumno vec[], int tam)
