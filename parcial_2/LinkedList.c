@@ -559,41 +559,39 @@ LinkedList* ll_clone(LinkedList* this)
 int ll_sort(LinkedList* this, int (*pFunc)(void*, void*), int order)
 {
     int returnAux =-1;
-    void* pNodeAux = NULL;
-    Node* pNodeI = NULL;
-    Node* pNodeJ = NULL;
     int tamThis;
+    int j;
+    void* temp = NULL;
 
     if(this != NULL && pFunc != NULL && (order == 0  || order == 1) )
     {
         tamThis = ll_len(this);
 
-        for(int i=0; i<tamThis-1; i++)
+        for(int i=1; i<tamThis; i++)
         {
-            for(int j=i+1; j<tamThis; j++)
+            temp = getNode(this, i)->pElement;
+            j = i-1;
+
+            if(j >= 0 && pFunc(getNode(this, j)->pElement, temp) == 1 && order == 1)
             {
-                pNodeI = getNode(this, i);
-                pNodeJ = getNode(this, j);
-
-                if(pNodeI != NULL && pNodeJ != NULL)
+                while(j >= 0 && pFunc(getNode(this, j)->pElement, temp) == 1 && order == 1)
                 {
-                    if(pFunc(pNodeI->pElement, pNodeJ->pElement) == 1 && order == 1)
-                    {
-                        pNodeAux = pNodeI->pElement;
-                        pNodeI->pElement = pNodeJ->pElement;
-                        pNodeJ->pElement = pNodeAux;
-                    }
-                    else if(pFunc(pNodeI->pElement, pNodeJ->pElement) == -1 && order == 0)
-                    {
-                        pNodeAux = pNodeI->pElement;
-                        pNodeI->pElement = pNodeJ->pElement;
-                        pNodeJ->pElement = pNodeAux;
-                    }
-
-                    returnAux = 0;
+                    getNode(this, j+1)->pElement = getNode(this, j)->pElement;
+                    j--;
                 }
+                getNode(this, j+1)->pElement = temp;
+            }
+            else if(j >= 0 && pFunc(getNode(this, j)->pElement, temp) == -1 && order == 0)
+            {
+                while(j >= 0 && pFunc(getNode(this, j)->pElement, temp) == -1 && order == 0)
+                {
+                    getNode(this, j+1)->pElement = getNode(this, j)->pElement;
+                    j--;
+                }
+                getNode(this, j+1)->pElement = temp;
             }
         }
+        returnAux = 0;
     }
 
     return returnAux;

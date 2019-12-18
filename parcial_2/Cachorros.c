@@ -16,8 +16,9 @@ int menu(void)
     printf("3-FILTRAR MENORES DE 45 DIAS.\n");
     printf("4-FILTRAR MACHOS.\n");
     printf("5-GENERAR LISTADO DE CALLEJEROS.\n");
-    printf("6-SALIR.\n\n");
-    getInt(&opcion, "INGRESE OPCION: ", "OPCION INVALIDA. ", 1, 6);
+    printf("6-ORDENAR LISTA.\n");
+    printf("7-SALIR.\n\n");
+    getInt(&opcion, "INGRESE OPCION: ", "OPCION INVALIDA. ", 1, 7);
 
     return opcion;
 }
@@ -353,6 +354,25 @@ int filtrarCallejeros(void* pElement)
         {
             value = 0;
         }
+    }
+
+    return value;
+}
+
+int ordenarListaPorId(void* first, void* second)
+{
+    int value = 0;
+
+    eCachorro* firstElement = (eCachorro*) first;
+    eCachorro* secondElement = (eCachorro*) second;
+
+    if(firstElement->id > secondElement->id)
+    {
+        value = 1;
+    }
+    else if(firstElement->id < secondElement->id)
+    {
+        value = -1;
     }
 
     return value;

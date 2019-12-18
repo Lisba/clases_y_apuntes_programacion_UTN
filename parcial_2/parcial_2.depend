@@ -49,7 +49,7 @@
 	<string.h>
 	"LinkedList.h"
 
-1576354877 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\parcial_2\main.c
+1576639535 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\parcial_2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"Cachorros.h"
@@ -57,7 +57,7 @@
 	"lisba_utn.h"
 	"LinkedList.h"
 
-1575163694 c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\parcial_2\cachorros.h
+1576553835 c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\parcial_2\cachorros.h
 	"LinkedList.h"
 
 1575163694 c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\parcial_2\linkedlist.h
@@ -69,7 +69,7 @@
 	<stdlib.h>
 	<string.h>
 
-1575163694 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\parcial_2\cachorros.c
+1576638937 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\parcial_2\cachorros.c
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
@@ -87,7 +87,7 @@
 
 1575163694 c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\parcial_2\parser.h
 
-1575163694 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\parcial_2\linkedlist.c
+1576638898 source:c:\users\usuario\documents\sistemas-utn\1er cuatrimestre\programación i y laboratorio i\clases_y_apuntes_programacion_utn\parcial_2\linkedlist.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

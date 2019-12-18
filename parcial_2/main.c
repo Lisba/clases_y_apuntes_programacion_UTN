@@ -13,6 +13,7 @@ int main()
     LinkedList* ListaCallejeros = NULL;
     char respuesta = 'n';
     char NombreArchivo[30];
+    int sortOption;
 
     do
     {
@@ -116,6 +117,26 @@ int main()
             system("pause");
             break;
         case 6:
+            if( !ll_isEmpty(listaCachorros) )
+            {
+                getInt(&sortOption, "ASCENDENTE (1) O DESCENDENTE (0)?: ", "ERROR! ", 0, 1);
+                if(sortOption)
+                {
+                    ll_sort(listaCachorros, ordenarListaPorId, 1);
+                }
+                else
+                {
+                    ll_sort(listaCachorros, ordenarListaPorId , 0);
+                }
+                printf("\nLA LISTA HA SIDO ORDENADA!\n\n");
+            }
+            else
+            {
+                printf("\nNO SE PUDO ORDENAR LA LISTA!\n\n");
+            }
+            system("pause");
+            break;
+        case 7:
             getChar(&respuesta, "\nSEGURO QUE DESEA SALIR? (s/n): ", "\nOPCION INVALIDA! \n", 'n', 's');
             break;
         default:

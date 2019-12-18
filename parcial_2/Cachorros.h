@@ -38,5 +38,5 @@ int validateCachorro(eCachorro* this);
 int filtrarMenores45(void* pElement);
 int filtrarMachos(void* pElement);
 int filtrarCallejeros(void* pElement);
-
+int ordenarListaPorId(void* first, void* second);
 
